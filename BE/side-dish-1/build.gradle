@@ -1,0 +1,32 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.4.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+}
+
+group = 'com.codesquad'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    runtimeOnly 'mysql:mysql-connector-java'
+
+    // spring starter test에서 기존 junit 제외
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude module: 'junit'
+    }
+    // JUnit 5 의존성 추가
+    testImplementation('org.junit.jupiter:junit-jupiter-api')
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine')
+    compile group: 'com.github.ulisesbocchio', name: 'jasypt-spring-boot-starter', version: '3.0.2'
+}
+
+test {
+    useJUnitPlatform()
+}
