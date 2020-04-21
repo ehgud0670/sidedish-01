@@ -14,13 +14,26 @@
                     <view key="view" contentMode="scaleToFill" id="dCb-zB-8uw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baeminChan" translatesAutoresizingMaskIntoConstraints="NO" id="7id-QU-Qf1">
+                                <rect key="frame" x="70.5" y="90" width="273" height="273"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="7id-QU-Qf1" secondAttribute="height" multiplier="1:1" id="qgc-6w-wa5"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="7id-QU-Qf1" firstAttribute="centerX" secondItem="idt-m9-xN9" secondAttribute="centerX" id="JDe-hO-Qcg"/>
+                            <constraint firstItem="7id-QU-Qf1" firstAttribute="centerY" secondItem="idt-m9-xN9" secondAttribute="centerY" multiplier="0.5" id="eFO-O7-dQn"/>
+                            <constraint firstItem="7id-QU-Qf1" firstAttribute="height" secondItem="idt-m9-xN9" secondAttribute="height" multiplier="1/3" id="o5J-ut-r8r"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="idt-m9-xN9"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h6F-IE-d0X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="-536"/>
+            <point key="canvasLocation" x="138" y="-573"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -50,4 +63,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="129.91071428571428"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="baeminChan" width="75" height="75"/>
+    </resources>
 </document>
