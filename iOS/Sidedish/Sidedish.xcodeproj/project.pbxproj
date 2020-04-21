@@ -17,6 +17,7 @@
 		5A742756244E9D63004144C1 /* SidedishUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A742755244E9D63004144C1 /* SidedishUITests.swift */; };
 		5A742767244EA38F004144C1 /* MenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A742766244EA38F004144C1 /* MenuTableView.swift */; };
 		5A7427A7244EC5BE004144C1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7427A6244EC5BE004144C1 /* LoginViewController.swift */; };
+		5A7427A9244ECDF0004144C1 /* BMEULJIRO.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5A7427A8244ECDF0004144C1 /* BMEULJIRO.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		5A742757244E9D63004144C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A742766244EA38F004144C1 /* MenuTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableView.swift; sourceTree = "<group>"; };
 		5A7427A6244EC5BE004144C1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5A7427A8244ECDF0004144C1 /* BMEULJIRO.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMEULJIRO.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				5A74273C244E9D63004144C1 /* Assets.xcassets */,
 				5A74273E244E9D63004144C1 /* LaunchScreen.storyboard */,
 				5A742741244E9D63004144C1 /* Info.plist */,
+				5A7427A8244ECDF0004144C1 /* BMEULJIRO.otf */,
 			);
 			path = Sidedish;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A742740244E9D63004144C1 /* LaunchScreen.storyboard in Resources */,
+				5A7427A9244ECDF0004144C1 /* BMEULJIRO.otf in Resources */,
 				5A74273D244E9D63004144C1 /* Assets.xcassets in Resources */,
 				5A74273B244E9D5F004144C1 /* Main.storyboard in Resources */,
 			);
