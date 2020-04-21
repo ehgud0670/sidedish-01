@@ -24,6 +24,7 @@ final class MenuViewController: UIViewController {
     
     private func configureMenuTableView() {
         menuTableView.dataSource = menuTableViewDataSource
+        menuTableView.register(ProductCell.self, forCellReuseIdentifier: ProductCell.reuseIdentifier)
         configureMenuTableViewConstraints()
     }
     
