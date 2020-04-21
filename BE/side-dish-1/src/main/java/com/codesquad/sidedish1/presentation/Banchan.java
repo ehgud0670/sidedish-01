@@ -1,4 +1,4 @@
-package com.example.demo.Entity;
+package com.codesquad.sidedish1.presentation;
 
 import org.springframework.data.annotation.Id;
 
