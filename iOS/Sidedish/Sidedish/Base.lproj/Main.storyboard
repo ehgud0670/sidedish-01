@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baeminChan" translatesAutoresizingMaskIntoConstraints="NO" id="7id-QU-Qf1">
-                                <rect key="frame" x="70.5" y="90" width="273" height="273"/>
+                                <rect key="frame" x="87.5" y="107" width="239" height="239"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="7id-QU-Qf1" secondAttribute="height" multiplier="1:1" id="qgc-6w-wa5"/>
                                 </constraints>
@@ -26,7 +26,7 @@
                         <constraints>
                             <constraint firstItem="7id-QU-Qf1" firstAttribute="centerX" secondItem="idt-m9-xN9" secondAttribute="centerX" id="JDe-hO-Qcg"/>
                             <constraint firstItem="7id-QU-Qf1" firstAttribute="centerY" secondItem="idt-m9-xN9" secondAttribute="centerY" multiplier="0.5" id="eFO-O7-dQn"/>
-                            <constraint firstItem="7id-QU-Qf1" firstAttribute="height" secondItem="idt-m9-xN9" secondAttribute="height" multiplier="1/3" id="o5J-ut-r8r"/>
+                            <constraint firstItem="7id-QU-Qf1" firstAttribute="height" secondItem="idt-m9-xN9" secondAttribute="height" multiplier="7/24" id="o5J-ut-r8r"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="idt-m9-xN9"/>
                     </view>
