@@ -10,6 +10,7 @@ import UIKit
 
 final class MenuViewController: UIViewController {
     private let menuTableView = MenuTableView()
+    private let menuTableViewDataSource = MenuTableViewDataSource()
     private var hasBeenDisplayed = false
     
     override func viewDidLoad() {
@@ -22,6 +23,11 @@ final class MenuViewController: UIViewController {
     }
     
     private func configureMenuTableView() {
+        menuTableView.dataSource = menuTableViewDataSource
+        configureMenuTableViewConstraints()
+    }
+    
+    private func configureMenuTableViewConstraints() {
         view.addSubview(menuTableView)
         
         let safeArea = view.safeAreaLayoutGuide
@@ -31,7 +37,7 @@ final class MenuViewController: UIViewController {
         menuTableView.widthAnchor.constraint(equalTo: safeArea.widthAnchor,
                                              multiplier: 1).isActive = true
         menuTableView.heightAnchor.constraint(equalTo: safeArea.heightAnchor,
-            multiplier: 1).isActive = true
+                                              multiplier: 1).isActive = true
     }
     
     private func presentLoginViewController() {
