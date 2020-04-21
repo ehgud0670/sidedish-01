@@ -6,6 +6,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="BMEULJIRO.otf">
+            <string>BMEULJIRO</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Login View Controller-->
         <scene sceneID="BpB-Nr-Im9">
@@ -21,12 +26,27 @@
                                     <constraint firstAttribute="width" secondItem="7id-QU-Qf1" secondAttribute="height" multiplier="1:1" id="qgc-6w-wa5"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0A8-nL-bhm" customClass="LoginButton" customModule="Sidedish" customModuleProvider="target">
+                                <rect key="frame" x="20" y="430.5" width="374" height="45"/>
+                                <color key="backgroundColor" red="0.37563083044848733" green="0.75140609263163527" blue="0.74437093643342289" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="C6d-gI-11X"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BMEULJIRO" family="BM EULJIRO" pointSize="20"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                <state key="normal" title="로그인">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="7id-QU-Qf1" firstAttribute="centerX" secondItem="idt-m9-xN9" secondAttribute="centerX" id="JDe-hO-Qcg"/>
+                            <constraint firstItem="idt-m9-xN9" firstAttribute="trailing" secondItem="0A8-nL-bhm" secondAttribute="trailing" constant="20" id="Rwn-iC-awZ"/>
                             <constraint firstItem="7id-QU-Qf1" firstAttribute="centerY" secondItem="idt-m9-xN9" secondAttribute="centerY" multiplier="0.5" id="eFO-O7-dQn"/>
                             <constraint firstItem="7id-QU-Qf1" firstAttribute="height" secondItem="idt-m9-xN9" secondAttribute="height" multiplier="7/24" id="o5J-ut-r8r"/>
+                            <constraint firstItem="0A8-nL-bhm" firstAttribute="leading" secondItem="idt-m9-xN9" secondAttribute="leading" constant="20" id="pJy-EU-Y7b"/>
+                            <constraint firstItem="0A8-nL-bhm" firstAttribute="centerY" secondItem="idt-m9-xN9" secondAttribute="centerY" id="zDi-oa-Jrq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="idt-m9-xN9"/>
                     </view>
