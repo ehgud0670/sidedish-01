@@ -9,14 +9,29 @@
 import UIKit
 
 final class MenuViewController: UIViewController {
+    private let menuTableView = MenuTableView()
     private var hasBeenDisplayed = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureMenuTableView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         presentLoginViewController()
+    }
+    
+    private func configureMenuTableView() {
+        view.addSubview(menuTableView)
+        
+        let safeArea = view.safeAreaLayoutGuide
+        menuTableView.leadingAnchor.constraint(equalTo:
+            safeArea.leadingAnchor).isActive = true
+        menuTableView.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
+        menuTableView.widthAnchor.constraint(equalTo: safeArea.widthAnchor,
+                                             multiplier: 1).isActive = true
+        menuTableView.heightAnchor.constraint(equalTo: safeArea.heightAnchor,
+            multiplier: 1).isActive = true
     }
     
     private func presentLoginViewController() {
