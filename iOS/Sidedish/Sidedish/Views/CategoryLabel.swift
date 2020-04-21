@@ -35,8 +35,12 @@ final class CategoryLabel: UILabel {
         layer.borderColor = UIColor.lightGray.cgColor
     }
     
+    enum Padding {
+        static let left: CGFloat = 5
+        static let right: CGFloat = 5
+    }
     override func drawText(in rect: CGRect) {
-        let inset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        let inset = UIEdgeInsets(top: 0, left: Padding.left, bottom: 0, right: Padding.right)
         super.drawText(in: rect.inset(by: inset))
     }
 }
