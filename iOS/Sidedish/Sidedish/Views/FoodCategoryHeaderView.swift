@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class CategoryHeaderView: UITableViewHeaderFooterView, ReusableView {
+final class FoodCategoryHeaderView: UITableViewHeaderFooterView, ReusableView {
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
     }

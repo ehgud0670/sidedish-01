@@ -25,10 +25,10 @@ final class MenuViewController: UIViewController {
     private func configureMenuTableView() {
         menuTableView.dataSource = menuTableViewDataSource
         menuTableView.delegate = self
-        menuTableView.register(ProductCell.self,
-                               forCellReuseIdentifier: ProductCell.reuseIdentifier)
-        menuTableView.register(CategoryHeaderView.self,
-                               forHeaderFooterViewReuseIdentifier: CategoryHeaderView.reuseIdentifier)
+        menuTableView.register(FoodProductCell.self,
+                               forCellReuseIdentifier: FoodProductCell.reuseIdentifier)
+        menuTableView.register(FoodCategoryHeaderView.self,
+                               forHeaderFooterViewReuseIdentifier: FoodCategoryHeaderView.reuseIdentifier)
         configureMenuTableViewConstraints()
     }
     
@@ -57,7 +57,7 @@ final class MenuViewController: UIViewController {
 
 extension MenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: CategoryHeaderView.reuseIdentifier) as? CategoryHeaderView else { return nil }
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: FoodCategoryHeaderView.reuseIdentifier) as? FoodCategoryHeaderView else { return nil }
         return header
     }
 }

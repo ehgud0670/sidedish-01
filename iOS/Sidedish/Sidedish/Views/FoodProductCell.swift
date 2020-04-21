@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ProductCell: UITableViewCell, ReusableView {
+final class FoodProductCell: UITableViewCell, ReusableView {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }

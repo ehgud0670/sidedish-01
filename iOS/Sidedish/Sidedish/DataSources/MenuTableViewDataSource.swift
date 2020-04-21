@@ -15,8 +15,8 @@ final class MenuTableViewDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let productCell = tableView.dequeueReusableCell(withIdentifier: ProductCell.reuseIdentifier,
-                                                              for: indexPath) as? ProductCell else { return ProductCell() }
+        guard let productCell = tableView.dequeueReusableCell(withIdentifier: FoodProductCell.reuseIdentifier,
+                                                              for: indexPath) as? FoodProductCell else { return FoodProductCell() }
         return productCell
     }
     
