@@ -12,4 +12,14 @@ final class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        presentLoginViewController()
+    }
+    
+    private func presentLoginViewController() {
+        guard let loginViewController = storyboard?.instantiateViewController(withIdentifier: LoginViewController.Identifier.storyboardIdentifier) as? LoginViewController else { return }
+        loginViewController.modalPresentationStyle = .fullScreen
+        present(loginViewController, animated: true)
+    }
 }

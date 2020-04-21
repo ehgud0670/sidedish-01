@@ -16,6 +16,7 @@
 		5A74274B244E9D63004144C1 /* SidedishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A74274A244E9D63004144C1 /* SidedishTests.swift */; };
 		5A742756244E9D63004144C1 /* SidedishUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A742755244E9D63004144C1 /* SidedishUITests.swift */; };
 		5A742767244EA38F004144C1 /* MenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A742766244EA38F004144C1 /* MenuTableView.swift */; };
+		5A7427A7244EC5BE004144C1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7427A6244EC5BE004144C1 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		5A742755244E9D63004144C1 /* SidedishUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidedishUITests.swift; sourceTree = "<group>"; };
 		5A742757244E9D63004144C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A742766244EA38F004144C1 /* MenuTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableView.swift; sourceTree = "<group>"; };
+		5A7427A6244EC5BE004144C1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				5A742737244E9D5F004144C1 /* MenuViewController.swift */,
+				5A7427A6244EC5BE004144C1 /* LoginViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				5A742738244E9D5F004144C1 /* MenuViewController.swift in Sources */,
 				5A742734244E9D5F004144C1 /* AppDelegate.swift in Sources */,
 				5A742767244EA38F004144C1 /* MenuTableView.swift in Sources */,
+				5A7427A7244EC5BE004144C1 /* LoginViewController.swift in Sources */,
 				5A742736244E9D5F004144C1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
