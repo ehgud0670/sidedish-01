@@ -9,11 +9,8 @@
 import UIKit
 
 final class MenuViewController: UIViewController {
-    private let menuTableView = MenuTableView()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureMenuTableView()
     }
 }
 

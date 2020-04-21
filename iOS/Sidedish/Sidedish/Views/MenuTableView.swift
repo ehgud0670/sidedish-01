@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class MenuTableView: UITableView, AutoLayoutable {
+final class MenuTableView: UITableView {
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
     }
