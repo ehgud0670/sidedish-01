@@ -1,14 +1,8 @@
 package com.codesquad.sidedish1.presentation;
 
-package com.example.demo;
 
-
-import com.example.demo.Entity.Banchan;
-import com.example.demo.Entity.Category;
-import com.example.demo.Entity.Image;
-import org.simpleflatmapper.jdbc.JdbcMapper;
+import com.codesquad.sidedish1.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
