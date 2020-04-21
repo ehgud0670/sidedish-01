@@ -9,6 +9,8 @@
 import UIKit
 
 final class MenuViewController: UIViewController {
+    private var hasBeenDisplayed = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -18,8 +20,11 @@ final class MenuViewController: UIViewController {
     }
     
     private func presentLoginViewController() {
-        guard let loginViewController = storyboard?.instantiateViewController(withIdentifier: LoginViewController.Identifier.storyboardIdentifier) as? LoginViewController else { return }
-        loginViewController.modalPresentationStyle = .fullScreen
-        present(loginViewController, animated: true)
+        if !hasBeenDisplayed {
+            guard let loginViewController = storyboard?.instantiateViewController(withIdentifier: LoginViewController.Identifier.storyboardIdentifier) as? LoginViewController else { return }
+            loginViewController.modalPresentationStyle = .fullScreen
+            present(loginViewController, animated: true)
+            hasBeenDisplayed = true
+        }
     }
 }

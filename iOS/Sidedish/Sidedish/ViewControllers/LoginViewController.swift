@@ -16,4 +16,8 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    @IBAction func loginButtonTouched(_ sender: LoginButton) {
+        dismiss(animated: true)
+    }
 }
