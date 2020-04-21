@@ -19,4 +19,9 @@ final class MenuTableViewDataSource: NSObject, UITableViewDataSource {
                                                               for: indexPath) as? ProductCell else { return ProductCell() }
         return productCell
     }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        let temp = 10
+        return temp
+    }
 }

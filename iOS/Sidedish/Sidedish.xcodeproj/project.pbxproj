@@ -22,6 +22,7 @@
 		5A7427B0244EFF40004144C1 /* MenuTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7427AF244EFF40004144C1 /* MenuTableViewDataSource.swift */; };
 		5A7427B2244F0055004144C1 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7427B1244F0055004144C1 /* ProductCell.swift */; };
 		5A7427B4244F009A004144C1 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7427B3244F009A004144C1 /* ReusableView.swift */; };
+		5A7427B8244F05B5004144C1 /* CategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7427B7244F05B5004144C1 /* CategoryHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		5A7427AF244EFF40004144C1 /* MenuTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewDataSource.swift; sourceTree = "<group>"; };
 		5A7427B1244F0055004144C1 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		5A7427B3244F009A004144C1 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		5A7427B7244F05B5004144C1 /* CategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 				5A742766244EA38F004144C1 /* MenuTableView.swift */,
 				5A7427AC244EDBA1004144C1 /* LoginButton.swift */,
 				5A7427B1244F0055004144C1 /* ProductCell.swift */,
+				5A7427B7244F05B5004144C1 /* CategoryHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A7427B4244F009A004144C1 /* ReusableView.swift in Sources */,
+				5A7427B8244F05B5004144C1 /* CategoryHeaderView.swift in Sources */,
 				5A7427B0244EFF40004144C1 /* MenuTableViewDataSource.swift in Sources */,
 				5A742738244E9D5F004144C1 /* MenuViewController.swift in Sources */,
 				5A7427AD244EDBA1004144C1 /* LoginButton.swift in Sources */,
