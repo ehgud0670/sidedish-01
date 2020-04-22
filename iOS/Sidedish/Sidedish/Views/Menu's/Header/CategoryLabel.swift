@@ -49,4 +49,10 @@ final class CategoryLabel: UILabel {
                                  right: Padding.right)
         super.drawText(in: rect.inset(by: inset))
     }
+    
+    override var intrinsicContentSize: CGSize {
+        let `super` = super.intrinsicContentSize
+        return CGSize(width: `super`.width + Padding.left + Padding.right,
+                      height: `super`.height + Padding.top + Padding.bottom)
+    }
 }

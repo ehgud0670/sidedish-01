@@ -32,14 +32,7 @@ final class FoodCategoryHeaderView: UITableViewHeaderFooterView, ReusableView {
     
     private func configureCategoryLabel() {
         contentView.addSubview(categoryLabel)
-        let widthConstant = categoryLabel.intrinsicContentSize.width +
-            CategoryLabel.Padding.left +
-            CategoryLabel.Padding.right
-        categoryLabel.widthAnchor.constraint(equalToConstant: widthConstant).isActive = true
-        let heightContstant = categoryLabel.intrinsicContentSize.height +
-            CategoryLabel.Padding.top +
-            CategoryLabel.Padding.bottom
-        categoryLabel.heightAnchor.constraint(equalToConstant: heightContstant).isActive = true
+        
         categoryLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         categoryLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -10).isActive = true
     }
