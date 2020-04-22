@@ -11,12 +11,14 @@ import UIKit
 final class DocumentStackView: UIStackView {
     private let titleStackView = TitleStackView()
     private let priceStackView = PriceStackView()
+    private let eventBadgeStackView = EventBadgeStackView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
         configureTitleStackView()
         configurePriceStackView()
+        configureEventBadgeStackView()
     }
     
     required init(coder: NSCoder) {
@@ -24,6 +26,7 @@ final class DocumentStackView: UIStackView {
         configure()
         configureTitleStackView()
         configurePriceStackView()
+        configureEventBadgeStackView()
     }
     
     private func configure() {
@@ -39,5 +42,9 @@ final class DocumentStackView: UIStackView {
     
     private func configurePriceStackView() {
         addArrangedSubview(priceStackView)
+    }
+    
+    private func configureEventBadgeStackView() {
+        addArrangedSubview(eventBadgeStackView)
     }
 }
