@@ -9,7 +9,7 @@ const WrapDiv = styled.div`
 
 const HeaderDiv = styled.div`
   width: 980px;
-  height: 36px;
+  height: 98px;
   line-height: 36px;
   margin: 0 auto;
   position: relative;
