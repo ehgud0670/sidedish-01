@@ -23,16 +23,18 @@ final class PriceLabel: UILabel {
         translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func configureUnderLineSingleGreyPrice() {
+    func configureUnderLineSingleGrey(priceText: String) {
+        text = priceText
         guard let text = text else { return }
+        
         let textRange = NSMakeRange(0, text.count)
         let attributedText = NSMutableAttributedString(string: text)
         attributedText.addAttribute(NSAttributedString.Key.font,
                                     value: UIFont.systemFont(ofSize: 17,
-                                                             weight: .light),
+                                                             weight: .semibold),
                                     range: textRange)
         attributedText.addAttribute(NSAttributedString.Key.foregroundColor,
-                                    value: UIColor.lightGray,
+                                    value: UIColor.placeholderText,
                                     range: textRange)
         attributedText.addAttribute(NSAttributedString.Key.strikethroughStyle,
                                     value: NSUnderlineStyle.single.rawValue,
@@ -40,14 +42,20 @@ final class PriceLabel: UILabel {
         self.attributedText = attributedText
     }
     
-    func configureCyanPrice() {
+    func configureCyan(priceText: String, unitText: String) {
+        text = priceText + unitText
+        
         guard let text = text else { return }
         let textRange = NSMakeRange(0, text.count)
         let attributedText = NSMutableAttributedString(string: text)
         attributedText.addAttribute(NSAttributedString.Key.font,
                                     value: UIFont.systemFont(ofSize: 25,
                                                              weight: .heavy),
-                                    range: textRange)
+                                    range: (text as NSString).range(of: priceText))
+        attributedText.addAttribute(NSAttributedString.Key.font,
+                                    value: UIFont.systemFont(ofSize: 20,
+                                                             weight: .heavy),
+                                    range: (text as NSString).range(of: unitText))
         attributedText.addAttribute(NSAttributedString.Key.foregroundColor,
                                     value: UIColor.baeminColor,
                                     range: textRange)
