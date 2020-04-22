@@ -10,7 +10,7 @@ import UIKit
 
 final class MenuTableViewDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let temp = 10
+        let temp = 5
         return temp
     }
     
@@ -21,7 +21,7 @@ final class MenuTableViewDataSource: NSObject, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        let temp = 10
+        let temp = 5
         return temp
     }
 }

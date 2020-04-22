@@ -21,11 +21,11 @@ final class TitleLabel: UILabel {
     
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
-        configureText()
+        configureDefaultText()
     }
     
-    private func configureText() {
-        font = UIFont.boldSystemFont(ofSize: 20)
+    private func configureDefaultText() {
+        font = UIFont.boldSystemFont(ofSize: 25)
         text = "Title Label"
     }
 }

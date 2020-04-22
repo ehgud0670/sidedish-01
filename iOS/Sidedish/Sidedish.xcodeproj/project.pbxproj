@@ -26,6 +26,8 @@
 		5A7427BA244F0B21004144C1 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7427B9244F0B20004144C1 /* TitleLabel.swift */; };
 		5A7427BC244F0D3E004144C1 /* CategoryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7427BB244F0D3E004144C1 /* CategoryLabel.swift */; };
 		5A821153244FF7E200308665 /* ProductImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A821152244FF7E200308665 /* ProductImageView.swift */; };
+		5A821155244FFB5E00308665 /* TitleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A821154244FFB5E00308665 /* TitleStackView.swift */; };
+		5A821157244FFD9C00308665 /* DocumentStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A821156244FFD9C00308665 /* DocumentStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		5A7427B9244F0B20004144C1 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		5A7427BB244F0D3E004144C1 /* CategoryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryLabel.swift; sourceTree = "<group>"; };
 		5A821152244FF7E200308665 /* ProductImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImageView.swift; sourceTree = "<group>"; };
+		5A821154244FFB5E00308665 /* TitleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleStackView.swift; sourceTree = "<group>"; };
+		5A821156244FFD9C00308665 /* DocumentStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +167,8 @@
 				5A7427B9244F0B20004144C1 /* TitleLabel.swift */,
 				5A7427BB244F0D3E004144C1 /* CategoryLabel.swift */,
 				5A821152244FF7E200308665 /* ProductImageView.swift */,
+				5A821154244FFB5E00308665 /* TitleStackView.swift */,
+				5A821156244FFD9C00308665 /* DocumentStackView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -327,6 +333,8 @@
 			files = (
 				5A7427BC244F0D3E004144C1 /* CategoryLabel.swift in Sources */,
 				5A7427B4244F009A004144C1 /* ReusableView.swift in Sources */,
+				5A821157244FFD9C00308665 /* DocumentStackView.swift in Sources */,
+				5A821155244FFB5E00308665 /* TitleStackView.swift in Sources */,
 				5A7427B8244F05B5004144C1 /* FoodCategoryHeaderView.swift in Sources */,
 				5A7427B0244EFF40004144C1 /* MenuTableViewDataSource.swift in Sources */,
 				5A742738244E9D5F004144C1 /* MenuViewController.swift in Sources */,
