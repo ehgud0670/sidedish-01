@@ -40,7 +40,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0A8-nL-bhm" customClass="LoginButton" customModule="Sidedish" customModuleProvider="target">
                                 <rect key="frame" x="20" y="430.5" width="374" height="45"/>
-                                <color key="backgroundColor" red="0.37563083044848733" green="0.75140609263163527" blue="0.74437093643342289" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.37647058823529411" green="0.75294117647058822" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="C6d-gI-11X"/>
                                     <constraint firstAttribute="height" constant="23" id="NzH-2S-pqC">
