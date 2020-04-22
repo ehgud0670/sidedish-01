@@ -41,7 +41,8 @@ final class FoodProductCell: UITableViewCell, ReusableView {
     private func configureProductImageView() {
         contentView.addSubview(productImageView)
         
-        productImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        productImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,
+                                                  constant: 10).isActive = true
         productImageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         productImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor,
                                                  multiplier: 1).isActive = true
