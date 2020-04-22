@@ -21,7 +21,7 @@ final class EventBadgeLabel: UILabel {
     
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .purple
+        backgroundColor = UIColor.lightPurple
         configureText()
     }
     
@@ -31,8 +31,8 @@ final class EventBadgeLabel: UILabel {
     }
     
     enum Padding {
-        static let left: CGFloat = 5
-        static let right: CGFloat = 5
+        static let left: CGFloat = 4
+        static let right: CGFloat = 4
         static let top: CGFloat = 3
         static let bottom: CGFloat = 3
     }

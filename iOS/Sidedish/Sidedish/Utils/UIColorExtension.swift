@@ -31,4 +31,5 @@ extension UIColor {
 
 extension UIColor {
     static let baeminColor = UIColor(rgb: 0x28BDB5)!
+    static let lightPurple = UIColor(rgb: 0xA276BA)!
 }
