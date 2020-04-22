@@ -7,6 +7,7 @@ import localNavigationData from '../MockData/LocalNavigationData'
 
 const WrapDiv = styled.div`
   position: relative;
+  border-bottom: 1px solid #f0f0f5
 `;
 
 const ContentDiv = styled.div`
@@ -50,8 +51,8 @@ const LocalNavigation = () => {
         {commonMenuInfo !== undefined && 
          commonMenuInfo.map((v, i) => (
            v.list === undefined ?  
-            <Button title={v.title} url={v.url} direction="right" /> : 
-            <ListButton title={v.title} url={v.url} list={v.list} direction="right" />
+            <Button key={i} title={v.title} url={v.url} direction="right" /> : 
+            <ListButton key={i} title={v.title} url={v.url} list={v.list} direction="right" />
             )
          ).reverse()
         }
