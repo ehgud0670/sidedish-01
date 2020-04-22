@@ -25,6 +25,7 @@
 		5A7427B8244F05B5004144C1 /* FoodCategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7427B7244F05B5004144C1 /* FoodCategoryHeaderView.swift */; };
 		5A7427BA244F0B21004144C1 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7427B9244F0B20004144C1 /* TitleLabel.swift */; };
 		5A7427BC244F0D3E004144C1 /* CategoryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7427BB244F0D3E004144C1 /* CategoryLabel.swift */; };
+		5A821153244FF7E200308665 /* ProductImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A821152244FF7E200308665 /* ProductImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		5A7427B7244F05B5004144C1 /* FoodCategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategoryHeaderView.swift; sourceTree = "<group>"; };
 		5A7427B9244F0B20004144C1 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		5A7427BB244F0D3E004144C1 /* CategoryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryLabel.swift; sourceTree = "<group>"; };
+		5A821152244FF7E200308665 /* ProductImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 				5A7427B7244F05B5004144C1 /* FoodCategoryHeaderView.swift */,
 				5A7427B9244F0B20004144C1 /* TitleLabel.swift */,
 				5A7427BB244F0D3E004144C1 /* CategoryLabel.swift */,
+				5A821152244FF7E200308665 /* ProductImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				5A7427B2244F0055004144C1 /* FoodProductCell.swift in Sources */,
 				5A7427A7244EC5BE004144C1 /* LoginViewController.swift in Sources */,
 				5A742736244E9D5F004144C1 /* SceneDelegate.swift in Sources */,
+				5A821153244FF7E200308665 /* ProductImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
