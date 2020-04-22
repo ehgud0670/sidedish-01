@@ -27,7 +27,6 @@
 		5A7427BC244F0D3E004144C1 /* CategoryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7427BB244F0D3E004144C1 /* CategoryLabel.swift */; };
 		5A821153244FF7E200308665 /* ProductImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A821152244FF7E200308665 /* ProductImageView.swift */; };
 		5A821155244FFB5E00308665 /* TitleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A821154244FFB5E00308665 /* TitleStackView.swift */; };
-		5A821157244FFD9C00308665 /* DocumentStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A821156244FFD9C00308665 /* DocumentStackView.swift */; };
 		5A8211592450001A00308665 /* PriceStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8211582450001A00308665 /* PriceStackView.swift */; };
 		5A82115B2450004A00308665 /* PriceLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A82115A2450004A00308665 /* PriceLabel.swift */; };
 		5A82115E245015CE00308665 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A82115D245015CE00308665 /* UIColorExtension.swift */; };
@@ -81,7 +80,6 @@
 		5A7427BB244F0D3E004144C1 /* CategoryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryLabel.swift; sourceTree = "<group>"; };
 		5A821152244FF7E200308665 /* ProductImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImageView.swift; sourceTree = "<group>"; };
 		5A821154244FFB5E00308665 /* TitleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleStackView.swift; sourceTree = "<group>"; };
-		5A821156244FFD9C00308665 /* DocumentStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentStackView.swift; sourceTree = "<group>"; };
 		5A8211582450001A00308665 /* PriceStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceStackView.swift; sourceTree = "<group>"; };
 		5A82115A2450004A00308665 /* PriceLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceLabel.swift; sourceTree = "<group>"; };
 		5A82115D245015CE00308665 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -230,7 +228,6 @@
 			children = (
 				5A7427B1244F0055004144C1 /* FoodProductCell.swift */,
 				5A821152244FF7E200308665 /* ProductImageView.swift */,
-				5A821156244FFD9C00308665 /* DocumentStackView.swift */,
 				5A821154244FFB5E00308665 /* TitleStackView.swift */,
 				5A82115F2450332700308665 /* ProductTitleLabel.swift */,
 				5A821161245033C700308665 /* ProductSubTitleLabel.swift */,
@@ -394,7 +391,6 @@
 			files = (
 				5A7427BC244F0D3E004144C1 /* CategoryLabel.swift in Sources */,
 				5A7427B4244F009A004144C1 /* ReusableView.swift in Sources */,
-				5A821157244FFD9C00308665 /* DocumentStackView.swift in Sources */,
 				5A8211592450001A00308665 /* PriceStackView.swift in Sources */,
 				5A821155244FFB5E00308665 /* TitleStackView.swift in Sources */,
 				5A82116A2450421B00308665 /* EventBadgeLabel.swift in Sources */,

@@ -10,18 +10,24 @@ import UIKit
 
 final class FoodProductCell: UITableViewCell, ReusableView {
     private let productImageView = ProductImageView(frame: .zero)
-    private let documentStackView = DocumentStackView()
+    private let titleStackView = TitleStackView()
+    private let priceStackView = PriceStackView()
+    private let eventBadgeStackView = EventBadgeStackView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureProductImageView()
-        configureDocumentStackView()
+        configureTitleStackView()
+        configurePriceStackView()
+        configureEventBadgeStackView()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         configureProductImageView()
-        configureDocumentStackView()
+        configureTitleStackView()
+        configurePriceStackView()
+        configureEventBadgeStackView()
     }
     
     override func awakeFromNib() {
@@ -43,13 +49,32 @@ final class FoodProductCell: UITableViewCell, ReusableView {
                                                 multiplier: 1).isActive = true
     }
     
-    private func configureDocumentStackView() {
-        contentView.addSubview(documentStackView)
+    private func configureTitleStackView() {
+        contentView.addSubview(titleStackView)
         
-        documentStackView.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor,
-                                                   constant: 7).isActive = true
-        documentStackView.topAnchor.constraint(equalTo: contentView.topAnchor,
-                                               constant: 15).isActive = true
-        documentStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        titleStackView.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor,
+                                                constant: 10).isActive = true
+        titleStackView.topAnchor.constraint(equalTo: contentView.topAnchor,
+                                            constant: 10).isActive = true
+    }
+    
+    private func configurePriceStackView() {
+        contentView.addSubview(priceStackView)
+        
+        priceStackView.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor,
+                                                constant: 10).isActive = true
+        priceStackView.topAnchor.constraint(equalTo: titleStackView.bottomAnchor,
+                                            constant: 0).isActive = true
+    }
+    
+    private func configureEventBadgeStackView() {
+        contentView.addSubview(eventBadgeStackView)
+        
+        eventBadgeStackView.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor,
+                                                     constant: 10).isActive = true
+        eventBadgeStackView.topAnchor.constraint(equalTo: priceStackView.bottomAnchor,
+                                                 constant: 5).isActive = true
+        eventBadgeStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
+                                                    constant: -10).isActive = true
     }
 }
