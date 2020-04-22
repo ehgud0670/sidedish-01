@@ -30,7 +30,7 @@ final class DocumentStackView: UIStackView {
         translatesAutoresizingMaskIntoConstraints = false
         distribution = .fillEqually
         axis = .vertical
-        spacing = 10
+        spacing = -3
     }
     
     private func configureTitleStackView() {

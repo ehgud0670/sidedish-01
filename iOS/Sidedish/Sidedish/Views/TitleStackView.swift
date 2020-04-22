@@ -30,7 +30,7 @@ final class TitleStackView: UIStackView {
         translatesAutoresizingMaskIntoConstraints = false
         distribution = .fillEqually
         axis = .vertical
-        spacing = -1
+        spacing = -5
     }
     
     private func configureTitleLabel() {

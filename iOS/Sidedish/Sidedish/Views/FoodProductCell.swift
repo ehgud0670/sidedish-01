@@ -46,8 +46,10 @@ final class FoodProductCell: UITableViewCell, ReusableView {
     private func configureDocumentStackView() {
         contentView.addSubview(documentStackView)
         
-        documentStackView.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor).isActive = true
-        documentStackView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        documentStackView.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor,
+                                                   constant: 7).isActive = true
+        documentStackView.topAnchor.constraint(equalTo: contentView.topAnchor,
+                                               constant: 15).isActive = true
         documentStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
     }
 }
