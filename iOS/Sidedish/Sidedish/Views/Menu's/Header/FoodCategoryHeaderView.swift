@@ -10,7 +10,7 @@ import UIKit
 
 final class FoodCategoryHeaderView: UITableViewHeaderFooterView, ReusableView {
     private let categoryLabel = CategoryLabel()
-    private let titleLabel = TitleLabel()
+    private let titleLabel = CategoryTitleLabel()
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)

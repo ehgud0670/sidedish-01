@@ -30,7 +30,7 @@ final class PriceStackView: UIStackView {
         translatesAutoresizingMaskIntoConstraints = false
         axis = .horizontal
         distribution = .fillEqually
-        spacing = -16
+        spacing = -71
     }
     
     private func configureNormalPriceLabel() {

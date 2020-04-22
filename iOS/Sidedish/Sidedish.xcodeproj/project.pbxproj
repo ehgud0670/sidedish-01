@@ -23,7 +23,7 @@
 		5A7427B2244F0055004144C1 /* FoodProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7427B1244F0055004144C1 /* FoodProductCell.swift */; };
 		5A7427B4244F009A004144C1 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7427B3244F009A004144C1 /* ReusableView.swift */; };
 		5A7427B8244F05B5004144C1 /* FoodCategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7427B7244F05B5004144C1 /* FoodCategoryHeaderView.swift */; };
-		5A7427BA244F0B21004144C1 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7427B9244F0B20004144C1 /* TitleLabel.swift */; };
+		5A7427BA244F0B21004144C1 /* CategoryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7427B9244F0B20004144C1 /* CategoryTitleLabel.swift */; };
 		5A7427BC244F0D3E004144C1 /* CategoryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7427BB244F0D3E004144C1 /* CategoryLabel.swift */; };
 		5A821153244FF7E200308665 /* ProductImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A821152244FF7E200308665 /* ProductImageView.swift */; };
 		5A821155244FFB5E00308665 /* TitleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A821154244FFB5E00308665 /* TitleStackView.swift */; };
@@ -31,6 +31,8 @@
 		5A8211592450001A00308665 /* PriceStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8211582450001A00308665 /* PriceStackView.swift */; };
 		5A82115B2450004A00308665 /* PriceLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A82115A2450004A00308665 /* PriceLabel.swift */; };
 		5A82115E245015CE00308665 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A82115D245015CE00308665 /* UIColorExtension.swift */; };
+		5A8211602450332700308665 /* ProductTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A82115F2450332700308665 /* ProductTitleLabel.swift */; };
+		5A821162245033C700308665 /* ProductSubTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A821161245033C700308665 /* ProductSubTitleLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +75,7 @@
 		5A7427B1244F0055004144C1 /* FoodProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodProductCell.swift; sourceTree = "<group>"; };
 		5A7427B3244F009A004144C1 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		5A7427B7244F05B5004144C1 /* FoodCategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategoryHeaderView.swift; sourceTree = "<group>"; };
-		5A7427B9244F0B20004144C1 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
+		5A7427B9244F0B20004144C1 /* CategoryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTitleLabel.swift; sourceTree = "<group>"; };
 		5A7427BB244F0D3E004144C1 /* CategoryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryLabel.swift; sourceTree = "<group>"; };
 		5A821152244FF7E200308665 /* ProductImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImageView.swift; sourceTree = "<group>"; };
 		5A821154244FFB5E00308665 /* TitleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleStackView.swift; sourceTree = "<group>"; };
@@ -81,6 +83,8 @@
 		5A8211582450001A00308665 /* PriceStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceStackView.swift; sourceTree = "<group>"; };
 		5A82115A2450004A00308665 /* PriceLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceLabel.swift; sourceTree = "<group>"; };
 		5A82115D245015CE00308665 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		5A82115F2450332700308665 /* ProductTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTitleLabel.swift; sourceTree = "<group>"; };
+		5A821161245033C700308665 /* ProductSubTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSubTitleLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,17 +171,8 @@
 			isa = PBXGroup;
 			children = (
 				5A7427B3244F009A004144C1 /* ReusableView.swift */,
-				5A742766244EA38F004144C1 /* MenuTableView.swift */,
-				5A7427AC244EDBA1004144C1 /* LoginButton.swift */,
-				5A7427B7244F05B5004144C1 /* FoodCategoryHeaderView.swift */,
-				5A7427B1244F0055004144C1 /* FoodProductCell.swift */,
-				5A7427B9244F0B20004144C1 /* TitleLabel.swift */,
-				5A7427BB244F0D3E004144C1 /* CategoryLabel.swift */,
-				5A821152244FF7E200308665 /* ProductImageView.swift */,
-				5A821154244FFB5E00308665 /* TitleStackView.swift */,
-				5A821156244FFD9C00308665 /* DocumentStackView.swift */,
-				5A8211582450001A00308665 /* PriceStackView.swift */,
-				5A82115A2450004A00308665 /* PriceLabel.swift */,
+				5A821166245038E500308665 /* Login's */,
+				5A8211632450387F00308665 /* Menu's */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -214,6 +209,49 @@
 				5A82115D245015CE00308665 /* UIColorExtension.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		5A8211632450387F00308665 /* Menu's */ = {
+			isa = PBXGroup;
+			children = (
+				5A742766244EA38F004144C1 /* MenuTableView.swift */,
+				5A8211652450389500308665 /* Header */,
+				5A8211642450388E00308665 /* Cell */,
+			);
+			path = "Menu's";
+			sourceTree = "<group>";
+		};
+		5A8211642450388E00308665 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5A7427B1244F0055004144C1 /* FoodProductCell.swift */,
+				5A821152244FF7E200308665 /* ProductImageView.swift */,
+				5A821156244FFD9C00308665 /* DocumentStackView.swift */,
+				5A821154244FFB5E00308665 /* TitleStackView.swift */,
+				5A82115F2450332700308665 /* ProductTitleLabel.swift */,
+				5A821161245033C700308665 /* ProductSubTitleLabel.swift */,
+				5A8211582450001A00308665 /* PriceStackView.swift */,
+				5A82115A2450004A00308665 /* PriceLabel.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		5A8211652450389500308665 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				5A7427B7244F05B5004144C1 /* FoodCategoryHeaderView.swift */,
+				5A7427BB244F0D3E004144C1 /* CategoryLabel.swift */,
+				5A7427B9244F0B20004144C1 /* CategoryTitleLabel.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		5A821166245038E500308665 /* Login's */ = {
+			isa = PBXGroup;
+			children = (
+				5A7427AC244EDBA1004144C1 /* LoginButton.swift */,
+			);
+			path = "Login's";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,11 +392,13 @@
 				5A8211592450001A00308665 /* PriceStackView.swift in Sources */,
 				5A821155244FFB5E00308665 /* TitleStackView.swift in Sources */,
 				5A82115E245015CE00308665 /* UIColorExtension.swift in Sources */,
+				5A821162245033C700308665 /* ProductSubTitleLabel.swift in Sources */,
 				5A7427B8244F05B5004144C1 /* FoodCategoryHeaderView.swift in Sources */,
 				5A7427B0244EFF40004144C1 /* MenuTableViewDataSource.swift in Sources */,
 				5A742738244E9D5F004144C1 /* MenuViewController.swift in Sources */,
-				5A7427BA244F0B21004144C1 /* TitleLabel.swift in Sources */,
+				5A7427BA244F0B21004144C1 /* CategoryTitleLabel.swift in Sources */,
 				5A7427AD244EDBA1004144C1 /* LoginButton.swift in Sources */,
+				5A8211602450332700308665 /* ProductTitleLabel.swift in Sources */,
 				5A742734244E9D5F004144C1 /* AppDelegate.swift in Sources */,
 				5A742767244EA38F004144C1 /* MenuTableView.swift in Sources */,
 				5A82115B2450004A00308665 /* PriceLabel.swift in Sources */,

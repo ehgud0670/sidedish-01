@@ -9,8 +9,8 @@
 import UIKit
 
 final class TitleStackView: UIStackView {
-    private let titleLabel = TitleLabel()
-    private let subTitleLabel = TitleLabel()
+    private let productTitleLabel = ProductTitleLabel()
+    private let productSubTitleLabel = ProductSubTitleLabel()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,13 +34,10 @@ final class TitleStackView: UIStackView {
     }
     
     private func configureTitleLabel() {
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
-        addArrangedSubview(titleLabel)
+        addArrangedSubview(productTitleLabel)
     }
     
     private func configureSubTitleLabel() {
-        subTitleLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        subTitleLabel.textColor = .lightGray
-        addArrangedSubview(subTitleLabel)
+        addArrangedSubview(productSubTitleLabel)
     }
 }

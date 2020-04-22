@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class TitleLabel: UILabel {
+final class CategoryTitleLabel: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -21,11 +21,11 @@ final class TitleLabel: UILabel {
     
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
-        configureDefaultText()
+        configureText()
     }
     
-    private func configureDefaultText() {
+    private func configureText() {
         font = UIFont.boldSystemFont(ofSize: 25)
-        text = "Title Label"
+        text = "Category Title Label"
     }
 }
