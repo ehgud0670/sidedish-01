@@ -13,7 +13,7 @@ struct CategoryResponse: Codable {
     let category_id: Int
     let category_name: String
     let category_description: String
-    let banchans: [Product]?
+    let banchans: [Product]
 }
 
 struct Product: Codable {
@@ -26,4 +26,11 @@ struct Product: Codable {
     let normal_price: Int
     var sale_price: Int?
     let badge: [String]
+}
+
+struct Category {
+    let category_id: Int
+    let category_name: String
+    let category_description: String
+    let banchans: [Product]
 }

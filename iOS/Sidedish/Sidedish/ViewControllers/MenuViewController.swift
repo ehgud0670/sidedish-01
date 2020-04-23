@@ -15,12 +15,12 @@ final class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         requestCategoryURLs(with: MockCategoryURLsSuccessStub()) { urlStrings in
             guard let urlStrings = urlStrings else { return }
             urlStrings.forEach {
-                self.requestCategory(from: $0, with: MockCategorySuccessStub()) { categoryResponse in
-                    guard let categoryResponse = categoryResponse else { return }
-                    print(categoryResponse)
+                self.makeCategory(from: $0, with: MockCategorySuccessStub()) { category in
+                    guard let category = category else { return }
                 }
             }
         }
@@ -44,9 +44,9 @@ final class MenuViewController: UIViewController {
         }
     }
     
-    private func requestCategory(from urlString: String,
+    private func makeCategory(from urlString: String,
                                  with manager: NetworkManagable,
-                                 completionHandler: @escaping (CategoryResponse?) -> ()) {
+                                 completionHandler: @escaping (Category?) -> ()) {
         try? manager.requestResource(from: urlString, httpMethod: .get, httpBody: nil,
                                      completionHandler: {
                                         data, urlResponse, error in
@@ -54,7 +54,11 @@ final class MenuViewController: UIViewController {
                                             let response = try? JSONDecoder().decode(CategoryResponse.self,
                                                                                      from: data),
                                             response.status == .success else { return }
-                                        completionHandler(response)
+                                        let category = Category(category_id: response.category_id,
+                                                                category_name: response.category_name,
+                                                                category_description: response.category_description,
+                                                                banchans: response.banchans)
+                                        completionHandler(category)
         })
     }
     
