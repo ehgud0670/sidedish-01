@@ -15,9 +15,14 @@ final class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        requestCategoryURLs(with: MockCategoryURLsSuccessStub()) { urls in
-            guard let urls = urls else { return }
-            
+        requestCategoryURLs(with: MockCategoryURLsSuccessStub()) { urlStrings in
+            guard let urlStrings = urlStrings else { return }
+            urlStrings.forEach {
+                self.requestCategory(from: $0, with: MockCategorySuccessStub()) { categoryResponse in
+                    guard let categoryResponse = categoryResponse else { return }
+                    print(categoryResponse)
+                }
+            }
         }
         configureMenuTableView()
     }
@@ -27,16 +32,30 @@ final class MenuViewController: UIViewController {
     }
     
     private func requestCategoryURLs(with manager: NetworkManagable,
-                                     completionHandler: @escaping ([URL]?) -> ()) {
-        try? manager.requestResource(from: "",
+                                     completionHandler: @escaping ([String]?) -> ()) {
+        try? manager.requestResource(from: "아직 없음",
                                      httpMethod: .get, httpBody: nil) {
                                         data, urlResponse, error in
                                         guard error == nil, let data = data,
                                             let response = try? JSONDecoder().decode(CategoryURLsResponse.self,
-                                                                         from: data),
+                                                                                     from: data),
                                             response.status == .success else { return }
                                         completionHandler(response.api)
         }
+    }
+    
+    private func requestCategory(from urlString: String,
+                                 with manager: NetworkManagable,
+                                 completionHandler: @escaping (CategoryResponse?) -> ()) {
+        try? manager.requestResource(from: urlString, httpMethod: .get, httpBody: nil,
+                                     completionHandler: {
+                                        data, urlResponse, error in
+                                        guard error == nil, let data = data,
+                                            let response = try? JSONDecoder().decode(CategoryResponse.self,
+                                                                                     from: data),
+                                            response.status == .success else { return }
+                                        completionHandler(response)
+        })
     }
     
     private func configureMenuTableView() {

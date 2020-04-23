@@ -15,8 +15,8 @@ struct ProductDetailResponse: Codable {
 }
 
 struct ProductDetailData: Codable {
-    let main_image: URL
-    let thumb_images: [URL]
+    let main_image: String
+    let thumb_images: [String]
     let description: String
     let point: String
     let delivery_info: String

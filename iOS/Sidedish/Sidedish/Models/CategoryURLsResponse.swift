@@ -10,5 +10,5 @@ import Foundation
 
 struct CategoryURLsResponse: Codable {
     let status: Status
-    let api: [URL]
+    let api: [String]
 }

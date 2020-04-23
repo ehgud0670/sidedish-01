@@ -18,7 +18,7 @@ struct CategoryResponse: Codable {
 
 struct Product: Codable {
     let banchan_id: Int
-    let image: URL
+    let image: String
     let alt: String
     let delivery_type: [String]
     let title: String
