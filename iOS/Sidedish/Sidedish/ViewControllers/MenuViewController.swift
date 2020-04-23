@@ -11,24 +11,39 @@ import UIKit
 final class MenuViewController: UIViewController {
     private let menuTableView = MenuTableView()
     private let menuTableViewDataSource = MenuTableViewDataSource()
+    private var categories: [Category]!
     private var hasBeenDisplayed = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        requestCategoryURLs(with: MockCategoryURLsSuccessStub()) { urlStrings in
-            guard let urlStrings = urlStrings else { return }
-            urlStrings.forEach {
-                self.makeCategory(from: $0, with: MockCategorySuccessStub()) { category in
-                    guard let category = category else { return }
-                }
-            }
-        }
+        makeCategories()
         configureMenuTableView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         presentLoginViewController()
+    }
+    
+    private func makeCategories() {
+        requestCategoryURLs(with: MockCategoryURLsSuccessStub()) { urlStrings in
+            guard let urlStrings = urlStrings else { return }
+            self.initCategories(count: urlStrings.count)
+            for index in 0 ..< urlStrings.count {
+                self.makeCategory(from: urlStrings[index],
+                                  with: MockCategorySuccessStub()) { category in
+                                    guard let category = category else { return }
+                                    self.categories[index] = category
+                }
+            }
+        }
+    }
+    
+    private func initCategories(count: Int) {
+        let dummy = Category(category_id: 0,
+                             category_name: "dummy",
+                             category_description: "dummy",
+                             banchans: [])
+        categories = [Category].init(repeating: dummy, count: count)
     }
     
     private func requestCategoryURLs(with manager: NetworkManagable,
@@ -45,8 +60,8 @@ final class MenuViewController: UIViewController {
     }
     
     private func makeCategory(from urlString: String,
-                                 with manager: NetworkManagable,
-                                 completionHandler: @escaping (Category?) -> ()) {
+                              with manager: NetworkManagable,
+                              completionHandler: @escaping (Category?) -> ()) {
         try? manager.requestResource(from: urlString, httpMethod: .get, httpBody: nil,
                                      completionHandler: {
                                         data, urlResponse, error in
