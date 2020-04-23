@@ -10,7 +10,6 @@ import UIKit
 
 final class MenuViewController: UIViewController {
     private let menuTableView = MenuTableView()
-    private let menuTableViewDataSource = MenuTableViewDataSource()
     private var categoryHeaderViewModels: [CategoryHeaderViewModel]!
     private var productsViewModels: [ProductsViewModel]!
     private var hasBeenDisplayed = false
@@ -22,7 +21,7 @@ final class MenuViewController: UIViewController {
     }
     
     private func configureMenuTableView() {
-        menuTableView.dataSource = menuTableViewDataSource
+        menuTableView.dataSource = self
         menuTableView.delegate = self
         menuTableView.register(FoodProductCell.self,
                                forCellReuseIdentifier: FoodProductCell.reuseIdentifier)
@@ -118,6 +117,18 @@ final class MenuViewController: UIViewController {
             present(loginViewController, animated: true)
             hasBeenDisplayed = true
         }
+    }
+}
+
+extension MenuViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return productsViewModels.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+         guard let productCell = tableView.dequeueReusableCell(withIdentifier: FoodProductCell.reuseIdentifier,
+                                                               for: indexPath) as? FoodProductCell else { return FoodProductCell() }
+         return productCell
     }
 }
 
