@@ -12,43 +12,25 @@ import XCTest
 final class CodableTests: XCTestCase {
     func testURLsResponse() {
         let mock = MockCategoryURLsSuccessStub()
-        do {
-            try mock.requestResource(from: "",
-                                     httpMethod: .get, httpBody: nil,
-                                     completionHandler: { data, _, _ in
-                                        guard let data = data else { return }
-                                        let response = try? JSONDecoder().decode(CategoryURLsResponse.self,
-                                                                                 from: data)
-                                        XCTAssertNotNil(response)
-            })
-        } catch {
-            switch  error {
-            case NetworkErrorCase.invalidURL:
-                print("invalidURL")
-            default:
-                break
-            }
-        }
+        try? mock.requestResource(from: "",
+                                  httpMethod: .get, httpBody: nil,
+                                  completionHandler: { data, _, _ in
+                                    guard let data = data else { return }
+                                    let response = try? JSONDecoder().decode(CategoryURLsResponse.self,
+                                                                             from: data)
+                                    XCTAssertNotNil(response)
+        })
     }
     
     func testCategoryResponse() {
         let mock = MockCategorySuccessStub()
-        do {
-            try mock.requestResource(from: "",
-                                     httpMethod: .get, httpBody: nil,
-                                     completionHandler: { data, _, _ in
-                                        guard let data = data else { return }
-                                        let response = try? JSONDecoder().decode(CategoryResponse.self,
-                                                                               from: data)
-                                        XCTAssertNotNil(response)
-            })
-        } catch {
-            switch  error {
-            case NetworkErrorCase.invalidURL:
-                print("invalidURL")
-            default:
-                break
-            }
-        }
+        try? mock.requestResource(from: "",
+                                 httpMethod: .get, httpBody: nil,
+                                 completionHandler: { data, _, _ in
+                                    guard let data = data else { return }
+                                    let response = try? JSONDecoder().decode(CategoryResponse.self,
+                                                                             from: data)
+                                    XCTAssertNotNil(response)
+        })
     }
 }

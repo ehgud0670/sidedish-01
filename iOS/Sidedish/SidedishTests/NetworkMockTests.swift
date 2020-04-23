@@ -12,55 +12,28 @@ import XCTest
 final class NetworkMockTests: XCTestCase {
     func testMockCategoryURLsSuccessStub() {
         let mock = MockCategoryURLsSuccessStub()
-        do {
-            try mock.requestResource(from: "",
-                                     httpMethod: .get, httpBody: nil,
-                                     completionHandler: { data, _, _ in
-                                        XCTAssertNotNil(data)
-            })
-        } catch {
-            switch  error {
-            case NetworkErrorCase.invalidURL:
-                print("invalidURL")
-            default:
-                break
-            }
-        }
+        try? mock.requestResource(from: "",
+                                  httpMethod: .get, httpBody: nil,
+                                  completionHandler: { data, _, _ in
+                                    XCTAssertNotNil(data)
+        })
     }
     
     func testMockCategorySuccessStub() {
         let mock = MockCategorySuccessStub()
-        do {
-            try mock.requestResource(from: "",
-                                     httpMethod: .get, httpBody: nil,
-                                     completionHandler: { data, _, _ in
-                                        XCTAssertNotNil(data)
-            })
-        } catch {
-            switch  error {
-            case NetworkErrorCase.invalidURL:
-                print("invalidURL")
-            default:
-                break
-            }
-        }
+        try? mock.requestResource(from: "",
+                                  httpMethod: .get, httpBody: nil,
+                                  completionHandler: { data, _, _ in
+                                    XCTAssertNotNil(data)
+        })
     }
     
     func testMockProductDetailSuccessStub() {
         let mock = MockProductDetailSuccessStub()
-        do {
-            try mock.requestResource(from: "",
-                                     httpMethod: .get, httpBody: nil,
-                                     completionHandler: { data, _, _ in
-                                        XCTAssertNotNil(data)
-            })
-        } catch {
-            switch  error {
-            case NetworkErrorCase.invalidURL:
-                print("invalidURL")
-            default:
-                break
-            }
-        }
+        try? mock.requestResource(from: "",
+                                  httpMethod: .get, httpBody: nil,
+                                  completionHandler: { data, _, _ in
+                                    XCTAssertNotNil(data)
+        })
     }
 }
