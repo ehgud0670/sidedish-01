@@ -9,7 +9,7 @@
 import XCTest
 @testable import Sidedish
 
-class JsonDataTests: XCTestCase {
+final class JsonDataTests: XCTestCase {
     func testSuccessCategoryURLsResponseStub() {
         let data = Data.jsonData(forResource: "SuccessCategoryURLsResponseStub")
         XCTAssertNotNil(data)
