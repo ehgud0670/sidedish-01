@@ -91,7 +91,7 @@ final class FoodProductCell: UITableViewCell, ReusableView {
         
         salePriceLabel.heightAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.height).isActive = true
         salePriceLabel.leadingAnchor.constraint(equalTo: normalPriceLabel.trailingAnchor,
-                                                constant: 0).isActive = true
+                                                constant: 7).isActive = true
         salePriceLabel.topAnchor.constraint(equalTo: normalPriceLabel.topAnchor).isActive = true
     }
     

@@ -10,16 +10,14 @@ import UIKit
 
 final class MenuViewController: UIViewController {
     private let menuTableView = MenuTableView()
-    private var categoryHeaderViewModels: [CategoryHeaderViewModel]!
-    private var productViewModels: [[ProductViewModel]]!
     private var hasBeenDisplayed = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureMenuTableView()
-        //        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-        self.makeMenuViewModels()
-        //        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.makeMenuViewModels()
+        }
     }
     
     private func configureMenuTableView() {
@@ -43,6 +41,23 @@ final class MenuViewController: UIViewController {
                                              multiplier: 1).isActive = true
         menuTableView.heightAnchor.constraint(equalTo: safeArea.heightAnchor,
                                               multiplier: 1).isActive = true
+    }
+    
+    private var categoryHeaderViewModels: [CategoryHeaderViewModel]! {
+        didSet {
+            updateTableView()
+        }
+    }
+    private var productViewModels: [[ProductViewModel]]! {
+        didSet {
+            updateTableView()
+        }
+    }
+    
+    private func updateTableView() {
+        DispatchQueue.main.async {
+            self.menuTableView.reloadData()
+        }
     }
     
     private func makeMenuViewModels() {
