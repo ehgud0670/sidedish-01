@@ -15,11 +15,28 @@ final class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        requestCategoryURLs(with: MockCategoryURLsSuccessStub()) { urls in
+            guard let urls = urls else { return }
+            
+        }
         configureMenuTableView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         presentLoginViewController()
+    }
+    
+    private func requestCategoryURLs(with manager: NetworkManagable,
+                                     completionHandler: @escaping ([URL]?) -> ()) {
+        try? manager.requestResource(from: "",
+                                     httpMethod: .get, httpBody: nil) {
+                                        data, urlResponse, error in
+                                        guard error == nil, let data = data,
+                                            let response = try? JSONDecoder().decode(CategoryURLsResponse.self,
+                                                                         from: data),
+                                            response.status == .success else { return }
+                                        completionHandler(response.api)
+        }
     }
     
     private func configureMenuTableView() {

@@ -171,13 +171,13 @@
 		5A742732244E9D5F004144C1 /* Sidedish */ = {
 			isa = PBXGroup;
 			children = (
-				5AFDE97924515C14004A7BB8 /* Network */,
-				5A82115C245015A900308665 /* Utils */,
+				5A742764244EA365004144C1 /* ViewControllers */,
+				5A742763244EA358004144C1 /* Views */,
 				5A7427AE244EFF06004144C1 /* DataSources */,
 				5A742765244EA370004144C1 /* Delegates */,
-				5A742764244EA365004144C1 /* ViewControllers */,
 				5AFDE99824516E8D004A7BB8 /* Models */,
-				5A742763244EA358004144C1 /* Views */,
+				5AFDE97924515C14004A7BB8 /* Network */,
+				5A82115C245015A900308665 /* Utils */,
 				5A742739244E9D5F004144C1 /* Main.storyboard */,
 				5A74273C244E9D63004144C1 /* Assets.xcassets */,
 				5A74273E244E9D63004144C1 /* LaunchScreen.storyboard */,
@@ -191,10 +191,10 @@
 			isa = PBXGroup;
 			children = (
 				5A74274A244E9D63004144C1 /* SidedishTests.swift */,
-				5A74274C244E9D63004144C1 /* Info.plist */,
 				5AFDE98424515F99004A7BB8 /* JsonDataTests.swift */,
 				5AFDE99624516BB8004A7BB8 /* NetworkMockTests.swift */,
 				5AFDE99F2451712C004A7BB8 /* CodableTests.swift */,
+				5A74274C244E9D63004144C1 /* Info.plist */,
 			);
 			path = SidedishTests;
 			sourceTree = "<group>";
