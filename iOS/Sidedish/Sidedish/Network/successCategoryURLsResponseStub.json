@@ -1,6 +1,0 @@
-{
-	"status": "Success",
-	"api": [
-		"{url}/api/categories/{category_id}"
-	]
-}
