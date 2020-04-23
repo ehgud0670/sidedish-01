@@ -10,23 +10,27 @@ import UIKit
 
 final class FoodProductCell: UITableViewCell, ReusableView {
     private let productImageView = ProductImageView(frame: .zero)
-    private let titleStackView = TitleStackView()
-    private let priceStackView = PriceStackView()
+    private let titleLabel = ProductTitleLabel()
+    private let subTitleLabel = ProductSubTitleLabel()
+    private let normalPriceLabel = PriceLabel()
+    private let salePriceLabel = PriceLabel()
     private let eventBadgeStackView = EventBadgeStackView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureProductImageView()
-        configureTitleStackView()
-        configurePriceStackView()
+        configureTitleLabel()
+        configureSubTitleLabel()
+        configureNormalPriceLabel()
+        configureSalePriceLabel()
         configureEventBadgeStackView()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         configureProductImageView()
-        configureTitleStackView()
-        configurePriceStackView()
+        configureTitleLabel()
+        configureNormalPriceLabel()
         configureEventBadgeStackView()
     }
     
@@ -50,22 +54,45 @@ final class FoodProductCell: UITableViewCell, ReusableView {
                                                 multiplier: 1).isActive = true
     }
     
-    private func configureTitleStackView() {
-        contentView.addSubview(titleStackView)
+    private func configureTitleLabel() {
+        contentView.addSubview(titleLabel)
         
-        titleStackView.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor,
-                                                constant: 10).isActive = true
-        titleStackView.topAnchor.constraint(equalTo: contentView.topAnchor,
+        titleLabel.heightAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.height).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor,
                                             constant: 10).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: productImageView.topAnchor,
+                                        constant: 10).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
     }
     
-    private func configurePriceStackView() {
-        contentView.addSubview(priceStackView)
+    private func configureSubTitleLabel() {
+        contentView.addSubview(subTitleLabel)
         
-        priceStackView.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor,
+        subTitleLabel.heightAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.height).isActive = true
+        subTitleLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor,
+                                               constant: 10).isActive = true
+        subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
+                                           constant: 10).isActive = true
+        subTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
+    }
+    
+    private func configureNormalPriceLabel() {
+        contentView.addSubview(normalPriceLabel)
+        
+        normalPriceLabel.heightAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.height).isActive = true
+        normalPriceLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor,
+                                                  constant: 10).isActive = true
+        normalPriceLabel.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor,
+                                              constant: 10).isActive = true
+    }
+    
+    private func configureSalePriceLabel() {
+        contentView.addSubview(salePriceLabel)
+        
+        salePriceLabel.heightAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.height).isActive = true
+        salePriceLabel.leadingAnchor.constraint(equalTo: normalPriceLabel.trailingAnchor,
                                                 constant: 10).isActive = true
-        priceStackView.topAnchor.constraint(equalTo: titleStackView.bottomAnchor,
-                                            constant: 0).isActive = true
+        salePriceLabel.topAnchor.constraint(equalTo: normalPriceLabel.topAnchor).isActive = true
     }
     
     private func configureEventBadgeStackView() {
@@ -73,29 +100,27 @@ final class FoodProductCell: UITableViewCell, ReusableView {
         
         eventBadgeStackView.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor,
                                                      constant: 10).isActive = true
-        eventBadgeStackView.topAnchor.constraint(equalTo: priceStackView.bottomAnchor,
-                                                 constant: 5).isActive = true
+        eventBadgeStackView.topAnchor.constraint(equalTo: normalPriceLabel.bottomAnchor,
+                                                 constant: 10).isActive = true
         eventBadgeStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
                                                     constant: -10).isActive = true
     }
     
     func configureTitle(text: String) {
-        titleStackView.configureTitle(text: text)
+        titleLabel.text = text
     }
     
     func configureSubtitle(text: String) {
-        titleStackView.configureSubTitle(text: text)
+        subTitleLabel.text = text
     }
     
     func configure(normalPriceText: String, unitText: String) {
-        priceStackView.configure(normalPriceText: normalPriceText,
-                                 unitText: unitText)
+        normalPriceLabel.configureCyan(priceText: normalPriceText, unitText: unitText)
     }
     
     func configure(normalPriceText: String, salePriceText: String, unitText: String) {
-        priceStackView.configure(normalPriceText: normalPriceText,
-                                 salePriceText: salePriceText,
-                                 unitText: unitText)
+        normalPriceLabel.configureUnderLineSingleGrey(priceText: normalPriceText)
+        salePriceLabel.configureCyan(priceText: salePriceText, unitText: unitText)
     }
     
     func configureEventBadges(badges: [String]) {

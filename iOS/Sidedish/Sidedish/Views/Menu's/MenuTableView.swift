@@ -21,5 +21,6 @@ final class MenuTableView: UITableView {
     
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
+        rowHeight = UITableView.automaticDimension
     }
 }
