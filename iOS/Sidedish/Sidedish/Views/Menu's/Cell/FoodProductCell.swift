@@ -104,6 +104,8 @@ final class FoodProductCell: UITableViewCell, ReusableView {
                                                  constant: 10).isActive = true
         eventBadgeStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
                                                     constant: -10).isActive = true
+        guard let temp = eventBadgeStackView.arrangedSubviews.first else { return }
+        temp.isHidden = true        
     }
     
     func configureTitle(text: String) {
