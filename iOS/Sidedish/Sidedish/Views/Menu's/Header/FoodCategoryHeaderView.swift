@@ -44,4 +44,12 @@ final class FoodCategoryHeaderView: UITableViewHeaderFooterView, ReusableView {
         titleLabel.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 5).isActive = true
         titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
     }
+    
+    func configureCategory(text: String) {
+        categoryLabel.text = text
+    }
+    
+    func configureTitle(text: String) {
+        titleLabel.text = text
+    }
 }

@@ -78,4 +78,34 @@ final class FoodProductCell: UITableViewCell, ReusableView {
         eventBadgeStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
                                                     constant: -10).isActive = true
     }
+    
+    func configureTitle(text: String) {
+        titleStackView.configureTitle(text: text)
+    }
+    
+    func configureSubtitle(text: String) {
+        titleStackView.configureSubTitle(text: text)
+    }
+    
+    func configure(normalPriceText: String, unitText: String) {
+        priceStackView.configure(normalPriceText: normalPriceText,
+                                 unitText: unitText)
+    }
+    
+    func configure(normalPriceText: String, salePriceText: String, unitText: String) {
+        priceStackView.configure(normalPriceText: normalPriceText,
+                                 salePriceText: salePriceText,
+                                 unitText: unitText)
+    }
+    
+    func configureEventBadges(badges: [String]) {
+        let eventBadgeLabels = badges.map { badge -> EventBadgeLabel in
+            let label = EventBadgeLabel()
+            label.text = badge
+            return label
+        }
+        eventBadgeLabels.forEach {
+            eventBadgeStackView.addArrangedSubview($0)
+        }
+    }
 }

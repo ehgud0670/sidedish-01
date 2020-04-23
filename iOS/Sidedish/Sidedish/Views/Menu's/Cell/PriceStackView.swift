@@ -34,12 +34,19 @@ final class PriceStackView: UIStackView {
     }
     
     private func configureNormalPriceLabel() {
-        normalPriceLabel.configureUnderLineSingleGrey(priceText: "7500")
         addArrangedSubview(normalPriceLabel)
     }
     
     private func configureSalePriceLabel() {
-        salePriceLabel.configureCyan(priceText: "7,100", unitText: "원")
         addArrangedSubview(salePriceLabel)
+    }
+    
+    func configure(normalPriceText: String, salePriceText: String, unitText: String) {
+        normalPriceLabel.configureUnderLineSingleGrey(priceText: normalPriceText)
+        salePriceLabel.configureCyan(priceText: salePriceText, unitText: unitText)
+    }
+    
+    func configure(normalPriceText: String, unitText: String) {
+        normalPriceLabel.configureCyan(priceText: normalPriceText, unitText: unitText)
     }
 }

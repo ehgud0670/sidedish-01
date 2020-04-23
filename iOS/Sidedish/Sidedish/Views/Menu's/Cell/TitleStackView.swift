@@ -40,4 +40,12 @@ final class TitleStackView: UIStackView {
     private func configureSubTitleLabel() {
         addArrangedSubview(productSubTitleLabel)
     }
+    
+    func configureTitle(text: String){
+        productTitleLabel.text = text
+    }
+    
+    func configureSubTitle(text: String) {
+        productSubTitleLabel.text = text
+    }
 }

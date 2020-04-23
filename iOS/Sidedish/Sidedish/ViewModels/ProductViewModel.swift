@@ -8,23 +8,19 @@
 
 import Foundation
 
-final class ProductsViewModel: ViewModelBinding {
-    typealias Key = [Product]
-    private let products: Key
+final class ProductViewModel: ViewModelBinding {
+    typealias Key = Product
+    private let product: Key
     private var changedHandler: (Key) -> ()
     
-    init(products: Key, handler: @escaping (Key) -> () = { _ in }) {
-        self.products = products
+    init(product: Key, handler: @escaping (Key) -> () = { _ in }) {
+        self.product = product
         self.changedHandler = handler
-        changedHandler(products)
+        changedHandler(product)
     }
     
     func performBind(changed handler: @escaping (Key) -> ()) {
         self.changedHandler = handler
-        changedHandler(products)
-    }
-    
-    var productsCount: Int {
-        return products.count
+        changedHandler(product)
     }
 }

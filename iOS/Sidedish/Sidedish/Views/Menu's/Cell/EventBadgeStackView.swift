@@ -9,18 +9,14 @@
 import UIKit
 
 final class EventBadgeStackView: UIStackView {
-    private let temp = EventBadgeLabel()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
-        configureTemp()
     }
     
     required init(coder: NSCoder) {
         super.init(coder: coder)
         configure()
-        configureTemp()
     }
     
     private func configure() {
@@ -28,10 +24,5 @@ final class EventBadgeStackView: UIStackView {
         axis = .horizontal
         distribution = .fillEqually
         spacing = -10
-    }
-    
-    private func configureTemp() {
-        temp.text = "이벤트 특가"
-        addArrangedSubview(temp)
     }
 }

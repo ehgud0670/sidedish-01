@@ -11,13 +11,15 @@ import UIKit
 final class MenuViewController: UIViewController {
     private let menuTableView = MenuTableView()
     private var categoryHeaderViewModels: [CategoryHeaderViewModel]!
-    private var productsViewModels: [ProductsViewModel]!
+    private var productViewModels: [[ProductViewModel]]!
     private var hasBeenDisplayed = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureMenuTableView()
-        makeMenuViewModels()
+        //        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        self.makeMenuViewModels()
+        //        }
     }
     
     private func configureMenuTableView() {
@@ -55,7 +57,7 @@ final class MenuViewController: UIViewController {
                                             let productsViewModel = productsViewModel else { return }
                                         
                                         self.categoryHeaderViewModels[index] = categoryHeaderViewModel
-                                        self.productsViewModels[index] = productsViewModel
+                                        self.productViewModels[index] = productsViewModel
                 }
             }
         }
@@ -69,9 +71,7 @@ final class MenuViewController: UIViewController {
     }
     
     private func initProductsViewModels(count: Int) {
-        let dummy = [Product]()
-        let dummyProductViewModel = ProductsViewModel(products: dummy)
-        productsViewModels = [ProductsViewModel].init(repeating: dummyProductViewModel, count: count)
+        productViewModels = [[ProductViewModel]].init(repeating: [], count: count)
     }
     
     private func requestCategoryURLs(with manager: NetworkManagable,
@@ -89,7 +89,7 @@ final class MenuViewController: UIViewController {
     
     private func makeMenuViewModel(from urlString: String,
                                    with manager: NetworkManagable,
-                                   completionHandler: @escaping (CategoryHeaderViewModel?, ProductsViewModel?) -> ()) {
+                                   completionHandler: @escaping (CategoryHeaderViewModel?, [ProductViewModel]?) -> ()) {
         try? manager.requestResource(from: urlString, httpMethod: .get, httpBody: nil,
                                      completionHandler: {
                                         data, urlResponse, error in
@@ -101,8 +101,8 @@ final class MenuViewController: UIViewController {
                                                                     name: response.category_name,
                                                                     description: response.category_description)
                                         let headerViewModel = CategoryHeaderViewModel(header: header)
-                                        let productsViewModel = ProductsViewModel(products: response.banchans)
-                                        completionHandler(headerViewModel, productsViewModel)
+                                        let productViewModels =  response.banchans.map { ProductViewModel(product: $0) }
+                                        completionHandler(headerViewModel, productViewModels)
         })
     }
     
@@ -122,13 +122,26 @@ final class MenuViewController: UIViewController {
 
 extension MenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let productsViewModels = productsViewModels else { return 0 }
-        return productsViewModels[section].productsCount
+        guard let productViewModels = productViewModels else { return 0 }
+        return productViewModels[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let productCell = tableView.dequeueReusableCell(withIdentifier: FoodProductCell.reuseIdentifier,
                                                               for: indexPath) as? FoodProductCell else { return FoodProductCell() }
+        productViewModels[indexPath.section][indexPath.row].performBind { product in
+            productCell.configureTitle(text: product.title)
+            productCell.configureSubtitle(text: product.description)
+            if product.sale_price != nil {
+                productCell.configure(normalPriceText: String(product.normal_price),
+                                      salePriceText: String(product.sale_price!),
+                                      unitText: "원")
+            } else {
+                productCell.configure(normalPriceText: String(product.normal_price),
+                                      unitText: "원")
+            }
+            productCell.configureEventBadges(badges: product.badge)
+        }
         return productCell
     }
     
@@ -141,6 +154,10 @@ extension MenuViewController: UITableViewDataSource {
 extension MenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let foodCategoryHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: FoodCategoryHeaderView.reuseIdentifier) as? FoodCategoryHeaderView else { return nil }
+        categoryHeaderViewModels[section].performBind { header in
+            foodCategoryHeaderView.configureCategory(text: header.name)
+            foodCategoryHeaderView.configureTitle(text: header.description)
+        }
         return foodCategoryHeaderView
     }
 }

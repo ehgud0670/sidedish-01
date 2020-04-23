@@ -52,7 +52,7 @@
 		5AFDE9A62451808B004A7BB8 /* ProductDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE9A52451808B004A7BB8 /* ProductDetailResponse.swift */; };
 		5AFDE9A924519060004A7BB8 /* CategoryHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE9A824519060004A7BB8 /* CategoryHeaderViewModel.swift */; };
 		5AFDE9AB2451907E004A7BB8 /* ViewModelBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE9AA2451907E004A7BB8 /* ViewModelBinding.swift */; };
-		5AFDE9AF24519564004A7BB8 /* ProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE9AE24519564004A7BB8 /* ProductsViewModel.swift */; };
+		5AFDE9AF24519564004A7BB8 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE9AE24519564004A7BB8 /* ProductViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,7 +124,7 @@
 		5AFDE9A52451808B004A7BB8 /* ProductDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailResponse.swift; sourceTree = "<group>"; };
 		5AFDE9A824519060004A7BB8 /* CategoryHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeaderViewModel.swift; sourceTree = "<group>"; };
 		5AFDE9AA2451907E004A7BB8 /* ViewModelBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBinding.swift; sourceTree = "<group>"; };
-		5AFDE9AE24519564004A7BB8 /* ProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewModel.swift; sourceTree = "<group>"; };
+		5AFDE9AE24519564004A7BB8 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -348,7 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				5AFDE9A824519060004A7BB8 /* CategoryHeaderViewModel.swift */,
-				5AFDE9AE24519564004A7BB8 /* ProductsViewModel.swift */,
+				5AFDE9AE24519564004A7BB8 /* ProductViewModel.swift */,
 				5AFDE9AA2451907E004A7BB8 /* ViewModelBinding.swift */,
 			);
 			path = ViewModels;
@@ -503,7 +503,7 @@
 				5A8211682450411E00308665 /* EventBadgeStackView.swift in Sources */,
 				5AFDE99C2451704D004A7BB8 /* CategoryURLsResponse.swift in Sources */,
 				5AFDE98C24516653004A7BB8 /* HTTPRelated.swift in Sources */,
-				5AFDE9AF24519564004A7BB8 /* ProductsViewModel.swift in Sources */,
+				5AFDE9AF24519564004A7BB8 /* ProductViewModel.swift in Sources */,
 				5A7427B8244F05B5004144C1 /* FoodCategoryHeaderView.swift in Sources */,
 				5A742738244E9D5F004144C1 /* MenuViewController.swift in Sources */,
 				5A7427BA244F0B21004144C1 /* CategoryTitleLabel.swift in Sources */,
