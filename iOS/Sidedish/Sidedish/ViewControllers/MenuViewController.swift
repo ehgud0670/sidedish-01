@@ -18,7 +18,7 @@ final class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureMenuTableView()
-        makeCategories()
+        makeMenuViewModels()
     }
     
     private func configureMenuTableView() {
@@ -44,20 +44,19 @@ final class MenuViewController: UIViewController {
                                               multiplier: 1).isActive = true
     }
     
-    private func makeCategories() {
+    private func makeMenuViewModels() {
         requestCategoryURLs(with: MockCategoryURLsSuccessStub()) { urlStrings in
             guard let urlStrings = urlStrings else { return }
             self.initCategoryHeaderViewModels(count: urlStrings.count)
             self.initProductsViewModels(count: urlStrings.count)
             for index in 0 ..< urlStrings.count {
-                self.makeCategory(from: urlStrings[index],
-                                  with: MockCategorySuccessStub()) { category in
-                                    guard let category = category else { return }
-                                    
-                                    let header = category.header
-                                    self.categoryHeaderViewModels[index] = CategoryHeaderViewModel(header: header)
-                                    let products = category.products
-                                    self.productsViewModels[index] = ProductsViewModel(products: products)
+                self.makeMenuViewModel(from: urlStrings[index],
+                                       with: MockCategorySuccessStub()) { categoryHeaderViewModel, productsViewModel in
+                                        guard let categoryHeaderViewModel = categoryHeaderViewModel,
+                                        let productsViewModel = productsViewModel else { return }
+                                        
+                                        self.categoryHeaderViewModels[index] = categoryHeaderViewModel
+                                        self.productsViewModels[index] = productsViewModel
                 }
             }
         }
@@ -89,9 +88,9 @@ final class MenuViewController: UIViewController {
         }
     }
     
-    private func makeCategory(from urlString: String,
-                              with manager: NetworkManagable,
-                              completionHandler: @escaping (Category?) -> ()) {
+    private func makeMenuViewModel(from urlString: String,
+                                   with manager: NetworkManagable,
+                                   completionHandler: @escaping (CategoryHeaderViewModel?, ProductsViewModel?) -> ()) {
         try? manager.requestResource(from: urlString, httpMethod: .get, httpBody: nil,
                                      completionHandler: {
                                         data, urlResponse, error in
@@ -102,9 +101,9 @@ final class MenuViewController: UIViewController {
                                         let header = CategoryHeader(id: response.category_id,
                                                                     name: response.category_name,
                                                                     description: response.category_description)
-                                        let category = Category(header: header,
-                                                                products: response.banchans)
-                                        completionHandler(category)
+                                        let headerViewModel = CategoryHeaderViewModel(header: header)
+                                        let productsViewModel = ProductsViewModel(products: response.banchans)
+                                        completionHandler(headerViewModel, productsViewModel)
         })
     }
     

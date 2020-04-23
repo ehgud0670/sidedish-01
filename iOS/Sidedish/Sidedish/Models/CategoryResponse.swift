@@ -28,11 +28,6 @@ struct Product: Codable {
     let badge: [String]
 }
 
-struct Category {
-    let header: CategoryHeader
-    let products: [Product]
-}
-
 struct CategoryHeader {
     let id: Int
     let name: String
