@@ -1,6 +1,7 @@
 drop table if exists item;
 drop table if exists category;
 drop table if exists banchan;
+drop table if exists token;
 
 
 create table CATEGORY (
@@ -21,3 +22,7 @@ create table IMAGE (
     banchan int references BANCHAN(id)
 );
 
+create table token (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    token VARCHAR(64)
+);
