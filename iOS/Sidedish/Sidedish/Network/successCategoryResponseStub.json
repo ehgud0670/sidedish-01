@@ -1,0 +1,39 @@
+{
+	"status": "Success",
+	"category_id": 1,
+	"category_name": "든든한 반찬",
+	"category_description": "푸짐하게 먹을 수 있는 든든한 반찬 ",
+	"banchans": [{
+			"banchan_id": 1,
+			"image": "http://public.codesquad.kr/jk/storeapp/data/2d3f99a9a35601f4e98837bc4d39b2c8.jpg",
+			"alt": "[미노리키친] 규동 250g",
+			"delivery_type": [
+				"새벽배송",
+				"전국택배"
+			],
+			"title": "[미노리키친] 규동 250g",
+			"description": "일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥",
+			"normal_price": 6500,
+			"sale_price": 7000,
+			"badge": [
+				"이벤트특가"
+			]
+		},
+		{
+			"banchan_id": 2,
+			"image": "http://public.codesquad.kr/jk/storeapp/data/2d3f99a9a35601f4e98837bc4d39b2c8.jpg",
+			"alt": "[미노리키친] 규동2 250g",
+			"delivery_type": [
+				"새벽배송",
+				"전국택배"
+			],
+			"title": "[미노리키친] 규동2 250g",
+			"description": "일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥2",
+			"normal_price": 6500,
+			"sale_price": 7000,
+			"badge": [
+				"이벤트특가"
+			]
+		}
+	]
+}
