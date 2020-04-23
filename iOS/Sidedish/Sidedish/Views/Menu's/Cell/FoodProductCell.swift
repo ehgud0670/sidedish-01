@@ -46,7 +46,7 @@ final class FoodProductCell: UITableViewCell, ReusableView {
         contentView.addSubview(productImageView)
         
         productImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,
-                                                  constant: 10).isActive = true
+                                                  constant: 0).isActive = true
         productImageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         productImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor,
                                                  multiplier: 1).isActive = true
@@ -59,9 +59,9 @@ final class FoodProductCell: UITableViewCell, ReusableView {
         
         titleLabel.heightAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.height).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor,
-                                            constant: 10).isActive = true
+                                            constant: 0).isActive = true
         titleLabel.topAnchor.constraint(equalTo: productImageView.topAnchor,
-                                        constant: 10).isActive = true
+                                        constant: 15).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
     }
     
@@ -70,9 +70,9 @@ final class FoodProductCell: UITableViewCell, ReusableView {
         
         subTitleLabel.heightAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.height).isActive = true
         subTitleLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor,
-                                               constant: 10).isActive = true
+                                               constant: 0).isActive = true
         subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
-                                           constant: 10).isActive = true
+                                           constant: 2).isActive = true
         subTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
     }
     
@@ -81,9 +81,9 @@ final class FoodProductCell: UITableViewCell, ReusableView {
         
         normalPriceLabel.heightAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.height).isActive = true
         normalPriceLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor,
-                                                  constant: 10).isActive = true
+                                                  constant: 0).isActive = true
         normalPriceLabel.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor,
-                                              constant: 10).isActive = true
+                                              constant: 8).isActive = true
     }
     
     private func configureSalePriceLabel() {
@@ -91,7 +91,7 @@ final class FoodProductCell: UITableViewCell, ReusableView {
         
         salePriceLabel.heightAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.height).isActive = true
         salePriceLabel.leadingAnchor.constraint(equalTo: normalPriceLabel.trailingAnchor,
-                                                constant: 10).isActive = true
+                                                constant: 0).isActive = true
         salePriceLabel.topAnchor.constraint(equalTo: normalPriceLabel.topAnchor).isActive = true
     }
     
@@ -99,11 +99,11 @@ final class FoodProductCell: UITableViewCell, ReusableView {
         contentView.addSubview(eventBadgeStackView)
         
         eventBadgeStackView.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor,
-                                                     constant: 10).isActive = true
+                                                     constant: 0).isActive = true
         eventBadgeStackView.topAnchor.constraint(equalTo: normalPriceLabel.bottomAnchor,
-                                                 constant: 10).isActive = true
+                                                 constant: 8).isActive = true
         eventBadgeStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
-                                                    constant: -10).isActive = true
+                                                    constant: -20).isActive = true
         guard let temp = eventBadgeStackView.arrangedSubviews.first else { return }
         temp.isHidden = true        
     }
