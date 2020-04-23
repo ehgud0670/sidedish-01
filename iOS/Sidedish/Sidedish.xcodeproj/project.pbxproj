@@ -39,6 +39,9 @@
 		5AFDE97F24515C24004A7BB8 /* SuccessCategoryResponseStub.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AFDE97C24515C24004A7BB8 /* SuccessCategoryResponseStub.json */; };
 		5AFDE98124515DFF004A7BB8 /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE98024515DFF004A7BB8 /* DataExtensions.swift */; };
 		5AFDE98524515F99004A7BB8 /* JsonDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE98424515F99004A7BB8 /* JsonDataTests.swift */; };
+		5AFDE9882451638F004A7BB8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE9872451638F004A7BB8 /* NetworkManager.swift */; };
+		5AFDE98A2451639D004A7BB8 /* NertworkManagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE9892451639D004A7BB8 /* NertworkManagable.swift */; };
+		5AFDE98C24516653004A7BB8 /* HTTPRelated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE98B24516653004A7BB8 /* HTTPRelated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +100,9 @@
 		5AFDE97C24515C24004A7BB8 /* SuccessCategoryResponseStub.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SuccessCategoryResponseStub.json; sourceTree = "<group>"; };
 		5AFDE98024515DFF004A7BB8 /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
 		5AFDE98424515F99004A7BB8 /* JsonDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDataTests.swift; sourceTree = "<group>"; };
+		5AFDE9872451638F004A7BB8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		5AFDE9892451639D004A7BB8 /* NertworkManagable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NertworkManagable.swift; sourceTree = "<group>"; };
+		5AFDE98B24516653004A7BB8 /* HTTPRelated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRelated.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,12 +278,23 @@
 		5AFDE97924515C14004A7BB8 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				5AFDE98624516300004A7BB8 /* Stubs */,
+				5AFDE98B24516653004A7BB8 /* HTTPRelated.swift */,
+				5AFDE9872451638F004A7BB8 /* NetworkManager.swift */,
+				5AFDE9892451639D004A7BB8 /* NertworkManagable.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		5AFDE98624516300004A7BB8 /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
 				5AFDE97A24515C24004A7BB8 /* SuccessCategoryURLsResponseStub.json */,
 				5AFDE97C24515C24004A7BB8 /* SuccessCategoryResponseStub.json */,
 				5AFDE97B24515C24004A7BB8 /* SuccessProductDetailResponseStub.json */,
 				5AFDE98024515DFF004A7BB8 /* DataExtensions.swift */,
 			);
-			path = Network;
+			path = Stubs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -415,6 +432,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AFDE9882451638F004A7BB8 /* NetworkManager.swift in Sources */,
 				5A7427BC244F0D3E004144C1 /* CategoryLabel.swift in Sources */,
 				5AFDE98124515DFF004A7BB8 /* DataExtensions.swift in Sources */,
 				5A7427B4244F009A004144C1 /* ReusableView.swift in Sources */,
@@ -424,10 +442,12 @@
 				5A82115E245015CE00308665 /* UIColorExtension.swift in Sources */,
 				5A821162245033C700308665 /* ProductSubTitleLabel.swift in Sources */,
 				5A8211682450411E00308665 /* EventBadgeStackView.swift in Sources */,
+				5AFDE98C24516653004A7BB8 /* HTTPRelated.swift in Sources */,
 				5A7427B8244F05B5004144C1 /* FoodCategoryHeaderView.swift in Sources */,
 				5A7427B0244EFF40004144C1 /* MenuTableViewDataSource.swift in Sources */,
 				5A742738244E9D5F004144C1 /* MenuViewController.swift in Sources */,
 				5A7427BA244F0B21004144C1 /* CategoryTitleLabel.swift in Sources */,
+				5AFDE98A2451639D004A7BB8 /* NertworkManagable.swift in Sources */,
 				5A7427AD244EDBA1004144C1 /* LoginButton.swift in Sources */,
 				5A8211602450332700308665 /* ProductTitleLabel.swift in Sources */,
 				5A742734244E9D5F004144C1 /* AppDelegate.swift in Sources */,
