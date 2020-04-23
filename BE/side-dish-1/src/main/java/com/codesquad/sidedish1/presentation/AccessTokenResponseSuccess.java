@@ -35,4 +35,8 @@ public class AccessTokenResponseSuccess {
     public void setScope(String scope) {
         this.scope = scope;
     }
+
+    public String getAuthorization() {
+        return this.getTokenType() + " : " + this.getAccessToken();
+    }
 }
