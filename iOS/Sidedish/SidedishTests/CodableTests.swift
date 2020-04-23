@@ -33,4 +33,16 @@ final class CodableTests: XCTestCase {
                                     XCTAssertNotNil(response)
         })
     }
+    
+    func testProductDetailResponse() {
+        let mock = MockProductDetailSuccessStub()
+        try? mock.requestResource(from: "",
+                                  httpMethod: .get, httpBody: nil,
+                                  completionHandler: { data, _, _ in
+                                    guard let data = data else { return }
+                                    let response = try? JSONDecoder().decode(ProductDetailResponse.self,
+                                                                             from: data)
+                                    XCTAssertNotNil(response)
+        })
+    }
 }

@@ -50,6 +50,7 @@
 		5AFDE99C2451704D004A7BB8 /* CategoryURLsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE99B2451704D004A7BB8 /* CategoryURLsResponse.swift */; };
 		5AFDE9A02451712C004A7BB8 /* CodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE99F2451712C004A7BB8 /* CodableTests.swift */; };
 		5AFDE9A224517336004A7BB8 /* CategoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE9A124517336004A7BB8 /* CategoryResponse.swift */; };
+		5AFDE9A62451808B004A7BB8 /* ProductDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE9A52451808B004A7BB8 /* ProductDetailResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,7 @@
 		5AFDE99B2451704D004A7BB8 /* CategoryURLsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryURLsResponse.swift; sourceTree = "<group>"; };
 		5AFDE99F2451712C004A7BB8 /* CodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableTests.swift; sourceTree = "<group>"; };
 		5AFDE9A124517336004A7BB8 /* CategoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryResponse.swift; sourceTree = "<group>"; };
+		5AFDE9A52451808B004A7BB8 /* ProductDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,6 +335,7 @@
 				5AFDE99924516F13004A7BB8 /* Status.swift */,
 				5AFDE99B2451704D004A7BB8 /* CategoryURLsResponse.swift */,
 				5AFDE9A124517336004A7BB8 /* CategoryResponse.swift */,
+				5AFDE9A52451808B004A7BB8 /* ProductDetailResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				5A8211602450332700308665 /* ProductTitleLabel.swift in Sources */,
 				5A742734244E9D5F004144C1 /* AppDelegate.swift in Sources */,
 				5A742767244EA38F004144C1 /* MenuTableView.swift in Sources */,
+				5AFDE9A62451808B004A7BB8 /* ProductDetailResponse.swift in Sources */,
 				5AFDE9A224517336004A7BB8 /* CategoryResponse.swift in Sources */,
 				5A82115B2450004A00308665 /* PriceLabel.swift in Sources */,
 				5A7427B2244F0055004144C1 /* FoodProductCell.swift in Sources */,
