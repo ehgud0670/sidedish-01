@@ -122,13 +122,17 @@ final class MenuViewController: UIViewController {
 
 extension MenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return productsViewModels.count
+        return productsViewModels[section].productsCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          guard let productCell = tableView.dequeueReusableCell(withIdentifier: FoodProductCell.reuseIdentifier,
                                                                for: indexPath) as? FoodProductCell else { return FoodProductCell() }
          return productCell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return categoryHeaderViewModels.count
     }
 }
 

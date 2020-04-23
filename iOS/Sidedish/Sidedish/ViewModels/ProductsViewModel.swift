@@ -23,4 +23,8 @@ final class ProductsViewModel: ViewModelBinding {
         self.changedHandler = handler
         changedHandler(products)
     }
+    
+    var productsCount: Int {
+        return products.count
+    }
 }
