@@ -16,13 +16,33 @@ final class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        makeCategories()
         configureMenuTableView()
+        makeCategories()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        presentLoginViewController()
+    private func configureMenuTableView() {
+        menuTableView.dataSource = menuTableViewDataSource
+        menuTableView.delegate = self
+        menuTableView.register(FoodProductCell.self,
+                               forCellReuseIdentifier: FoodProductCell.reuseIdentifier)
+        menuTableView.register(FoodCategoryHeaderView.self,
+                               forHeaderFooterViewReuseIdentifier: FoodCategoryHeaderView.reuseIdentifier)
+        configureMenuTableViewConstraints()
     }
+    
+    private func configureMenuTableViewConstraints() {
+        view.addSubview(menuTableView)
+        
+        let safeArea = view.safeAreaLayoutGuide
+        menuTableView.leadingAnchor.constraint(equalTo:
+            safeArea.leadingAnchor).isActive = true
+        menuTableView.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
+        menuTableView.widthAnchor.constraint(equalTo: safeArea.widthAnchor,
+                                             multiplier: 1).isActive = true
+        menuTableView.heightAnchor.constraint(equalTo: safeArea.heightAnchor,
+                                              multiplier: 1).isActive = true
+    }
+    
     
     private func makeCategories() {
         requestCategoryURLs(with: MockCategoryURLsSuccessStub()) { urlStrings in
@@ -40,8 +60,8 @@ final class MenuViewController: UIViewController {
     
     private func initCategories(count: Int) {
         let dummy = Category(category_id: 0,
-                             category_name: "dummy",
-                             category_description: "dummy",
+                             category_name: "loading",
+                             category_description: "loading",
                              banchans: [])
         categories = [Category].init(repeating: dummy, count: count)
     }
@@ -77,27 +97,8 @@ final class MenuViewController: UIViewController {
         })
     }
     
-    private func configureMenuTableView() {
-        menuTableView.dataSource = menuTableViewDataSource
-        menuTableView.delegate = self
-        menuTableView.register(FoodProductCell.self,
-                               forCellReuseIdentifier: FoodProductCell.reuseIdentifier)
-        menuTableView.register(FoodCategoryHeaderView.self,
-                               forHeaderFooterViewReuseIdentifier: FoodCategoryHeaderView.reuseIdentifier)
-        configureMenuTableViewConstraints()
-    }
-    
-    private func configureMenuTableViewConstraints() {
-        view.addSubview(menuTableView)
-        
-        let safeArea = view.safeAreaLayoutGuide
-        menuTableView.leadingAnchor.constraint(equalTo:
-            safeArea.leadingAnchor).isActive = true
-        menuTableView.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
-        menuTableView.widthAnchor.constraint(equalTo: safeArea.widthAnchor,
-                                             multiplier: 1).isActive = true
-        menuTableView.heightAnchor.constraint(equalTo: safeArea.heightAnchor,
-                                              multiplier: 1).isActive = true
+    override func viewDidAppear(_ animated: Bool) {
+        presentLoginViewController()
     }
     
     private func presentLoginViewController() {
