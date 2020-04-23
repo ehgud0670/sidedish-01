@@ -46,6 +46,9 @@
 		5AFDE99124516B1D004A7BB8 /* MockCategorySuccessStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE99024516B1D004A7BB8 /* MockCategorySuccessStub.swift */; };
 		5AFDE99324516B59004A7BB8 /* MockProductDetailSuccessStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE99224516B59004A7BB8 /* MockProductDetailSuccessStub.swift */; };
 		5AFDE99724516BB8004A7BB8 /* NetworkMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE99624516BB8004A7BB8 /* NetworkMockTests.swift */; };
+		5AFDE99A24516F13004A7BB8 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE99924516F13004A7BB8 /* Status.swift */; };
+		5AFDE99C2451704D004A7BB8 /* CategoryURLsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE99B2451704D004A7BB8 /* CategoryURLsResponse.swift */; };
+		5AFDE9A02451712C004A7BB8 /* CodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE99F2451712C004A7BB8 /* CodableTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +114,9 @@
 		5AFDE99024516B1D004A7BB8 /* MockCategorySuccessStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCategorySuccessStub.swift; sourceTree = "<group>"; };
 		5AFDE99224516B59004A7BB8 /* MockProductDetailSuccessStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProductDetailSuccessStub.swift; sourceTree = "<group>"; };
 		5AFDE99624516BB8004A7BB8 /* NetworkMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMockTests.swift; sourceTree = "<group>"; };
+		5AFDE99924516F13004A7BB8 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		5AFDE99B2451704D004A7BB8 /* CategoryURLsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryURLsResponse.swift; sourceTree = "<group>"; };
+		5AFDE99F2451712C004A7BB8 /* CodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +172,7 @@
 				5A7427AE244EFF06004144C1 /* DataSources */,
 				5A742765244EA370004144C1 /* Delegates */,
 				5A742764244EA365004144C1 /* ViewControllers */,
+				5AFDE99824516E8D004A7BB8 /* Models */,
 				5A742763244EA358004144C1 /* Views */,
 				5A742739244E9D5F004144C1 /* Main.storyboard */,
 				5A74273C244E9D63004144C1 /* Assets.xcassets */,
@@ -183,6 +190,7 @@
 				5A74274C244E9D63004144C1 /* Info.plist */,
 				5AFDE98424515F99004A7BB8 /* JsonDataTests.swift */,
 				5AFDE99624516BB8004A7BB8 /* NetworkMockTests.swift */,
+				5AFDE99F2451712C004A7BB8 /* CodableTests.swift */,
 			);
 			path = SidedishTests;
 			sourceTree = "<group>";
@@ -315,6 +323,15 @@
 				5AFDE99224516B59004A7BB8 /* MockProductDetailSuccessStub.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		5AFDE99824516E8D004A7BB8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5AFDE99924516F13004A7BB8 /* Status.swift */,
+				5AFDE99B2451704D004A7BB8 /* CategoryURLsResponse.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -464,12 +481,14 @@
 				5A82115E245015CE00308665 /* UIColorExtension.swift in Sources */,
 				5A821162245033C700308665 /* ProductSubTitleLabel.swift in Sources */,
 				5A8211682450411E00308665 /* EventBadgeStackView.swift in Sources */,
+				5AFDE99C2451704D004A7BB8 /* CategoryURLsResponse.swift in Sources */,
 				5AFDE98C24516653004A7BB8 /* HTTPRelated.swift in Sources */,
 				5A7427B8244F05B5004144C1 /* FoodCategoryHeaderView.swift in Sources */,
 				5A7427B0244EFF40004144C1 /* MenuTableViewDataSource.swift in Sources */,
 				5A742738244E9D5F004144C1 /* MenuViewController.swift in Sources */,
 				5A7427BA244F0B21004144C1 /* CategoryTitleLabel.swift in Sources */,
 				5AFDE98A2451639D004A7BB8 /* NertworkManagable.swift in Sources */,
+				5AFDE99A24516F13004A7BB8 /* Status.swift in Sources */,
 				5A7427AD244EDBA1004144C1 /* LoginButton.swift in Sources */,
 				5AFDE98F24516A40004A7BB8 /* MockCategoryURLsSuccessStub.swift in Sources */,
 				5A8211602450332700308665 /* ProductTitleLabel.swift in Sources */,
@@ -489,6 +508,7 @@
 			files = (
 				5AFDE99724516BB8004A7BB8 /* NetworkMockTests.swift in Sources */,
 				5A74274B244E9D63004144C1 /* SidedishTests.swift in Sources */,
+				5AFDE9A02451712C004A7BB8 /* CodableTests.swift in Sources */,
 				5AFDE98524515F99004A7BB8 /* JsonDataTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
