@@ -52,7 +52,7 @@ final class MenuViewController: UIViewController {
                 self.makeMenuViewModel(from: urlStrings[index],
                                        with: MockCategorySuccessStub()) { categoryHeaderViewModel, productsViewModel in
                                         guard let categoryHeaderViewModel = categoryHeaderViewModel,
-                                        let productsViewModel = productsViewModel else { return }
+                                            let productsViewModel = productsViewModel else { return }
                                         
                                         self.categoryHeaderViewModels[index] = categoryHeaderViewModel
                                         self.productsViewModels[index] = productsViewModel
@@ -122,16 +122,18 @@ final class MenuViewController: UIViewController {
 
 extension MenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let productsViewModels = productsViewModels else { return 0 }
         return productsViewModels[section].productsCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         guard let productCell = tableView.dequeueReusableCell(withIdentifier: FoodProductCell.reuseIdentifier,
-                                                               for: indexPath) as? FoodProductCell else { return FoodProductCell() }
-         return productCell
+        guard let productCell = tableView.dequeueReusableCell(withIdentifier: FoodProductCell.reuseIdentifier,
+                                                              for: indexPath) as? FoodProductCell else { return FoodProductCell() }
+        return productCell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        guard let categoryHeaderViewModels = categoryHeaderViewModels else { return 0 }
         return categoryHeaderViewModels.count
     }
 }
