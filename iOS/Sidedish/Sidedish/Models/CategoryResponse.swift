@@ -29,8 +29,12 @@ struct Product: Codable {
 }
 
 struct Category {
-    let category_id: Int
-    let category_name: String
-    let category_description: String
-    let banchans: [Product]
+    let header: CategoryHeader
+    let products: [Product]
+}
+
+struct CategoryHeader {
+    let id: Int
+    let name: String
+    let description: String
 }

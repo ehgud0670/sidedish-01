@@ -11,7 +11,8 @@ import UIKit
 final class MenuViewController: UIViewController {
     private let menuTableView = MenuTableView()
     private let menuTableViewDataSource = MenuTableViewDataSource()
-    private var categories: [Category]!
+    private var categoryHeaderViewModels: [CategoryHeaderViewModel]!
+    private var productsViewModels: [ProductsViewModel]!
     private var hasBeenDisplayed = false
     
     override func viewDidLoad() {
@@ -43,27 +44,36 @@ final class MenuViewController: UIViewController {
                                               multiplier: 1).isActive = true
     }
     
-    
     private func makeCategories() {
         requestCategoryURLs(with: MockCategoryURLsSuccessStub()) { urlStrings in
             guard let urlStrings = urlStrings else { return }
-            self.initCategories(count: urlStrings.count)
+            self.initCategoryHeaderViewModels(count: urlStrings.count)
+            self.initProductsViewModels(count: urlStrings.count)
             for index in 0 ..< urlStrings.count {
                 self.makeCategory(from: urlStrings[index],
                                   with: MockCategorySuccessStub()) { category in
                                     guard let category = category else { return }
-                                    self.categories[index] = category
+                                    
+                                    let header = category.header
+                                    self.categoryHeaderViewModels[index] = CategoryHeaderViewModel(header: header)
+                                    let products = category.products
+                                    self.productsViewModels[index] = ProductsViewModel(products: products)
                 }
             }
         }
     }
     
-    private func initCategories(count: Int) {
-        let dummy = Category(category_id: 0,
-                             category_name: "loading",
-                             category_description: "loading",
-                             banchans: [])
-        categories = [Category].init(repeating: dummy, count: count)
+    private func initCategoryHeaderViewModels(count: Int) {
+        let dummy = CategoryHeader(id: 0, name: "loading", description: "loading")
+        let dummyCategoryHeaderViewModel = CategoryHeaderViewModel(header: dummy)
+        categoryHeaderViewModels = [CategoryHeaderViewModel].init(repeating: dummyCategoryHeaderViewModel,
+                                                                  count: count)
+    }
+    
+    private func initProductsViewModels(count: Int) {
+        let dummy = [Product]()
+        let dummyProductViewModel = ProductsViewModel(products: dummy)
+        productsViewModels = [ProductsViewModel].init(repeating: dummyProductViewModel, count: count)
     }
     
     private func requestCategoryURLs(with manager: NetworkManagable,
@@ -89,10 +99,11 @@ final class MenuViewController: UIViewController {
                                             let response = try? JSONDecoder().decode(CategoryResponse.self,
                                                                                      from: data),
                                             response.status == .success else { return }
-                                        let category = Category(category_id: response.category_id,
-                                                                category_name: response.category_name,
-                                                                category_description: response.category_description,
-                                                                banchans: response.banchans)
+                                        let header = CategoryHeader(id: response.category_id,
+                                                                    name: response.category_name,
+                                                                    description: response.category_description)
+                                        let category = Category(header: header,
+                                                                products: response.banchans)
                                         completionHandler(category)
         })
     }
