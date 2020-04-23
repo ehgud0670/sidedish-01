@@ -27,6 +27,9 @@ struct NetworkManager: NetworkManagable {
         urlRequest.addValue(Format.jsonType, forHTTPHeaderField: HTTPHeader.headerAccept)
         urlRequest.addValue(Format.jsonType, forHTTPHeaderField: HTTPHeader.headerContentType)
         
+        urlRequest.httpMethod = httpMethod.description
+        urlRequest.httpBody = httpBody
+        
         URLSession.shared.dataTask(with: urlRequest) {
             data, urlResponse, error in
             completionHandler(data, urlResponse, error)
