@@ -9,7 +9,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
@@ -35,7 +34,7 @@ public class LoginController {
     TokenRepository tokenRepository;
 
     @Autowired
-    GitHubUserRepository gitHubUserRepository;
+    UserRepository userRepository;
 
     @GetMapping("/githublogin")
     public String githubLogin(@PathParam("code") String code, HttpServletResponse response) throws IOException {
@@ -66,6 +65,12 @@ public class LoginController {
 
             // 이 한줄의 코드로 API를 호출해 MAP 타입으로 전달 받는다
             ResponseEntity<Map> resultMap = restTemplate.exchange(uri.toString(), HttpMethod.GET, entity, Map.class);
+
+            User user = new User(
+                    resultMap.getBody().get("id").toString(),
+                    resultMap.getBody().get("login").toString(),
+                    resultMap.getBody().get("name").toString());
+            userRepository.save(user);
 
             // 데이터를 제대로 전달 받았느지 확인 (String 형태로 파싱)
             ObjectMapper mapper = new ObjectMapper();
