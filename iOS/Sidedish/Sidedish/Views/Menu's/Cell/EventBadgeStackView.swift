@@ -12,13 +12,11 @@ final class EventBadgeStackView: UIStackView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
-        configureTempLabel()
     }
     
     required init(coder: NSCoder) {
         super.init(coder: coder)
         configure()
-        configureTempLabel()
     }
     
     private func configure() {
@@ -28,9 +26,8 @@ final class EventBadgeStackView: UIStackView {
         spacing = 5
     }
     
-    private func configureTempLabel() {
+    override var intrinsicContentSize: CGSize {
         let label = EventBadgeLabel()
-        label.text = "임시"
-        addArrangedSubview(label)
+        return label.intrinsicContentSize
     }
 }

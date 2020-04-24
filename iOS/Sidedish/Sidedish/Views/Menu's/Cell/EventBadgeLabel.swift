@@ -28,6 +28,7 @@ final class EventBadgeLabel: UILabel {
     private func configureText() {
         font = UIFont.systemFont(ofSize: 13, weight: .regular)
         textColor = .white
+        text = "임"
     }
     
     enum Padding {

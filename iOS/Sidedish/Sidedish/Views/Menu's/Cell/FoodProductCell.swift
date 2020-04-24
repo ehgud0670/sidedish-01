@@ -42,6 +42,16 @@ final class FoodProductCell: UITableViewCell, ReusableView {
         super.setSelected(selected, animated: animated)
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        normalPriceLabel.attributedText = nil
+        salePriceLabel.attributedText = nil
+        eventBadgeStackView.arrangedSubviews.forEach { arrangedSubview in
+            eventBadgeStackView.removeArrangedSubview(arrangedSubview)
+            arrangedSubview.removeFromSuperview()
+        }
+    }
+    
     private func configureProductImageView() {
         contentView.addSubview(productImageView)
         
@@ -104,8 +114,6 @@ final class FoodProductCell: UITableViewCell, ReusableView {
                                                  constant: 8).isActive = true
         eventBadgeStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
                                                     constant: -20).isActive = true
-        guard let temp = eventBadgeStackView.arrangedSubviews.first else { return }
-        temp.isHidden = true        
     }
     
     func configureTitle(text: String) {
