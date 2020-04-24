@@ -83,7 +83,8 @@ final class FoodProductCell: UITableViewCell, ReusableView {
                                                constant: 0).isActive = true
         subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
                                            constant: 2).isActive = true
-        subTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
+        subTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,
+                                                constant: -10).isActive = true
     }
     
     private func configureNormalPriceLabel() {
