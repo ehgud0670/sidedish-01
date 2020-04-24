@@ -144,19 +144,19 @@ extension MenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let productCell = tableView.dequeueReusableCell(withIdentifier: FoodProductCell.reuseIdentifier,
                                                               for: indexPath) as? FoodProductCell else { return FoodProductCell() }
-        productViewModels[indexPath.section][indexPath.row].performBind { product in
+        let productViewModel = productViewModels[indexPath.section][indexPath.row]
+        productViewModel.performBind { product in
             productCell.configureTitle(text: product.title)
             productCell.configureSubtitle(text: product.description)
-            if product.sale_price != nil {
-                productCell.configure(normalPriceText: String(product.normal_price),
-                                      salePriceText: String(product.sale_price!),
-                                      unitText: "원")
-            } else {
-                productCell.configure(normalPriceText: String(product.normal_price),
-                                      unitText: "원")
-            }
             productCell.configureEventBadges(badges: product.badge)
+            
+            guard let normalPriceText = productViewModel.text(price: product.normal_price) else { return }
+            let salePriceText = productViewModel.text(price: product.sale_price)
+            productCell.configure(normalPriceText: normalPriceText,
+                                  salePriceText: salePriceText,
+                                  unitText: productViewModel.unitText)
         }
+        
         return productCell
     }
     

@@ -23,4 +23,13 @@ final class ProductViewModel: ViewModelBinding {
         self.changedHandler = handler
         changedHandler(product)
     }
+    
+    func text(price: Int?) -> String? {
+        guard let price = price else { return nil }
+        return String(price)
+    }
+    
+    var unitText: String {
+        return "원"
+    }
 }

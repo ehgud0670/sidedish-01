@@ -125,6 +125,16 @@ final class FoodProductCell: UITableViewCell, ReusableView {
         subTitleLabel.text = text
     }
     
+    func configure(normalPriceText: String, salePriceText: String?, unitText: String) {
+        if salePriceText == nil {
+            configure(normalPriceText: normalPriceText, unitText: unitText)
+        } else {
+            configure(normalPriceText: normalPriceText,
+                      salePriceText: salePriceText!,
+                      unitText: unitText)
+        }
+    }
+    
     func configure(normalPriceText: String, unitText: String) {
         normalPriceLabel.configureCyan(priceText: normalPriceText, unitText: unitText)
     }
