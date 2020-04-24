@@ -49,7 +49,7 @@ public class LoginController {
     }
 
     @GetMapping("/GetGithubUserInfo")
-    public String callAPI() throws NullPointerException{
+    public String callAPI(HttpServletResponse response) throws NullPointerException{
         Token token = tokenRepository.findById(1L).orElseThrow(NoSuchElementException::new);
         String jsonInString = "";
 
@@ -73,8 +73,9 @@ public class LoginController {
             userRepository.save(user);
 
             // 데이터를 제대로 전달 받았느지 확인 (String 형태로 파싱)
-            ObjectMapper mapper = new ObjectMapper();
-            jsonInString = mapper.writeValueAsString(resultMap.getBody());
+//            ObjectMapper mapper = new ObjectMapper();
+//            jsonInString = mapper.writeValueAsString(resultMap.getBody());
+            response.sendRedirect("http://localhost:8080/final");
 
         } catch (HttpClientErrorException | HttpServerErrorException e) {
             log.info("##### HttpErrorException: {}", e.getMessage());
@@ -83,6 +84,11 @@ public class LoginController {
         }
 
         return jsonInString;
+    }
+
+    @GetMapping("/final")
+    public User userData() {
+        return userRepository.findById(1L).orElseThrow(NoSuchElementException::new);
     }
 
 }
