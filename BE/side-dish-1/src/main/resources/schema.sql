@@ -1,7 +1,8 @@
-drop table if exists item;
 drop table if exists category;
 drop table if exists banchan;
 drop table if exists token;
+drop table if exists image;
+drop table if exists user;
 
 
 create table CATEGORY (

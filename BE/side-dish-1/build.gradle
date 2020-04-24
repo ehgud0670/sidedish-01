@@ -18,7 +18,7 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-jdbc', version: '5.2.5.RELEASE'
 
 
-    runtimeOnly 'com.h2database:h2'
+//    runtimeOnly 'com.h2database:h2'
 
 
 
