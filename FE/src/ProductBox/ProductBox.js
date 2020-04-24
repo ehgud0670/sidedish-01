@@ -49,6 +49,17 @@ const DivProductList = styled.div`
 const ProductBox = props => {
   const [productsData, setProductsData] = useState();
 
+  useEffect(() => {
+    fetchRequest(props.url, "GET")
+    .then((response) => response.json())
+    .then(({data}) => {
+      setProductsData(data);
+    })
+    .catch((error) => {
+      alert("올바르지 못한 요청입니다.")
+    });
+  }, [props.url]);
+
   return (
     <Div>
       {productsData !== undefined && 
