@@ -39,4 +39,13 @@ public class AccessTokenResponseSuccess {
     public String getAuthorization() {
         return this.getTokenType() + " : " + this.getAccessToken();
     }
+
+    @Override
+    public String toString() {
+        return "AccessTokenResponseSuccess{" +
+                "accessToken='" + accessToken + '\'' +
+                ", tokenType='" + tokenType + '\'' +
+                ", scope='" + scope + '\'' +
+                '}';
+    }
 }

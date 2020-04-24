@@ -24,6 +24,10 @@ public class User {
         this.id = id;
     }
 
+    public String getGithubId() { return githubId; }
+
+    public void setGithubId(String githubId) { this.githubId = githubId; }
+
     public String getLogin() {
         return login;
     }
