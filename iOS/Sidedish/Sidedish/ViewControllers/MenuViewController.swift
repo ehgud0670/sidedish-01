@@ -48,6 +48,7 @@ final class MenuViewController: UIViewController {
             updateTableView()
         }
     }
+    
     private var productViewModels: [[ProductViewModel]]! {
         didSet {
             updateTableView()
@@ -156,7 +157,6 @@ extension MenuViewController: UITableViewDataSource {
                                   salePriceText: salePriceText,
                                   unitText: productViewModel.unitText)
         }
-        
         return productCell
     }
     

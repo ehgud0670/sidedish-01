@@ -28,5 +28,4 @@ final class ProductTitleLabel: UILabel {
         font = UIFont.boldSystemFont(ofSize: 20)
         text = "Product Title Label"
     }
-    
 }
