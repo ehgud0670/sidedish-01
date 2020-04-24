@@ -1,11 +1,26 @@
-import React, { useState } from 'react';
-import styled, { css } from 'styled-components'
+import React from 'react';
+import styled from 'styled-components'
 import MenuButton from './MenuButton'
 
 const List = styled.li`
   float: left;
   position: relative;
   text-align: center;
+
+  &:hover {
+    ul {
+      display: block;
+    }
+
+    a {
+      background-color: white;
+
+      .nav_listBtn_title {
+        color: #2ac1bc;
+        font-size: 14px;
+      }
+    }
+  }
 `;
 
 const Anchor = styled.a`
@@ -13,63 +28,38 @@ const Anchor = styled.a`
   padding: 13px 12px 18px;
   text-align: center;
 
-  ${props => 
-    props.hover && 
-    css`
-      background-color: white;
-  `};
+  &: hover {
+    span {
+      color: #2ac1bc;
+      font-size: 14px;
+    }
+  }
 `;
 
 const Span = styled.span`
   color: white;
   font-size: 14px;
-
-  ${props => 
-    props.hover && 
-    css`
-      color: #2ac1bc;
-      font-size: 14px;
-  `};
 `;
 
 const UnorderedList = styled.ul`
   position: absolute;
   width: 162px;
   padding: 20px 0 31px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
   display: none;
-
-  ${props => 
-    props.hover && 
-    css`
-      position: absolute;
-      width: 162px;
-      padding: 20px 0 31px;
-      border-left: 1px solid black;
-      border-right: 1px solid black;
-      border-bottom: 1px solid black;
-      display: block;
-  `};
+  z-index: 2;
+  background-color: white;
 `;
 
 const ListButton = props => {
-  const [isMouseEntered, setIsMouseEntered] = useState(false);
-
-  const onMouseEntered = (e) => {
-    e.preventDefault();
-    setIsMouseEntered(true);
-  }
-
-  const onMouseLeaved = (e) => {
-    e.preventDefault();
-    setIsMouseEntered(false);
-  }
-
   return (
-    <List onMouseEnter={onMouseEntered.bind(this)} onMouseLeave={onMouseLeaved.bind(this)}>
-      <Anchor href={props.url} hover={isMouseEntered}>
-        <Span hover={isMouseEntered}>{props.title}</Span>
+    <List>
+      <Anchor href={props.url}>
+        <Span className="nav_listBtn_title">{props.title}</Span>
       </Anchor>
-      <UnorderedList hover={isMouseEntered}>
+      <UnorderedList>
         {props.list !== undefined && 
          props.list.map((v, i) => (
            <MenuButton key={i} url={v.url} title={v.title}></MenuButton>
