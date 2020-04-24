@@ -28,7 +28,7 @@ const Anchor = styled.a`
   padding: 13px 12px 18px;
   text-align: center;
 
-  &: hover {
+  &:hover {
     span {
       color: #2ac1bc;
       font-size: 14px;
