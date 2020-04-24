@@ -1,4 +1,4 @@
-package com.codesquad.sidedish1.presentation;
+package com.codesquad.sidedish1.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.stereotype.Component;
