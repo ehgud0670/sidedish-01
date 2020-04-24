@@ -7,9 +7,12 @@ public class Token {
     @Id
     private Long id;
 
+    private String tokenType;
+
     private String token;
 
-    public Token(String token) {
+    public Token(String tokenType, String token) {
+        this.tokenType = tokenType;
         this.token = token;
     }
 
