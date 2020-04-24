@@ -1,12 +1,12 @@
 package com.codesquad.sidedish1.domain.service;
 
-import com.codesquad.sidedish1.domain.entity.AccessTokenResponseSuccess;
+import com.codesquad.sidedish1.domain.entity.GitHubTokenInfo;
 import com.codesquad.sidedish1.domain.entity.Token;
 import com.codesquad.sidedish1.domain.entity.User;
 import com.codesquad.sidedish1.domain.repository.TokenRepository;
 import com.codesquad.sidedish1.domain.repository.UserRepository;
 import com.codesquad.sidedish1.domain.value.ResponseUserDTO;
-import com.codesquad.sidedish1.presentation.LoginController;
+import com.codesquad.sidedish1.presentation.GitHubOauthController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,6 +15,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.HttpClientErrorException;
@@ -30,9 +31,12 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 
 @Service
-public class LoginServiceImpl implements LoginService {
+public class GitHubOauthServiceImpl implements GitHubOauthService {
 
-    private static final Logger log = LoggerFactory.getLogger(LoginController.class);
+    private static final Logger log = LoggerFactory.getLogger(GitHubOauthController.class);
+
+    private final TokenRepository tokenRepository;
+    private final UserRepository userRepository;
 
     private final String URL = "https://github.com/login/oauth/access_token";
     @Value("${github.client_id}")
@@ -40,15 +44,12 @@ public class LoginServiceImpl implements LoginService {
     @Value("${github.client_secret}")
     private String clientSecret;
 
-    private final TokenRepository tokenRepository;
-    private final UserRepository userRepository;
-
-    public LoginServiceImpl(TokenRepository tokenRepository, UserRepository userRepository) {
+    public GitHubOauthServiceImpl(TokenRepository tokenRepository, UserRepository userRepository) {
         this.tokenRepository = tokenRepository;
         this.userRepository = userRepository;
     }
 
-    public AccessTokenResponseSuccess getAccessToken(String code) {
+    public GitHubTokenInfo getAccessToken(String code) {
         MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
         Map<String, String> header = new HashMap<>();
         header.put("Accept", "application/json");
@@ -62,20 +63,23 @@ public class LoginServiceImpl implements LoginService {
         bodies.setAll(body);
 
         HttpEntity<?> request = new HttpEntity<>(bodies, headers);
-        ResponseEntity<?> response = new RestTemplate().postForEntity(URL, request, AccessTokenResponseSuccess.class);
-        return (AccessTokenResponseSuccess) response.getBody();
+        ResponseEntity<?> response = new RestTemplate().postForEntity(URL, request, GitHubTokenInfo.class);
+        return (GitHubTokenInfo) response.getBody();
     }
 
+    @Transactional
     @Override
-    public void githubLogin(String code, HttpServletResponse response) throws IOException {
-        AccessTokenResponseSuccess accessTokenResponseSuccess = getAccessToken(code);
-        response.setHeader("Authorization", accessTokenResponseSuccess.getAuthorization());
+    public void login(String code, HttpServletResponse response) throws IOException {
+        GitHubTokenInfo gitHubTokenInfo = getAccessToken(code);
+        response.setHeader("Authorization", gitHubTokenInfo.getAuthorization());
         response.sendRedirect("http://localhost:8080/callAPI");
 
-        Token token = new Token(accessTokenResponseSuccess.getTokenType(), accessTokenResponseSuccess.getAccessToken());
+        Token token = new Token(gitHubTokenInfo.getTokenType(), gitHubTokenInfo.getAccessToken());
         tokenRepository.save(token);
+
     }
 
+    @Transactional
     @Override
     public void callAPI(HttpServletResponse response) {
         Token token = tokenRepository.findById(1L).orElseThrow(NoSuchElementException::new);
@@ -109,7 +113,7 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public ResponseUserDTO userData(HttpServletResponse response) {
+    public ResponseUserDTO profile(HttpServletResponse response) {
         User user = userRepository.findById(1L).orElseThrow(NoSuchElementException::new);
         return new ResponseUserDTO(user);
     }

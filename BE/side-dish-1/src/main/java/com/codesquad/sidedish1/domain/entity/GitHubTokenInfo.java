@@ -1,10 +1,19 @@
 package com.codesquad.sidedish1.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
-public class AccessTokenResponseSuccess {
+public class GitHubTokenInfo {
     @JsonProperty("access_token")
     private String accessToken;
     @JsonProperty("token_type")
