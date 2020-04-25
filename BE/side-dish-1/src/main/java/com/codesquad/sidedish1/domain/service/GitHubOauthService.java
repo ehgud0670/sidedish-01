@@ -11,5 +11,5 @@ public interface GitHubOauthService {
 
     void callAPI(HttpServletResponse response);
 
-    ResponseUserDTO profile(HttpServletResponse response);
+    ResponseUserDTO profile();
 }

@@ -82,7 +82,7 @@ public class GitHubOauthServiceImpl implements GitHubOauthService {
     @Transactional
     @Override
     public void callAPI(HttpServletResponse response) {
-        Token token = tokenRepository.findById(1L).orElseThrow(NoSuchElementException::new);
+        Token token = tokenRepository.findById(1L).orElseThrow(() -> new NoSuchElementException("토큰이 존재하지 않습니다!"));
         String jsonInString = "오류입니다";
 
         try {
@@ -113,8 +113,8 @@ public class GitHubOauthServiceImpl implements GitHubOauthService {
     }
 
     @Override
-    public ResponseUserDTO profile(HttpServletResponse response) {
-        User user = userRepository.findById(1L).orElseThrow(NoSuchElementException::new);
+    public ResponseUserDTO profile() {
+        User user = userRepository.findById(1L).orElseThrow(() -> new NoSuchElementException("회원정보가 존재하지 않습니다!"));
         return new ResponseUserDTO(user);
     }
 
