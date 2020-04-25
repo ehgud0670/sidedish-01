@@ -10,11 +10,13 @@ import UIKit
 
 final class MenuViewController: UIViewController {
     private let menuTableView = MenuTableView()
+    private var categoryViewModels: CategoryViewModels!
     private var hasBeenDisplayed = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureMenuTableView()
+        configureObserver()
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             self.makeMenuViewModels()
         }
@@ -43,13 +45,13 @@ final class MenuViewController: UIViewController {
                                               multiplier: 1).isActive = true
     }
     
-    private var categoryViewModels: [CategoryViewModel]! {
-        didSet {
-            updateTableView()
-        }
+    private func configureObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateTableView),
+                                               name: CategoryViewModels.Notification.categoryViewModelsDidChange, object: categoryViewModels)
     }
     
-    private func updateTableView() {
+    @objc private func updateTableView() {
         DispatchQueue.main.async {
             self.menuTableView.reloadData()
         }
@@ -63,18 +65,15 @@ final class MenuViewController: UIViewController {
                 self.makeMenuViewModel(from: urlStrings[index],
                                        with: MockCategorySuccessStub()) { categoryViewModel in
                                         guard let categoryViewModel = categoryViewModel else { return }
-                                        self.categoryViewModels[index] = categoryViewModel
+                                        self.categoryViewModels.insert(at: index,
+                                                                       categoryViewModel: categoryViewModel)
                 }
             }
         }
     }
     
     private func initCategoryViewModels(count: Int) {
-        let dummyHeader = CategoryHeader(id: 0,
-                                         name: "",
-                                         description: "")
-        let dummyCategoryViewModel = CategoryViewModel(categoryHeader: dummyHeader, productViewModels: [])
-        categoryViewModels = [CategoryViewModel].init(repeating: dummyCategoryViewModel, count: count)
+        categoryViewModels = CategoryViewModels(count: count)
     }
     
     private func requestCategoryURLs(with manager: NetworkManagable,
@@ -101,8 +100,8 @@ final class MenuViewController: UIViewController {
                                                                                      from: data),
                                             response.status == .success else { return }
                                         let categoryHeader = CategoryHeader(id: response.category_id,
-                                                                    name: response.category_name,
-                                                                    description: response.category_description)
+                                                                            name: response.category_name,
+                                                                            description: response.category_description)
                                         let productViewModels =  response.banchans.map { ProductViewModel(product: $0) }
                                         let categoryViewModel = CategoryViewModel(categoryHeader: categoryHeader, productViewModels: productViewModels)
                                         completionHandler(categoryViewModel)
@@ -125,15 +124,19 @@ final class MenuViewController: UIViewController {
 
 extension MenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let categoryViewModels = categoryViewModels else { return 0 }
-        return categoryViewModels[section].productViewModelsCount
+        guard let categoryViewModels = categoryViewModels,
+            let categoryViewModel = categoryViewModels.categoryViewModel(at: section) else { return 0 }
+        return categoryViewModel.productViewModelsCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let productCell = tableView.dequeueReusableCell(withIdentifier: FoodProductCell.reuseIdentifier,
                                                               for: indexPath) as? FoodProductCell else { return FoodProductCell() }
-        guard let productViewModel = categoryViewModels[indexPath.section].productViewModel(at:
-            indexPath.row) else { return FoodProductCell() }
+        
+        guard let categoryViewModels = categoryViewModels,
+            let categoryViewModel = categoryViewModels.categoryViewModel(at: indexPath.section),
+            let productViewModel = categoryViewModel.productViewModel(at:
+                indexPath.row) else { return FoodProductCell() }
         
         productViewModel.performBind { product in
             productCell.configureTitle(text: product.title)
@@ -158,7 +161,9 @@ extension MenuViewController: UITableViewDataSource {
 extension MenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let foodCategoryHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: FoodCategoryHeaderView.reuseIdentifier) as? FoodCategoryHeaderView else { return nil }
-        categoryViewModels[section].performBind { header in
+        guard let categoryViewModels = categoryViewModels,
+            let categoryViewModel = categoryViewModels.categoryViewModel(at: section) else { return nil }
+        categoryViewModel.performBind { header in
             foodCategoryHeaderView.configureCategory(text: header.name)
             foodCategoryHeaderView.configureTitle(text: header.description)
         }
