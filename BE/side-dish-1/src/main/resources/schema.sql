@@ -1,6 +1,8 @@
-drop table if exists item;
 drop table if exists category;
 drop table if exists banchan;
+drop table if exists token;
+drop table if exists image;
+drop table if exists user;
 
 
 create table CATEGORY (
@@ -21,3 +23,15 @@ create table IMAGE (
     banchan int references BANCHAN(id)
 );
 
+create table token (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    token_type VARCHAR(64),
+    token VARCHAR(64)
+);
+
+create table user (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    github_id VARCHAR(64),
+    login VARCHAR(64),
+    name VARCHAR (64)
+);
