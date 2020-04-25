@@ -10,11 +10,13 @@ import UIKit
 
 final class MenuViewController: UIViewController {
     private let menuTableView = MenuTableView()
+    private var menuTableViewDataSource: MenuTableViewDataSource!
     private var categoryViewModels: CategoryViewModels!
     private var hasBeenDisplayed = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureMenuTableViewDataSource()
         configureMenuTableView()
         configureObserver()
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
@@ -23,7 +25,7 @@ final class MenuViewController: UIViewController {
     }
     
     private func configureMenuTableView() {
-        menuTableView.dataSource = self
+        menuTableView.dataSource = menuTableViewDataSource
         menuTableView.delegate = self
         menuTableView.register(FoodProductCell.self,
                                forCellReuseIdentifier: FoodProductCell.reuseIdentifier)
@@ -43,6 +45,25 @@ final class MenuViewController: UIViewController {
                                              multiplier: 1).isActive = true
         menuTableView.heightAnchor.constraint(equalTo: safeArea.heightAnchor,
                                               multiplier: 1).isActive = true
+    }
+    
+    private func configureMenuTableViewDataSource() {
+        menuTableViewDataSource = MenuTableViewDataSource(
+            sectionCountHandler: {
+                guard let categoryViewModels = self.categoryViewModels else { return nil }
+                return categoryViewModels.count
+        },
+            rowCountHandler: { section -> Int? in
+                guard let categoryViewModels = self.categoryViewModels,
+                    let categoryViewModel = categoryViewModels.categoryViewModel(at: section) else { return nil }
+                return categoryViewModel.productViewModelsCount
+        },
+            modelBindingHandler: { section, row -> ProductViewModel? in
+                guard let categoryViewModels = self.categoryViewModels,
+                    let categoryViewModel = categoryViewModels.categoryViewModel(at: section),
+                    let productViewModel = categoryViewModel.productViewModel(at: row) else { return nil }
+                return productViewModel
+        })
     }
     
     private func configureObserver() {
@@ -119,42 +140,6 @@ final class MenuViewController: UIViewController {
             present(loginViewController, animated: true)
             hasBeenDisplayed = true
         }
-    }
-}
-
-extension MenuViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let categoryViewModels = categoryViewModels,
-            let categoryViewModel = categoryViewModels.categoryViewModel(at: section) else { return 0 }
-        return categoryViewModel.productViewModelsCount
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let productCell = tableView.dequeueReusableCell(withIdentifier: FoodProductCell.reuseIdentifier,
-                                                              for: indexPath) as? FoodProductCell else { return FoodProductCell() }
-        
-        guard let categoryViewModels = categoryViewModels,
-            let categoryViewModel = categoryViewModels.categoryViewModel(at: indexPath.section),
-            let productViewModel = categoryViewModel.productViewModel(at:
-                indexPath.row) else { return FoodProductCell() }
-        
-        productViewModel.performBind { product in
-            productCell.configureTitle(text: product.title)
-            productCell.configureSubtitle(text: product.description)
-            productCell.configureEventBadges(badges: product.badge)
-            
-            guard let normalPriceText = productViewModel.text(price: product.normal_price) else { return }
-            let salePriceText = productViewModel.text(price: product.sale_price)
-            productCell.configure(normalPriceText: normalPriceText,
-                                  salePriceText: salePriceText,
-                                  unitText: productViewModel.unitText)
-        }
-        return productCell
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        guard let categoryViewModels = categoryViewModels else { return 0 }
-        return categoryViewModels.count
     }
 }
 
