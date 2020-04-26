@@ -114,12 +114,19 @@ const SellingPrice = styled.div`
 `;
 
 const Product = props => {
+  const banchanId = props.banchanData.banchan_id;
+
+  const onProductClick = e => {
+    e.preventDefault();
+    props.onProductClick(banchanId);
+  }
+
   return (
     <Div>
-      <Anchor href="#">
+      <Anchor href="#" onClick={onProductClick}>
         <DefinitionDelivery>
           <DeliveryWrap>
-            {props.banchanData.delivery_type.map((data, index) => <Delivery className="delivery" key={index}>{data}</Delivery>)}
+            {props.banchanData.delivery_types.map((data, index) => <Delivery className="delivery" key={index}>{data}</Delivery>)}
           </DeliveryWrap>
         </DefinitionDelivery>
         <ImageDiv image={props.banchanData.image}/>
@@ -127,8 +134,11 @@ const Product = props => {
         <Description>{props.banchanData.description}</Description>
         <DefinitionDescription>
           {props.banchanData.sale_price === null ?  
-          <SellingPrice>{props.banchanData.normal_price}원</SellingPrice> : 
-          <><SellingPrice>{props.banchanData.normal_price}원</SellingPrice><NormalPrice>{props.banchanData.normal_price}</NormalPrice></>
+          <SellingPrice>{props.banchanData.normal_price.toLocaleString()}원</SellingPrice> : 
+          <>
+          <SellingPrice>{props.banchanData.normal_price.toLocaleString()}원</SellingPrice>
+          <NormalPrice>{props.banchanData.normal_price.toLocaleString()}</NormalPrice>
+          </>
           }
         </DefinitionDescription>
       </Anchor>
