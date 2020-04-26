@@ -72,7 +72,7 @@ public class GitHubOauthServiceImpl implements GitHubOauthService {
     public void login(String code, HttpServletResponse response) throws IOException {
         GitHubTokenInfo gitHubTokenInfo = getAccessToken(code);
         response.setHeader("Authorization", gitHubTokenInfo.getAuthorization());
-        response.sendRedirect("http://localhost:8080/callAPI");
+        response.sendRedirect("http://15.165.210.164:8080/callAPI");
 
         Token token = new Token(gitHubTokenInfo.getTokenType(), gitHubTokenInfo.getAccessToken());
         tokenRepository.save(token);
@@ -103,7 +103,7 @@ public class GitHubOauthServiceImpl implements GitHubOauthService {
                     resultMap.getBody().get("name").toString());
             userRepository.save(user);
 
-            response.sendRedirect("http://localhost:8080/logined");
+            response.sendRedirect("http://15.165.210.164:8080/logined");
 
         } catch (HttpClientErrorException | HttpServerErrorException e) {
             log.info("##### HttpErrorException: {}", e.getMessage());
