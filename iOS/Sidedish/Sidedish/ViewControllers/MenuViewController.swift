@@ -19,7 +19,10 @@ final class MenuViewController: UIViewController {
         configureMenuTableViewDataSource()
         configureMenuTableView()
         configureObserver()
-        makeMenuViewModels()
+        requestCategoryURLs(with: MockCategoryURLsSuccessStub()) { urlStrings in
+            guard let urlStrings = urlStrings else { return }
+            self.configureUsecase(urlStrings: urlStrings)
+        }
     }
     
     private func configureMenuTableView() {
@@ -67,7 +70,8 @@ final class MenuViewController: UIViewController {
     private func configureObserver() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(updateTableView),
-                                               name: CategoryViewModels.Notification.categoryViewModelsDidChange, object: categoryViewModels)
+                                               name: CategoryViewModels.Notification.categoryViewModelsDidChange,
+                                               object: categoryViewModels)
     }
     
     @objc private func updateTableView() {
@@ -76,18 +80,17 @@ final class MenuViewController: UIViewController {
         }
     }
     
-    private func makeMenuViewModels() {
-        requestCategoryURLs(with: MockCategoryURLsSuccessStub()) { urlStrings in
-            guard let urlStrings = urlStrings else { return }
-            self.initCategoryViewModels(count: urlStrings.count)
-            for index in 0 ..< urlStrings.count {
-                self.makeMenuViewModel(from: urlStrings[index],
-                                       with: MockCategorySuccessStub()) { categoryViewModel in
-                                        guard let categoryViewModel = categoryViewModel else { return }
-                                        self.categoryViewModels.insert(at: index,
-                                                                       categoryViewModel: categoryViewModel)
-                }
+    private func configureUsecase(urlStrings: [String]) {
+        self.initCategoryViewModels(count: urlStrings.count)
+        var index = 0
+        urlStrings.forEach {
+            CategoryViewModelUseCase.makeMenuViewModel(from: $0,
+                                                       with: MockCategorySuccessStub()) { categoryViewModel in
+                guard let categoryViewModel = categoryViewModel else { return }
+                self.categoryViewModels.insert(at: index,
+                                               categoryViewModel: categoryViewModel)
             }
+            index += 1
         }
     }
     
@@ -106,25 +109,6 @@ final class MenuViewController: UIViewController {
                                             response.status == .success else { return }
                                         completionHandler(response.api)
         }
-    }
-    
-    private func makeMenuViewModel(from urlString: String,
-                                   with manager: NetworkManagable,
-                                   completionHandler: @escaping (CategoryViewModel?) -> ()) {
-        try? manager.requestResource(from: urlString, httpMethod: .get, httpBody: nil,
-                                     completionHandler: {
-                                        data, urlResponse, error in
-                                        guard error == nil, let data = data,
-                                            let response = try? JSONDecoder().decode(CategoryResponse.self,
-                                                                                     from: data),
-                                            response.status == .success else { return }
-                                        let categoryHeader = CategoryHeader(id: response.category_id,
-                                                                            name: response.category_name,
-                                                                            description: response.category_description)
-                                        let productViewModels =  response.banchans.map { ProductViewModel(product: $0) }
-                                        let categoryViewModel = CategoryViewModel(categoryHeader: categoryHeader, productViewModels: productViewModels)
-                                        completionHandler(categoryViewModel)
-        })
     }
     
     override func viewDidAppear(_ animated: Bool) {
