@@ -80,6 +80,19 @@ final class MenuViewController: UIViewController {
         }
     }
     
+    private func requestCategoryURLs(with manager: NetworkManagable,
+                                     completionHandler: @escaping ([String]?) -> ()) {
+        try? manager.requestResource(from: "아직 없음",
+                                     httpMethod: .get, httpBody: nil) {
+                                        data, urlResponse, error in
+                                        guard error == nil, let data = data,
+                                            let response = try? JSONDecoder().decode(CategoryURLsResponse.self,
+                                                                                     from: data),
+                                            response.status == .success else { return }
+                                        completionHandler(response.api)
+        }
+    }
+    
     private func configureUsecase(urlStrings: [String]) {
         self.initCategoryViewModels(count: urlStrings.count)
         var index = 0
@@ -96,19 +109,6 @@ final class MenuViewController: UIViewController {
     
     private func initCategoryViewModels(count: Int) {
         categoryViewModels = CategoryViewModels(count: count)
-    }
-    
-    private func requestCategoryURLs(with manager: NetworkManagable,
-                                     completionHandler: @escaping ([String]?) -> ()) {
-        try? manager.requestResource(from: "아직 없음",
-                                     httpMethod: .get, httpBody: nil) {
-                                        data, urlResponse, error in
-                                        guard error == nil, let data = data,
-                                            let response = try? JSONDecoder().decode(CategoryURLsResponse.self,
-                                                                                     from: data),
-                                            response.status == .success else { return }
-                                        completionHandler(response.api)
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
