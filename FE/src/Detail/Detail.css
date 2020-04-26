@@ -1,0 +1,175 @@
+.DetailWrap {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  
+  background-color: rgba(51,51,51,0.7);
+  top: 0px;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.DetailContents {
+  position: absolute;
+  width: 1000px;
+  height: 700px;
+  border: 3px solid black;
+  background-color: white;
+}
+
+.CloseButton {
+  position: relative;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  color: black;
+  float: right;
+  background-color: white;
+}
+
+.CloseButton:hover {
+  cursor: pointer;
+}
+
+.CloseButton:active {
+  outline: none;
+}
+
+.ImageArea {
+  float: left;
+  width: 40%;
+  height: 400px;
+}
+
+.CurrentImage {
+  position: relative;
+  float: left;
+  width: 100%;
+  height: 300px;
+}
+
+.CurrentImage > .Image {
+  width: 95%;
+  height: 95%;
+  content: url(http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg);
+  object-fit: fill;
+  overflow: auto;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.ImageList {
+  display: inline-block;
+  width: 100%;
+  height: 100px;
+}
+
+.ImageList > li {
+  float: left;
+  width: 20%;
+  height: 100%;
+}
+
+.ImageList > li > .ThumbImage {
+  width: 90%;
+  height: 70%;
+  margin: 10px 5px 5px 5px;
+}
+
+.ContentsArea {
+  float: left;
+  position: relative;
+  width: 60%;
+  height: 400px;
+}
+
+.BanchanTitle {
+  width: 90%;
+  font-weight: bold;
+  font-size: 30px;
+  word-break:break-all;
+  margin-left: 20px;
+}
+
+.BanchanDescription {
+  width: 90%;
+  font-size: 16px;
+  word-break:break-all;
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.Information {
+  width: 90%;
+  margin-left: 20px;
+  word-break: break-all;
+  overflow: hidden;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.Title {
+  float: left;
+  width: 135px;
+  font-size: 14px;
+  font-weight: bold;
+  color: grey;
+}
+
+.Description {
+  float: left;
+  width: 400px;
+  font-size: 14px;
+  word-break: break-all;
+  text-align: left;
+}
+
+.PriceArea {
+  width: 90%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.Price {
+  width: 100%;
+  height: 100%;
+  font-size: 26px;
+  margin-left: 20px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.AmountArea {
+  display: inline-block;
+  width: 90%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  margin-left: 20px;
+}
+
+.Amount {
+  float: left;
+  width: 135px;
+  font-size: 14px;
+  font-weight: bold;
+  color: grey;
+}
+
+.AmountNumber {
+  float: right;
+  width: 50px;
+  margin-right: 20px;
+  text-align: center;
+}
+
+.AmountNumber::-webkit-inner-spin-button {
+  opacity: 1;
+}
