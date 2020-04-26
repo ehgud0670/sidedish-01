@@ -7,7 +7,7 @@ import localNavigationData from '../MockData/LocalNavigationData'
 
 const WrapDiv = styled.div`
   position: relative;
-  border-bottom: 1px solid #f0f0f5
+  border-bottom: 1px solid #f0f0f5;
 `;
 
 const ContentDiv = styled.div`
