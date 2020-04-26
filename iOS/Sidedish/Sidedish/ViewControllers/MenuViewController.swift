@@ -19,9 +19,7 @@ final class MenuViewController: UIViewController {
         configureMenuTableViewDataSource()
         configureMenuTableView()
         configureObserver()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            self.makeMenuViewModels()
-        }
+        makeMenuViewModels()
     }
     
     private func configureMenuTableView() {
