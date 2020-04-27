@@ -5,7 +5,7 @@ import Header from './components/Header/Header'
 import Navigation from './components/Navigation/Navigation'
 import ProductBox from './components/ProductBox/ProductBox'
 import Detail from './components/Detail/Detail'
-import fetchRequest from './util/fetchRequest'
+import fetchRequest from './utils/fetchRequest'
 
 const App = () => {
   const [apiData, setAPIData] = useState();

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Title from './PublicComponent/Title'
 import Product from './PublicComponent/Product'
 import styled, { keyframes } from 'styled-components'
-import fetchRequest from '../../util/fetchRequest'
+import fetchRequest from '../../utils/fetchRequest'
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

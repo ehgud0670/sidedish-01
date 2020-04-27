@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Detail.css'
-import fetchRequest from '../../util/fetchRequest'
+import fetchRequest from '../../utils/fetchRequest'
 
 const Detail = props => {
   const banchanId = props.banchanId;
