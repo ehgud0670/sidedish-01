@@ -31,3 +31,4 @@ final class EventBadgeStackView: UIStackView {
         return label.intrinsicContentSize
     }
 }
+

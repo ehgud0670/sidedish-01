@@ -13,12 +13,7 @@ final class CategoryViewModels {
         static let categoryViewModelsDidChange = Foundation.Notification.Name("categoryViewModelsDidChange")
     }
     
-    private var categoryViewModels: [CategoryViewModel] {
-        didSet {
-            NotificationCenter.default.post(name: Notification.categoryViewModelsDidChange,
-                                            object: self)
-        }
-    }
+    private var categoryViewModels: [CategoryViewModel]
     
     init(count: Int) {
         let dummyHeader = CategoryHeader(id: 0, name: "", description: "")
@@ -34,6 +29,8 @@ final class CategoryViewModels {
     func insert(at index: Int, categoryViewModel: CategoryViewModel) {
         guard index < categoryViewModels.count else { return  }
         categoryViewModels[index] = categoryViewModel
+        NotificationCenter.default.post(name: Notification.categoryViewModelsDidChange,
+        object: self, userInfo: ["index": index])
     }
     
     var count: Int {
