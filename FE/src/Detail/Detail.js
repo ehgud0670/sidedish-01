@@ -6,6 +6,7 @@ import fetchRequest from '../Util/fetchRequest'
 const Detail = props => {
   const banchanId = props.banchanId;
   const [banchanData, setBanchanData] = useState();
+  const [amount, setAmount] = useState(1);
 
   useEffect(() => {
     if (banchanData === undefined) {
@@ -18,10 +19,15 @@ const Detail = props => {
         alert("올바르지 못한 요청입니다.")
       });
     }
-  }, []);
+  });
 
-  const onNumberChanged = () => {
+  const onAmountChanged = e => {
+    setAmount(e.target.value);
+  }
 
+  const onAddCart = modalCloseCallback => {
+    alert("제품을 장바구니에 담았습니다.");
+    modalCloseCallback();
   }
 
   return (
@@ -32,10 +38,10 @@ const Detail = props => {
         <button className="CloseButton" onClick={props.onCloseButtonClick}>X</button>
         <div className="ImageArea">
           <div className="CurrentImage">
-            <img className="Image"></img>
+            <img className="Image" src={banchanData.thumbs[0]}></img>
           </div>
           <ul className="ImageList">
-            {banchanData.thumbs.map((url, index) => <li><img className="ThumbImage" src={url}></img></li>)}
+            {banchanData.thumbs.map((url, index) => <li key={index}><img className="ThumbImage" src={url}></img></li>)}
           </ul>
         </div>
         <div className="ContentsArea">
@@ -53,11 +59,18 @@ const Detail = props => {
             <p className="Title">배송비</p>
             <p className="Description">{banchanData.delivery_fee}</p>
           </div>
-          <div className="PriceArea"><p className="Price">{banchanData.normal_price.toLocaleString()}원</p></div>
+          <div className="PriceArea">
+            <p className="Price">{banchanData.sale_price ? banchanData.sale_price.toLocaleString() : banchanData.normal_price.toLocaleString()}원</p>
+          </div>
           <div className="AmountArea">
             <p className="Amount">수량</p>
-            <input className="AmountNumber" type="number" step="1" min="1" value="1" onChange={onNumberChanged}></input>
+            <input className="AmountNumber" type="number" value={amount} min="1" onChange={onAmountChanged}></input>
           </div>
+          <div className="TotalPriceArea">
+            <p className="TotalPrice">총 상품금액</p>
+            <p className="Price">{((banchanData.sale_price ? banchanData.sale_price : banchanData.normal_price)*amount).toLocaleString()}원</p>
+          </div>
+          <button className="AddCartBtn" onClick={() => onAddCart(props.onCloseButtonClick)}>담기</button>
         </div>
       </div>
       }

@@ -28,7 +28,7 @@ const DivProductList = styled.div`
       left: -80px;
       width: 50px;
       height: 100px;
-      background: url(https://image.flaticon.com/icons/svg/126/126492.svg) no-repeat;
+      background: url(http://dev-angelo.dlinkddns.com/prev.svg) no-repeat;
       background-size: 50px 100px;
     }
 
@@ -36,7 +36,7 @@ const DivProductList = styled.div`
       right: -80px;
       width: 50px;
       height: 100px;
-      background: url(https://image.flaticon.com/icons/svg/126/126490.svg) no-repeat;
+      background: url(http://dev-angelo.dlinkddns.com/next.svg) no-repeat;
       background-size: 50px 100px;
     }
 
