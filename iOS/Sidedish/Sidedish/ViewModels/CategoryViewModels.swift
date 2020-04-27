@@ -17,7 +17,8 @@ final class CategoryViewModels {
     
     init(count: Int) {
         let dummyHeader = CategoryHeader(id: 0, name: "", description: "")
-        let dummyCategoryViewModel = CategoryViewModel(categoryHeader: dummyHeader, productViewModels: [])
+        let category = Category(header: dummyHeader, products: [])
+        let dummyCategoryViewModel = CategoryViewModel(category: category)
         categoryViewModels = [CategoryViewModel].init(repeating: dummyCategoryViewModel, count: count)
     }
     

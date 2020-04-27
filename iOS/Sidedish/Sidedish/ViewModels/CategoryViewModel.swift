@@ -14,10 +14,9 @@ final class CategoryViewModel: ViewModelBinding {
     private let productViewModels: [ProductViewModel]
     private var changedHandler: (Key) -> ()
     
-    init(categoryHeader: CategoryHeader, productViewModels: [ProductViewModel],
-         handler: @escaping (Key) -> () = { _ in }) {
-        self.categoryHeader = categoryHeader
-        self.productViewModels = productViewModels
+    init(category: Category, handler: @escaping (Key) -> () = { _ in }) {
+        self.categoryHeader = category.header
+        self.productViewModels = category.products.map { ProductViewModel(product: $0) }
         self.changedHandler = handler
         changedHandler(categoryHeader)
     }

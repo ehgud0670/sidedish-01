@@ -97,10 +97,11 @@ final class CategoryViewController: UIViewController {
             self.initCategoryViewModels(count: urlStrings.count)
             var index = 0
             urlStrings.forEach {
-                CategoryViewModelUseCase.makeCategoryViewModel(from: $0,
+                CategoryUseCase.makeCategory(from: $0,
                                                            with: MockCategorySuccessStub())
-                { categoryViewModel in
-                    guard let categoryViewModel = categoryViewModel else { return }
+                { category in
+                    guard let category = category else { return }
+                    let categoryViewModel = CategoryViewModel(category: category)
                     self.categoryViewModels.insert(at: index,
                                                    categoryViewModel: categoryViewModel)
                 }

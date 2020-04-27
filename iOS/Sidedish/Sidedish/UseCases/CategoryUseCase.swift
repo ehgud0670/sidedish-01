@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct CategoryViewModelUseCase {
-    static func makeCategoryViewModel(from urlString: String,
+struct CategoryUseCase {
+    static func makeCategory(from urlString: String,
                                    with manager: NetworkManagable,
-                                   completionHandler: @escaping (CategoryViewModel?) -> ()) {
+                                   completionHandler: @escaping (Category?) -> ()) {
         try? manager.requestResource(from: urlString, httpMethod: .get, httpBody: nil,
                                      completionHandler: {
                                         data, urlResponse, error in
@@ -19,12 +19,12 @@ struct CategoryViewModelUseCase {
                                             let response = try? JSONDecoder().decode(CategoryResponse.self,
                                                                                      from: data),
                                             response.status == .success else { return }
-                                        let categoryHeader = CategoryHeader(id: response.category_id,
+                                        let header = CategoryHeader(id: response.category_id,
                                                                             name: response.category_name,
                                                                             description: response.category_description)
-                                        let productViewModels =  response.banchans.map { ProductViewModel(product: $0) }
-                                        let categoryViewModel = CategoryViewModel(categoryHeader: categoryHeader, productViewModels: productViewModels)
-                                        completionHandler(categoryViewModel)
+                                        let category = Category(header: header,
+                                                                products: response.banchans)
+                                        completionHandler(category)
         })
     }
 }

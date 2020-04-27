@@ -33,3 +33,8 @@ struct CategoryHeader {
     let name: String
     let description: String
 }
+
+struct Category {
+    let header: CategoryHeader
+    let products: [Product]
+}
