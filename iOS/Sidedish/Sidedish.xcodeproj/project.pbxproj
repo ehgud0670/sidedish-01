@@ -44,9 +44,9 @@
 		5AFDE9882451638F004A7BB8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE9872451638F004A7BB8 /* NetworkManager.swift */; };
 		5AFDE98A2451639D004A7BB8 /* NertworkManagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE9892451639D004A7BB8 /* NertworkManagable.swift */; };
 		5AFDE98C24516653004A7BB8 /* HTTPRelated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE98B24516653004A7BB8 /* HTTPRelated.swift */; };
-		5AFDE98F24516A40004A7BB8 /* MockCategoryURLsSuccessStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE98E24516A40004A7BB8 /* MockCategoryURLsSuccessStub.swift */; };
-		5AFDE99124516B1D004A7BB8 /* MockCategorySuccessStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE99024516B1D004A7BB8 /* MockCategorySuccessStub.swift */; };
-		5AFDE99324516B59004A7BB8 /* MockProductDetailSuccessStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE99224516B59004A7BB8 /* MockProductDetailSuccessStub.swift */; };
+		5AFDE98F24516A40004A7BB8 /* MockCategoryURLsSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE98E24516A40004A7BB8 /* MockCategoryURLsSuccess.swift */; };
+		5AFDE99124516B1D004A7BB8 /* MockCategorySuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE99024516B1D004A7BB8 /* MockCategorySuccess.swift */; };
+		5AFDE99324516B59004A7BB8 /* MockProductDetailSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE99224516B59004A7BB8 /* MockProductDetailSuccess.swift */; };
 		5AFDE99724516BB8004A7BB8 /* NetworkMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE99624516BB8004A7BB8 /* NetworkMockTests.swift */; };
 		5AFDE99A24516F13004A7BB8 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE99924516F13004A7BB8 /* Status.swift */; };
 		5AFDE99C2451704D004A7BB8 /* CategoryURLsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFDE99B2451704D004A7BB8 /* CategoryURLsResponse.swift */; };
@@ -118,9 +118,9 @@
 		5AFDE9872451638F004A7BB8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5AFDE9892451639D004A7BB8 /* NertworkManagable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NertworkManagable.swift; sourceTree = "<group>"; };
 		5AFDE98B24516653004A7BB8 /* HTTPRelated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRelated.swift; sourceTree = "<group>"; };
-		5AFDE98E24516A40004A7BB8 /* MockCategoryURLsSuccessStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCategoryURLsSuccessStub.swift; sourceTree = "<group>"; };
-		5AFDE99024516B1D004A7BB8 /* MockCategorySuccessStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCategorySuccessStub.swift; sourceTree = "<group>"; };
-		5AFDE99224516B59004A7BB8 /* MockProductDetailSuccessStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProductDetailSuccessStub.swift; sourceTree = "<group>"; };
+		5AFDE98E24516A40004A7BB8 /* MockCategoryURLsSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCategoryURLsSuccess.swift; sourceTree = "<group>"; };
+		5AFDE99024516B1D004A7BB8 /* MockCategorySuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCategorySuccess.swift; sourceTree = "<group>"; };
+		5AFDE99224516B59004A7BB8 /* MockProductDetailSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProductDetailSuccess.swift; sourceTree = "<group>"; };
 		5AFDE99624516BB8004A7BB8 /* NetworkMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMockTests.swift; sourceTree = "<group>"; };
 		5AFDE99924516F13004A7BB8 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		5AFDE99B2451704D004A7BB8 /* CategoryURLsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryURLsResponse.swift; sourceTree = "<group>"; };
@@ -339,9 +339,9 @@
 		5AFDE98D24516A0A004A7BB8 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				5AFDE98E24516A40004A7BB8 /* MockCategoryURLsSuccessStub.swift */,
-				5AFDE99024516B1D004A7BB8 /* MockCategorySuccessStub.swift */,
-				5AFDE99224516B59004A7BB8 /* MockProductDetailSuccessStub.swift */,
+				5AFDE98E24516A40004A7BB8 /* MockCategoryURLsSuccess.swift */,
+				5AFDE99024516B1D004A7BB8 /* MockCategorySuccess.swift */,
+				5AFDE99224516B59004A7BB8 /* MockProductDetailSuccess.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -503,12 +503,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5AFDE99124516B1D004A7BB8 /* MockCategorySuccessStub.swift in Sources */,
+				5AFDE99124516B1D004A7BB8 /* MockCategorySuccess.swift in Sources */,
 				5AFDE9882451638F004A7BB8 /* NetworkManager.swift in Sources */,
 				5A7427BC244F0D3E004144C1 /* CategoryLabel.swift in Sources */,
 				5AFDE98124515DFF004A7BB8 /* DataExtensions.swift in Sources */,
 				5A7427B4244F009A004144C1 /* ReusableView.swift in Sources */,
-				5AFDE99324516B59004A7BB8 /* MockProductDetailSuccessStub.swift in Sources */,
+				5AFDE99324516B59004A7BB8 /* MockProductDetailSuccess.swift in Sources */,
 				5A82116A2450421B00308665 /* EventBadgeLabel.swift in Sources */,
 				5A789D7924541DC50047DE7C /* CategoryTableViewDataSource.swift in Sources */,
 				5A82115E245015CE00308665 /* UIColorExtension.swift in Sources */,
@@ -527,7 +527,7 @@
 				5AFDE99A24516F13004A7BB8 /* Status.swift in Sources */,
 				5A7427AD244EDBA1004144C1 /* LoginButton.swift in Sources */,
 				5AFDE9AB2451907E004A7BB8 /* ViewModelBinding.swift in Sources */,
-				5AFDE98F24516A40004A7BB8 /* MockCategoryURLsSuccessStub.swift in Sources */,
+				5AFDE98F24516A40004A7BB8 /* MockCategoryURLsSuccess.swift in Sources */,
 				5A8211602450332700308665 /* ProductTitleLabel.swift in Sources */,
 				5A742734244E9D5F004144C1 /* AppDelegate.swift in Sources */,
 				5A742767244EA38F004144C1 /* CategoryTableView.swift in Sources */,

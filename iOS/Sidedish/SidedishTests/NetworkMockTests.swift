@@ -11,7 +11,7 @@ import XCTest
 
 final class NetworkMockTests: XCTestCase {
     func testMockCategoryURLsSuccessStub() {
-        let mock = MockCategoryURLsSuccessStub()
+        let mock = MockCategoryURLsSuccess()
         try? mock.requestResource(from: "",
                                   httpMethod: .get, httpBody: nil,
                                   completionHandler: { data, _, _ in
@@ -20,7 +20,7 @@ final class NetworkMockTests: XCTestCase {
     }
     
     func testMockCategorySuccessStub() {
-        let mock = MockCategorySuccessStub()
+        let mock = MockCategorySuccess()
         try? mock.requestResource(from: "",
                                   httpMethod: .get, httpBody: nil,
                                   completionHandler: { data, _, _ in
@@ -29,7 +29,7 @@ final class NetworkMockTests: XCTestCase {
     }
     
     func testMockProductDetailSuccessStub() {
-        let mock = MockProductDetailSuccessStub()
+        let mock = MockProductDetailSuccess()
         try? mock.requestResource(from: "",
                                   httpMethod: .get, httpBody: nil,
                                   completionHandler: { data, _, _ in

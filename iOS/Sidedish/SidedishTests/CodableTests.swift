@@ -11,7 +11,7 @@ import XCTest
 
 final class CodableTests: XCTestCase {
     func testURLsResponse() {
-        let mock = MockCategoryURLsSuccessStub()
+        let mock = MockCategoryURLsSuccess()
         try? mock.requestResource(from: "",
                                   httpMethod: .get, httpBody: nil,
                                   completionHandler: { data, _, _ in
@@ -23,7 +23,7 @@ final class CodableTests: XCTestCase {
     }
     
     func testCategoryResponse() {
-        let mock = MockCategorySuccessStub()
+        let mock = MockCategorySuccess()
         try? mock.requestResource(from: "",
                                  httpMethod: .get, httpBody: nil,
                                  completionHandler: { data, _, _ in
@@ -35,7 +35,7 @@ final class CodableTests: XCTestCase {
     }
     
     func testProductDetailResponse() {
-        let mock = MockProductDetailSuccessStub()
+        let mock = MockProductDetailSuccess()
         try? mock.requestResource(from: "",
                                   httpMethod: .get, httpBody: nil,
                                   completionHandler: { data, _, _ in

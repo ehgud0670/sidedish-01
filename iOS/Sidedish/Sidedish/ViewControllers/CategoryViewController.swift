@@ -79,13 +79,13 @@ final class CategoryViewController: UIViewController {
     }
     
     private func configureUsecase() {
-        CategoryURLsUseCase.requestCategoryURLs(with: MockCategoryURLsSuccessStub()) { urlStrings in
+        CategoryURLsUseCase.requestCategoryURLs(with: MockCategoryURLsSuccess()) { urlStrings in
             guard let urlStrings = urlStrings else { return }
             self.initCategoryViewModels(count: urlStrings.count)
             var index = 0
             urlStrings.forEach {
                 CategoryUseCase.makeCategory(from: $0,
-                                             with: MockCategorySuccessStub())
+                                             with: MockCategorySuccess())
                 { category in
                     guard let category = category else { return }
                     let categoryViewModel = CategoryViewModel(category: category)

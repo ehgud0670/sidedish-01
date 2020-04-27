@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct MockCategoryURLsSuccessStub: NetworkManagable {
+struct MockCategoryURLsSuccess: NetworkManagable {
     func requestResource(from urlString: String,
                          httpMethod: HTTPMethod, httpBody: Data?,
                          completionHandler: @escaping (Data?, URLResponse?, Error?) -> ()) throws {
