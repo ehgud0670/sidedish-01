@@ -24,6 +24,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
@@ -113,9 +114,11 @@ public class GitHubOauthServiceImpl implements GitHubOauthService {
     }
 
     @Override
-    public ResponseUserDTO profile() {
+    public void profile(HttpServletResponse response) throws IOException {
         User user = userRepository.findById(1L).orElseThrow(() -> new NoSuchElementException("회원정보가 존재하지 않습니다!"));
-        return new ResponseUserDTO(user);
+        Cookie cookie = new Cookie("user",user.getLogin());
+        response.addCookie(cookie);
+        response.sendRedirect("http://localhost:8080");
     }
 
 }
