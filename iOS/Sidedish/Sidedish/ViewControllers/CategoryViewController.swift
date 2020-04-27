@@ -121,10 +121,7 @@ extension CategoryViewController: UITableViewDelegate {
         guard let categoryHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: CategoryHeaderView.reuseIdentifier) as? CategoryHeaderView else { return nil }
         guard let categoryViewModels = categoryViewModels,
             let categoryViewModel = categoryViewModels.categoryViewModel(at: section) else { return nil }
-        categoryViewModel.performBind { header in
-            categoryHeaderView.configureCategory(text: header.name)
-            categoryHeaderView.configureTitle(text: header.description)
-        }
+        categoryHeaderView.configure(header: categoryViewModel.categoryHeader)
         return categoryHeaderView
     }
 }

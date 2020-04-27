@@ -10,7 +10,7 @@ import Foundation
 
 final class CategoryViewModel: ViewModelBinding {
     typealias Key = CategoryHeader
-    private let categoryHeader: Key
+    let categoryHeader: Key
     private let productViewModels: [ProductViewModel]
     private var changedHandler: (Key) -> ()
     
