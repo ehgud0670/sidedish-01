@@ -64,7 +64,7 @@ const Detail = props => {
           </div>
           <div className="amount-area">
             <p className="amount">수량</p>
-            <input className="amont-number" type="number" value={amount} min="1" onChange={onAmountChanged}></input>
+            <input className="amount-number" type="number" value={amount} min="1" onChange={onAmountChanged}></input>
           </div>
           <div className="total-price-area">
             <p className="total-price">총 상품금액</p>
