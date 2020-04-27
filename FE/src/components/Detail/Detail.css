@@ -181,14 +181,14 @@
   color: grey;
 }
 
-.amount > .amont-number {
+.amount-number {
   float: right;
   width: 50px;
   margin-right: 20px;
   text-align: center;
 }
 
-.amount > .amont-number::-webkit-inner-spin-button {
+.amount-number::-webkit-inner-spin-button {
   opacity: 1;
 }
 
