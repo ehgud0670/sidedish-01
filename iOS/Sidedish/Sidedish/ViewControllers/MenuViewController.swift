@@ -19,10 +19,7 @@ final class MenuViewController: UIViewController {
         configureMenuTableViewDataSource()
         configureMenuTableView()
         configureObserver()
-        requestCategoryURLs(with: MockCategoryURLsSuccessStub()) { urlStrings in
-            guard let urlStrings = urlStrings else { return }
-            self.configureUsecase(urlStrings: urlStrings)
-        }
+        configureUsecase()
     }
     
     private func configureMenuTableView() {
@@ -93,17 +90,21 @@ final class MenuViewController: UIViewController {
         }
     }
     
-    private func configureUsecase(urlStrings: [String]) {
-        self.initCategoryViewModels(count: urlStrings.count)
-        var index = 0
-        urlStrings.forEach {
-            CategoryViewModelUseCase.makeMenuViewModel(from: $0,
-                                                       with: MockCategorySuccessStub()) { categoryViewModel in
-                guard let categoryViewModel = categoryViewModel else { return }
-                self.categoryViewModels.insert(at: index,
-                                               categoryViewModel: categoryViewModel)
+    private func configureUsecase() {
+        requestCategoryURLs(with: MockCategoryURLsSuccessStub()) { urlStrings in
+            guard let urlStrings = urlStrings else { return }
+            self.initCategoryViewModels(count: urlStrings.count)
+            var index = 0
+            urlStrings.forEach {
+                CategoryViewModelUseCase.makeMenuViewModel(from: $0,
+                                                           with: MockCategorySuccessStub())
+                { categoryViewModel in
+                    guard let categoryViewModel = categoryViewModel else { return }
+                    self.categoryViewModels.insert(at: index,
+                                                   categoryViewModel: categoryViewModel)
+                }
+                index += 1
             }
-            index += 1
         }
     }
     
