@@ -26,9 +26,9 @@ final class CategoryViewController: UIViewController {
         categoryTableView.dataSource = categoryTableViewDataSource
         categoryTableView.delegate = self
         categoryTableView.register(ProductCell.self,
-                               forCellReuseIdentifier: ProductCell.reuseIdentifier)
+                                   forCellReuseIdentifier: ProductCell.reuseIdentifier)
         categoryTableView.register(CategoryHeaderView.self,
-                               forHeaderFooterViewReuseIdentifier: CategoryHeaderView.reuseIdentifier)
+                                   forHeaderFooterViewReuseIdentifier: CategoryHeaderView.reuseIdentifier)
         configureMenuTableViewConstraints()
     }
     
@@ -40,9 +40,9 @@ final class CategoryViewController: UIViewController {
             safeArea.leadingAnchor).isActive = true
         categoryTableView.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
         categoryTableView.widthAnchor.constraint(equalTo: safeArea.widthAnchor,
-                                             multiplier: 1).isActive = true
+                                                 multiplier: 1).isActive = true
         categoryTableView.heightAnchor.constraint(equalTo: safeArea.heightAnchor,
-                                              multiplier: 1).isActive = true
+                                                  multiplier: 1).isActive = true
     }
     
     private func configureMenuTableViewDataSource() {
@@ -78,27 +78,14 @@ final class CategoryViewController: UIViewController {
         }
     }
     
-    private func requestCategoryURLs(with manager: NetworkManagable,
-                                     completionHandler: @escaping ([String]?) -> ()) {
-        try? manager.requestResource(from: "아직 없음",
-                                     httpMethod: .get, httpBody: nil) {
-                                        data, urlResponse, error in
-                                        guard error == nil, let data = data,
-                                            let response = try? JSONDecoder().decode(CategoryURLsResponse.self,
-                                                                                     from: data),
-                                            response.status == .success else { return }
-                                        completionHandler(response.api)
-        }
-    }
-    
     private func configureUsecase() {
-        requestCategoryURLs(with: MockCategoryURLsSuccessStub()) { urlStrings in
+        CategoryURLsUseCase.requestCategoryURLs(with: MockCategoryURLsSuccessStub()) { urlStrings in
             guard let urlStrings = urlStrings else { return }
             self.initCategoryViewModels(count: urlStrings.count)
             var index = 0
             urlStrings.forEach {
                 CategoryUseCase.makeCategory(from: $0,
-                                                           with: MockCategorySuccessStub())
+                                             with: MockCategorySuccessStub())
                 { category in
                     guard let category = category else { return }
                     let categoryViewModel = CategoryViewModel(category: category)

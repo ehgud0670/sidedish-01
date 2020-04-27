@@ -35,6 +35,7 @@
 		5A821162245033C700308665 /* ProductSubTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A821161245033C700308665 /* ProductSubTitleLabel.swift */; };
 		5A8211682450411E00308665 /* EventBadgeStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8211672450411E00308665 /* EventBadgeStackView.swift */; };
 		5A82116A2450421B00308665 /* EventBadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8211692450421B00308665 /* EventBadgeLabel.swift */; };
+		5ACD1A93245707DB001BDCF5 /* CategoryURLsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACD1A92245707DB001BDCF5 /* CategoryURLsUseCase.swift */; };
 		5AFDE97D24515C24004A7BB8 /* SuccessCategoryURLsResponseStub.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AFDE97A24515C24004A7BB8 /* SuccessCategoryURLsResponseStub.json */; };
 		5AFDE97E24515C24004A7BB8 /* SuccessProductDetailResponseStub.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AFDE97B24515C24004A7BB8 /* SuccessProductDetailResponseStub.json */; };
 		5AFDE97F24515C24004A7BB8 /* SuccessCategoryResponseStub.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AFDE97C24515C24004A7BB8 /* SuccessCategoryResponseStub.json */; };
@@ -108,6 +109,7 @@
 		5A821161245033C700308665 /* ProductSubTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSubTitleLabel.swift; sourceTree = "<group>"; };
 		5A8211672450411E00308665 /* EventBadgeStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBadgeStackView.swift; sourceTree = "<group>"; };
 		5A8211692450421B00308665 /* EventBadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBadgeLabel.swift; sourceTree = "<group>"; };
+		5ACD1A92245707DB001BDCF5 /* CategoryURLsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryURLsUseCase.swift; sourceTree = "<group>"; };
 		5AFDE97A24515C24004A7BB8 /* SuccessCategoryURLsResponseStub.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SuccessCategoryURLsResponseStub.json; sourceTree = "<group>"; };
 		5AFDE97B24515C24004A7BB8 /* SuccessProductDetailResponseStub.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SuccessProductDetailResponseStub.json; sourceTree = "<group>"; };
 		5AFDE97C24515C24004A7BB8 /* SuccessCategoryResponseStub.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SuccessCategoryResponseStub.json; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				5A446B88245581880004A9BC /* CategoryUseCase.swift */,
+				5ACD1A92245707DB001BDCF5 /* CategoryURLsUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				5A8211682450411E00308665 /* EventBadgeStackView.swift in Sources */,
 				5AFDE99C2451704D004A7BB8 /* CategoryURLsResponse.swift in Sources */,
 				5AFDE98C24516653004A7BB8 /* HTTPRelated.swift in Sources */,
+				5ACD1A93245707DB001BDCF5 /* CategoryURLsUseCase.swift in Sources */,
 				5A789D77245410F80047DE7C /* CategoryViewModels.swift in Sources */,
 				5AFDE9AF24519564004A7BB8 /* ProductViewModel.swift in Sources */,
 				5A7427B8244F05B5004144C1 /* CategoryHeaderView.swift in Sources */,
