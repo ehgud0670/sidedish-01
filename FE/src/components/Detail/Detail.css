@@ -1,4 +1,4 @@
-.DetailWrap {
+.detail-wrap {
   display: flex;
   position: fixed;
   width: 100%;
@@ -11,7 +11,7 @@
   align-items: center;
 }
 
-.DetailContents {
+.detail-contents {
   position: absolute;
   width: 1000px;
   height: 490px;
@@ -19,7 +19,15 @@
   background-color: white;
 }
 
-.CloseButton {
+.detail-contents > .loadingImg {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  left: 45%;
+  top: 40%;
+}
+
+.closeBtn {
   position: relative;
   top: 0;
   right: 0;
@@ -33,36 +41,36 @@
   color: gray;
 }
 
-.CloseButton:hover {
+.closeBtn:hover {
   outline: none;
   cursor: pointer;
   color: black;
 }
 
-.CloseButton:active {
+.closeBtn:active {
   outline: none;
   color: black;
 }
 
-.CloseButton:focus {
+.closeBtn:focus {
   outline: none;
   color: black;
 }
 
-.ImageArea {
+.image-area {
   float: left;
   width: 40%;
   height: 400px;
 }
 
-.CurrentImage {
+.current-image-area {
   position: relative;
   float: left;
   width: 100%;
   height: 400px;
 }
 
-.CurrentImage > .Image {
+.current-image-area > .current-image {
   width: 95%;
   height: 95%;
   object-fit: fill;
@@ -72,32 +80,32 @@
   top: 0; left: 0; bottom: 0; right: 0;
 }
 
-.ImageList {
+.image-list {
   display: inline-block;
   width: 100%;
   height: 100px;
 }
 
-.ImageList > li {
+.image-list > li {
   float: left;
   width: 20%;
   height: 100%;
 }
 
-.ImageList > li > .ThumbImage {
+.image-list > li > .ThumbImage {
   width: 90%;
   height: 70%;
   margin: 10px 5px 5px 5px;
 }
 
-.ContentsArea {
+.contents-area {
   float: left;
   position: relative;
   width: 60%;
   height: 400px;
 }
 
-.BanchanTitle {
+.contents-area > .banchan-title {
   width: 90%;
   font-weight: bold;
   font-size: 30px;
@@ -105,7 +113,7 @@
   margin-left: 20px;
 }
 
-.BanchanDescription {
+.contents-area > .banchan-description {
   width: 90%;
   font-size: 16px;
   word-break:break-all;
@@ -115,7 +123,7 @@
   font-weight: bold;
 }
 
-.Information {
+.contents-area > .banchan-description > .information {
   width: 90%;
   margin-left: 20px;
   word-break: break-all;
@@ -124,7 +132,7 @@
   padding-bottom: 5px;
 }
 
-.Title {
+.information > .title {
   float: left;
   width: 135px;
   font-size: 14px;
@@ -132,7 +140,7 @@
   color: grey;
 }
 
-.Description {
+.information > .description {
   float: left;
   width: 400px;
   font-size: 14px;
@@ -140,13 +148,13 @@
   text-align: left;
 }
 
-.PriceArea {
+.price-area {
   width: 90%;
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
-.Price {
+.price-area > .price {
   width: 100%;
   height: 100%;
   font-size: 26px;
@@ -155,7 +163,7 @@
   font-weight: bold;
 }
 
-.AmountArea {
+.amount-area {
   display: inline-block;
   width: 90%;
   padding-top: 10px;
@@ -165,7 +173,7 @@
   margin-left: 20px;
 }
 
-.Amount {
+.amount {
   float: left;
   width: 135px;
   font-size: 14px;
@@ -173,18 +181,18 @@
   color: grey;
 }
 
-.AmountNumber {
+.amount > .amont-number {
   float: right;
   width: 50px;
   margin-right: 20px;
   text-align: center;
 }
 
-.AmountNumber::-webkit-inner-spin-button {
+.amount > .amont-number::-webkit-inner-spin-button {
   opacity: 1;
 }
 
-.TotalPriceArea {
+.total-price-area {
   display: flex;
   width: 90%;
   padding-top: 10px;
@@ -193,7 +201,7 @@
   align-items: center;
 }
 
-.TotalPriceArea > .TotalPrice {
+.total-price-area > .total-price {
   float: left;
   width: 70%;
   text-align: right;
@@ -201,7 +209,7 @@
   font-size: 16px;
 }
 
-.TotalPriceArea > .Price {
+.total-price-area > .price {
   float: right;
   width: 30%;
   font-size: 26px;
@@ -210,7 +218,7 @@
   text-align: right;
 }
 
-.AddCartBtn {
+.addCartBtn {
   margin-left: 20px;
   width: 90%;
   height: 50px;
@@ -220,15 +228,15 @@
   border-radius: 5px;
 }
 
-.AddCartBtn:hover {
+.addCartBtn:hover {
   cursor: pointer;
   outline: none;
 }
 
-.AddCartBtn:hover {
+.addCartBtn:hover {
   outline: none;
 }
 
-.AddCartBtn:focus {
+.addCartBtn:focus {
   outline: none;
 }

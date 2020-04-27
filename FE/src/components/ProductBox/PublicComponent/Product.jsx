@@ -64,9 +64,6 @@ const Delivery = styled.div`
   margin: 0 auto;
 `;
 
-const Image = styled.img`
-`;
-
 const Title = styled.p`
   width: 100%;
   padding-top: 20px;
