@@ -24,12 +24,12 @@ final class ProductViewModel: ViewModelBinding {
         changedHandler(product)
     }
     
-    func text(price: Int?) -> String? {
+    static func text(price: Int?) -> String? {
         guard let price = price else { return nil }
         return String(price)
     }
     
-    var unitText: String {
+    static var unitText: String {
         return "원"
     }
 }

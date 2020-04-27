@@ -37,11 +37,11 @@ final class CategoryTableViewDataSource: NSObject, UITableViewDataSource {
             productCell.configureSubtitle(text: product.description)
             productCell.configureEventBadges(badges: product.badge)
             
-            guard let normalPriceText = productViewModel.text(price: product.normal_price) else { return }
-            let salePriceText = productViewModel.text(price: product.sale_price)
+            guard let normalPriceText = ProductViewModel.text(price: product.normal_price) else { return }
+            let salePriceText = ProductViewModel.text(price: product.sale_price)
             productCell.configure(normalPriceText: normalPriceText,
                                   salePriceText: salePriceText,
-                                  unitText: productViewModel.unitText)
+                                  unitText: ProductViewModel.unitText)
         }
         return productCell
     }
