@@ -114,6 +114,7 @@ final class CategoryViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         presentLoginViewController()
     }
     
