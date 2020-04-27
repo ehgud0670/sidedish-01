@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class MenuTableViewDataSource: NSObject, UITableViewDataSource {
+final class CategoryTableViewDataSource: NSObject, UITableViewDataSource {
     let sectionCountHandler: () -> (Int?)
     let rowCountHandler: (Int) -> (Int?)
     let modelBindingHandler: (Int, Int) -> (ProductViewModel?)
@@ -21,16 +21,15 @@ final class MenuTableViewDataSource: NSObject, UITableViewDataSource {
         self.modelBindingHandler = modelBindingHandler
     }
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rowCountHandler(section) ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let productCell = tableView.dequeueReusableCell(withIdentifier: FoodProductCell.reuseIdentifier,
-        for: indexPath) as? FoodProductCell else { return FoodProductCell() }
+        guard let productCell = tableView.dequeueReusableCell(withIdentifier: ProductCell.reuseIdentifier,
+        for: indexPath) as? ProductCell else { return ProductCell() }
         guard let productViewModel = modelBindingHandler(indexPath.section, indexPath.row) else {
-            return FoodProductCell()
+            return ProductCell()
         }
         
         productViewModel.performBind { product in

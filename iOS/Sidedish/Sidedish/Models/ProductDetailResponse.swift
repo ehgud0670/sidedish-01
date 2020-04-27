@@ -25,5 +25,3 @@ struct ProductDetailData: Codable {
     let normal_price: Int
     let detail_images: [URL]
 }
-
-

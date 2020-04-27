@@ -8,9 +8,9 @@
 
 import UIKit
 
-final class MenuViewController: UIViewController {
-    private let menuTableView = MenuTableView()
-    private var menuTableViewDataSource: MenuTableViewDataSource!
+final class CategoryViewController: UIViewController {
+    private let categoryTableView = CategoryTableView()
+    private var categoryTableViewDataSource: CategoryTableViewDataSource!
     private var categoryViewModels: CategoryViewModels!
     private var hasBeenDisplayed = false
     
@@ -23,30 +23,30 @@ final class MenuViewController: UIViewController {
     }
     
     private func configureMenuTableView() {
-        menuTableView.dataSource = menuTableViewDataSource
-        menuTableView.delegate = self
-        menuTableView.register(FoodProductCell.self,
-                               forCellReuseIdentifier: FoodProductCell.reuseIdentifier)
-        menuTableView.register(FoodCategoryHeaderView.self,
-                               forHeaderFooterViewReuseIdentifier: FoodCategoryHeaderView.reuseIdentifier)
+        categoryTableView.dataSource = categoryTableViewDataSource
+        categoryTableView.delegate = self
+        categoryTableView.register(ProductCell.self,
+                               forCellReuseIdentifier: ProductCell.reuseIdentifier)
+        categoryTableView.register(CategoryHeaderView.self,
+                               forHeaderFooterViewReuseIdentifier: CategoryHeaderView.reuseIdentifier)
         configureMenuTableViewConstraints()
     }
     
     private func configureMenuTableViewConstraints() {
-        view.addSubview(menuTableView)
+        view.addSubview(categoryTableView)
         
         let safeArea = view.safeAreaLayoutGuide
-        menuTableView.leadingAnchor.constraint(equalTo:
+        categoryTableView.leadingAnchor.constraint(equalTo:
             safeArea.leadingAnchor).isActive = true
-        menuTableView.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
-        menuTableView.widthAnchor.constraint(equalTo: safeArea.widthAnchor,
+        categoryTableView.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
+        categoryTableView.widthAnchor.constraint(equalTo: safeArea.widthAnchor,
                                              multiplier: 1).isActive = true
-        menuTableView.heightAnchor.constraint(equalTo: safeArea.heightAnchor,
+        categoryTableView.heightAnchor.constraint(equalTo: safeArea.heightAnchor,
                                               multiplier: 1).isActive = true
     }
     
     private func configureMenuTableViewDataSource() {
-        menuTableViewDataSource = MenuTableViewDataSource(
+        categoryTableViewDataSource = CategoryTableViewDataSource(
             sectionCountHandler: {
                 guard let categoryViewModels = self.categoryViewModels else { return nil }
                 return categoryViewModels.count
@@ -73,7 +73,7 @@ final class MenuViewController: UIViewController {
     
     @objc private func updateTableView() {
         DispatchQueue.main.async {
-            self.menuTableView.reloadData()
+            self.categoryTableView.reloadData()
         }
     }
     
@@ -96,7 +96,7 @@ final class MenuViewController: UIViewController {
             self.initCategoryViewModels(count: urlStrings.count)
             var index = 0
             urlStrings.forEach {
-                CategoryViewModelUseCase.makeMenuViewModel(from: $0,
+                CategoryViewModelUseCase.makeCategoryViewModel(from: $0,
                                                            with: MockCategorySuccessStub())
                 { categoryViewModel in
                     guard let categoryViewModel = categoryViewModel else { return }
@@ -126,15 +126,15 @@ final class MenuViewController: UIViewController {
     }
 }
 
-extension MenuViewController: UITableViewDelegate {
+extension CategoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let foodCategoryHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: FoodCategoryHeaderView.reuseIdentifier) as? FoodCategoryHeaderView else { return nil }
+        guard let categoryHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: CategoryHeaderView.reuseIdentifier) as? CategoryHeaderView else { return nil }
         guard let categoryViewModels = categoryViewModels,
             let categoryViewModel = categoryViewModels.categoryViewModel(at: section) else { return nil }
         categoryViewModel.performBind { header in
-            foodCategoryHeaderView.configureCategory(text: header.name)
-            foodCategoryHeaderView.configureTitle(text: header.description)
+            categoryHeaderView.configureCategory(text: header.name)
+            categoryHeaderView.configureTitle(text: header.description)
         }
-        return foodCategoryHeaderView
+        return categoryHeaderView
     }
 }

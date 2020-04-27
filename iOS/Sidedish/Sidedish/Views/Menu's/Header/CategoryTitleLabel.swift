@@ -13,7 +13,7 @@ final class CategoryTitleLabel: UILabel {
         super.init(frame: frame)
         configure()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         configure()

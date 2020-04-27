@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class FoodCategoryHeaderView: UITableViewHeaderFooterView, ReusableView {
+final class CategoryHeaderView: UITableViewHeaderFooterView, ReusableView {
     private let categoryLabel = CategoryLabel()
     private let titleLabel = CategoryTitleLabel()
     

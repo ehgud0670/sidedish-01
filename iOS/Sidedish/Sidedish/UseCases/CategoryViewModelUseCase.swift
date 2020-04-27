@@ -9,7 +9,7 @@
 import Foundation
 
 struct CategoryViewModelUseCase {
-    static func makeMenuViewModel(from urlString: String,
+    static func makeCategoryViewModel(from urlString: String,
                                    with manager: NetworkManagable,
                                    completionHandler: @escaping (CategoryViewModel?) -> ()) {
         try? manager.requestResource(from: urlString, httpMethod: .get, httpBody: nil,

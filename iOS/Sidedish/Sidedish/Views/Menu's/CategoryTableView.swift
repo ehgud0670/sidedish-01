@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class MenuTableView: UITableView {
+final class CategoryTableView: UITableView {
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         configure()

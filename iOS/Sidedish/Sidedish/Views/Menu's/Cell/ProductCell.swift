@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class FoodProductCell: UITableViewCell, ReusableView {
+final class ProductCell: UITableViewCell, ReusableView {
     private let productImageView = ProductImageView(frame: .zero)
     private let titleLabel = ProductTitleLabel()
     private let subTitleLabel = ProductSubTitleLabel()
