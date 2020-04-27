@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import './reset.css'
-import LocalNavigation from './LocalNavigation/LocalNavigation';
-import Header from './Header/Header'
-import Navigation from './Navigation/Navigation'
-import ProductBox from './ProductBox/ProductBox'
-import fetchRequest from './Util/fetchRequest'
-import Detail from './Detail/Detail'
+import './lib/style/reset.css'
+import LocalNavigation from './components/LocalNavigation/LocalNavigation';
+import Header from './components/Header/Header'
+import Navigation from './components/Navigation/Navigation'
+import ProductBox from './components/ProductBox/ProductBox'
+import Detail from './components/Detail/Detail'
+import fetchRequest from './util/fetchRequest'
 
 const App = () => {
   const [apiData, setAPIData] = useState();

@@ -1,14 +1,8 @@
 import React from 'react';
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 const Div = styled.div`
   float: left;
-
-  ${props => 
-    props.direction === "right" && 
-    css`
-      float: right;
-  `};
 `;
 
 const Anchor = styled.a`
@@ -19,7 +13,7 @@ const Anchor = styled.a`
 
 const Button = props => {
   return (
-    <Div direction={props.direction}>
+    <Div>
     <Anchor href={props.url}>{props.title}</Anchor>
     </Div>
   );

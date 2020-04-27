@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
-
 import Button from './PublicComponent/Button'
 import ListButton from './PublicComponent/ListButton'
-import localNavigationData from '../MockData/LocalNavigationData'
+import localNavigationData from './constants/localNavigationData'
 
 const WrapDiv = styled.div`
   position: relative;
@@ -18,29 +17,37 @@ const ContentDiv = styled.div`
   position: relative;
 `;
 
+const MenuDiv = styled.div`
+  float: right;
+`;
+
 const LocalNavigation = () => {
   const [appDownloadInfo, setAppDownloadInfo] = useState();
   const [commonMenuInfo, setCommonMenuInfo] = useState();
 
   useEffect(() => {
-    //These flow can be changed to get data from server by fetching.
-    requestAppDownloadData()
-      .then(
-        setAppDownloadInfo(localNavigationData.download));
+    requestAppDownloadData(localNavigationData.download)
+      .then(resultData => setAppDownloadInfo(resultData));
 
-    requestLNBMenuData()
-      .then(setCommonMenuInfo(localNavigationData.common));
+    requestLNBMenuData(localNavigationData.common)
+      .then(resultData => setCommonMenuInfo(resultData));
   }, []);
 
-  const requestAppDownloadData = () => {
+  const requestAppDownloadData = (downloadData) => {
     return new Promise(function(resolve, reject) {
-      resolve(localNavigationData.download);
+      if (downloadData)
+        resolve(downloadData);
+      else
+        reject("데이터가 존재하지 않습니다.");
     });
   }
 
-  const requestLNBMenuData = () => {
+  const requestLNBMenuData = (commonData) => {
     return new Promise(function(resolve, reject) {
-      resolve(localNavigationData.menu);
+      if (commonData)
+        resolve(commonData);
+      else
+        reject("데이터가 존재하지 않습니다.");
     });
   }
 
@@ -48,14 +55,16 @@ const LocalNavigation = () => {
     <WrapDiv>
       <ContentDiv>
         {appDownloadInfo !== undefined && <ListButton title={appDownloadInfo.title} url={appDownloadInfo.url} list={appDownloadInfo.list}/>}
+        <MenuDiv>
         {commonMenuInfo !== undefined && 
          commonMenuInfo.map((v, i) => (
            v.list === undefined ?  
-            <Button key={i} title={v.title} url={v.url} direction="right" /> : 
-            <ListButton key={i} title={v.title} url={v.url} list={v.list} direction="right" />
+            <Button key={i} title={v.title} url={v.url}/> : 
+            <ListButton key={i} title={v.title} url={v.url} list={v.list}/>
             )
-         ).reverse()
+         )
         }
+        </MenuDiv>
       </ContentDiv>
     </WrapDiv>
   );

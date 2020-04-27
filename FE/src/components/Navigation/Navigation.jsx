@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components'
 import ListButton from './PublicComponent/ListButton'
-import navigationData from '../MockData/NavigationData'
+import navigationData from './constants/NavigationData'
 
 const NavigationWrapDiv = styled.div`
   position: relative;
