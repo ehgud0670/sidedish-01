@@ -52,7 +52,7 @@ final class CategoryViewController: UIViewController {
     @objc private func updateTableView(notification: Notification) {
         guard let userInfo = notification.userInfo, let index = userInfo["index"] as? Int else { return }
         DispatchQueue.main.async {
-            self.categoryTableView.reloadSections(IndexSet(integer: index), with: .automatic)
+            self.categoryTableView.reloadData()
         }
     }
     
