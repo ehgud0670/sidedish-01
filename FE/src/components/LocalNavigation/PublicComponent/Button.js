@@ -13,7 +13,7 @@ const Anchor = styled.a`
 
 const Button = props => {
   return (
-    <Div>
+    <Div onClick={props.onClick}>
     <Anchor href={props.url}>{props.title}</Anchor>
     </Div>
   );

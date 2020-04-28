@@ -6,6 +6,7 @@ import Navigation from './components/Navigation/Navigation'
 import ProductBox from './components/ProductBox/ProductBox'
 import Detail from './components/Detail/Detail'
 import fetchRequest from './utils/fetchRequest'
+import Cookies from 'universal-cookie';
 
 const App = () => {
   const [apiData, setAPIData] = useState();
@@ -36,7 +37,7 @@ const App = () => {
 
   return (
     <>
-    <LocalNavigation />
+    <LocalNavigation user={(new Cookies()).get('user')}/>
     <Header />
     <Navigation />
     {apiData !== undefined && 

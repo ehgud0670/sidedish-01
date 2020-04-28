@@ -15,14 +15,6 @@ const localNavigationData = {
   },
   common: [
     {
-      "title": "로그인",
-      "url": "https://github.com/login/oauth/authorize?client_id=0a87fff246fe66925f8c&scope=user%20public_repo"
-    },
-    {
-      "title": "회원가입",
-      "url": "#"
-    },
-    {
       "title": "마이페이지",
       "url": "#",
       "list": [

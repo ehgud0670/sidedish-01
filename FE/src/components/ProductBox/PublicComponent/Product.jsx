@@ -111,6 +111,16 @@ const SellingPrice = styled.div`
   margin-right: 5px;
 `;
 
+const Won = styled.div`
+  display: inline-block;
+  font-size: 20px;
+  color: #2ac1bc;
+  text-align: center;
+  font-weight: bold;
+  margin-left: 5px;
+  margin-right: 5px;
+`;
+
 const  BadgeWrap = styled.div`
   margin-top: 10px;
   margin-bottom: 10px;
@@ -149,7 +159,7 @@ const Product = props => {
           {props.banchanData.sale_price === null ?  
           <SellingPrice>{props.banchanData.normal_price.toLocaleString()}원</SellingPrice> : 
           <>
-          <SellingPrice>{props.banchanData.normal_price.toLocaleString()}원</SellingPrice>
+          <SellingPrice>{props.banchanData.normal_price.toLocaleString()}<Won>원</Won></SellingPrice>
           <NormalPrice>{props.banchanData.normal_price.toLocaleString()}</NormalPrice>
           </>
           }
