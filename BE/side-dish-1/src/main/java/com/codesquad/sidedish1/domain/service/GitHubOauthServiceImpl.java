@@ -118,7 +118,7 @@ public class GitHubOauthServiceImpl implements GitHubOauthService {
         User user = userRepository.findById(1L).orElseThrow(() -> new NoSuchElementException("회원정보가 존재하지 않습니다!"));
         Cookie cookie = new Cookie("user",user.getLogin());
         response.addCookie(cookie);
-        response.sendRedirect("http://localhost:8080");
+        response.sendRedirect("http://15.165.210.164");
     }
 
 }

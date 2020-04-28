@@ -36,9 +36,9 @@ public class TestController {
     @GetMapping("/urls")
     public ApiResponseMessage getAllUrls() {
         List<String> urls = new ArrayList<>();
-        urls.add("http://15.164.229.13/api/categories/1");
-        urls.add("http://15.164.229.13/api/categories/2");
-        urls.add("http://15.164.229.13 /api/categories/3");
+        urls.add("http://15.165.210.164:8080/categories/1");
+        urls.add("http://15.165.210.164:8080/categories/2");
+        urls.add("http://15.165.210.164:8080/categories/3");
         return new ApiResponseMessage("SUCCESS", urls );
     }
 
