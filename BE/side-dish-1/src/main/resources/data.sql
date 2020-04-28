@@ -1,7 +1,7 @@
 insert into category(category_id, category_name, category_description) values (1, 'main', 'zello');
 insert into category(category_id, category_name, category_description) values (2, 'soup', 'jason');
 insert into category(category_id, category_name, category_description) values (3, 'side', 'hamil');
--- 
+--
 -- --main dish
 -- insert into banchan(banchan_id, image, title, description, normal_price,sale_price, category_id) values (1, 'http://public.codesquad.kr/jk/storeapp/data/2d3f99a9a35601f4e98837bc4d39b2c8.jpg',
 -- '[미노리키친] 규동 250g', '일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥', 6500, 6250, 1);
