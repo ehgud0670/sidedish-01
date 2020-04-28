@@ -24,16 +24,12 @@ struct ImageUseCase {
     }
     
     private static func downloadImageData(requestURL: URL, destinationURL: URL,
-                                  completionHandler: @escaping (Data?) -> ()) {
+                                          completionHandler: @escaping (Data?) -> ()) {
         URLSession.shared.downloadTask(with: requestURL) { (tempURL, urlResponse, error) in
             guard let tempURL = tempURL else { return }
-            do {
-                guard let imageData = try? Data(contentsOf: tempURL) else { return }
-                completionHandler(imageData)
-                try FileManager.default.moveItem(at: tempURL, to: destinationURL)
-            } catch {
-                print(error.localizedDescription)
-            }
+            try? FileManager.default.moveItem(at: tempURL, to: destinationURL)
+            guard let imageData = try? Data(contentsOf: destinationURL) else { return }
+            completionHandler(imageData)
         }.resume()
     }
     
