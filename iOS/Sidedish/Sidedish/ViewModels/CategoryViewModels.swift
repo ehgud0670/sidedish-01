@@ -6,9 +6,9 @@
 //  Copyright © 2020 Jason. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-final class CategoryViewModels {
+final class CategoryViewModels: NSObject {
     enum Notification {
         static let categoryViewModelsDidChange = Foundation.Notification.Name("categoryViewModelsDidChange")
     }
@@ -33,8 +33,35 @@ final class CategoryViewModels {
         NotificationCenter.default.post(name: Notification.categoryViewModelsDidChange,
         object: self, userInfo: ["index": index])
     }
+}
+
+extension CategoryViewModels: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return categoryViewModels[section].productViewModelsCount
+    }
     
-    var count: Int {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let productCell = tableView.dequeueReusableCell(withIdentifier: ProductCell.reuseIdentifier,
+        for: indexPath) as? ProductCell else { return ProductCell() }
+        guard let productViewModel = categoryViewModels[indexPath.section].productViewModel(at: indexPath.row) else {
+            return ProductCell()
+        }
+        
+        productViewModel.performBind { product in
+            productCell.configureTitle(text: product.title)
+            productCell.configureSubtitle(text: product.description)
+            productCell.configureEventBadges(badges: product.badge)
+            
+            guard let normalPriceText = ProductViewModel.text(price: product.normal_price) else { return }
+            let salePriceText = ProductViewModel.text(price: product.sale_price)
+            productCell.configure(normalPriceText: normalPriceText,
+                                  salePriceText: salePriceText,
+                                  unitText: ProductViewModel.unitText)
+        }
+        return productCell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return categoryViewModels.count
     }
 }

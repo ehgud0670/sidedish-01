@@ -10,20 +10,17 @@ import UIKit
 
 final class CategoryViewController: UIViewController {
     private let categoryTableView = CategoryTableView()
-    private var categoryTableViewDataSource: CategoryTableViewDataSource!
     private var categoryViewModels: CategoryViewModels!
     private var hasBeenDisplayed = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureMenuTableViewDataSource()
         configureMenuTableView()
         configureObserver()
         configureUsecase()
     }
     
     private func configureMenuTableView() {
-        categoryTableView.dataSource = categoryTableViewDataSource
         categoryTableView.delegate = self
         categoryTableView.register(ProductCell.self,
                                    forCellReuseIdentifier: ProductCell.reuseIdentifier)
@@ -43,25 +40,6 @@ final class CategoryViewController: UIViewController {
                                                  multiplier: 1).isActive = true
         categoryTableView.heightAnchor.constraint(equalTo: safeArea.heightAnchor,
                                                   multiplier: 1).isActive = true
-    }
-    
-    private func configureMenuTableViewDataSource() {
-        categoryTableViewDataSource = CategoryTableViewDataSource(
-            sectionCountHandler: {
-                guard let categoryViewModels = self.categoryViewModels else { return nil }
-                return categoryViewModels.count
-        },
-            rowCountHandler: { section -> Int? in
-                guard let categoryViewModels = self.categoryViewModels,
-                    let categoryViewModel = categoryViewModels.categoryViewModel(at: section) else { return nil }
-                return categoryViewModel.productViewModelsCount
-        },
-            modelBindingHandler: { section, row -> ProductViewModel? in
-                guard let categoryViewModels = self.categoryViewModels,
-                    let categoryViewModel = categoryViewModels.categoryViewModel(at: section),
-                    let productViewModel = categoryViewModel.productViewModel(at: row) else { return nil }
-                return productViewModel
-        })
     }
     
     private func configureObserver() {
@@ -99,6 +77,11 @@ final class CategoryViewController: UIViewController {
     
     private func initCategoryViewModels(count: Int) {
         categoryViewModels = CategoryViewModels(count: count)
+        configureCategoryTableViewDataSource()
+    }
+    
+    private func configureCategoryTableViewDataSource() {
+        categoryTableView.dataSource = categoryViewModels
     }
     
     override func viewDidAppear(_ animated: Bool) {
