@@ -45,7 +45,7 @@ const Detail = props => {
           </ul>
         </div>
         <div className="contents-area">
-          <p className="banchan-title">[집밥의완성] 두부시래기조림 300g</p>
+          <p className="banchan-title">{banchanData.title}</p>
           <p className="banchan-description">{banchanData.description}</p>
           <div className="information">
             <p className="title">적립금</p>
