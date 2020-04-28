@@ -12,11 +12,19 @@ final class ProductViewModel: ViewModelBinding {
     typealias Key = Product
     private let product: Key
     private var changedHandler: (Key) -> ()
+    var imageData: Data?
     
     init(product: Key, handler: @escaping (Key) -> () = { _ in }) {
         self.product = product
         self.changedHandler = handler
+        configureImageData()
         changedHandler(product)
+    }
+    
+    private func configureImageData() {
+        ImageUseCase.imageData(from: product.image) { imageData in
+            self.imageData = imageData
+        }
     }
     
     func performBind(changed handler: @escaping (Key) -> ()) {

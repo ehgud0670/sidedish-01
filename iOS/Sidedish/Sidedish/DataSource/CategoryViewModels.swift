@@ -48,10 +48,6 @@ extension CategoryViewModels: UITableViewDataSource {
         }
         
         productViewModel.performBind { product in
-            ImageUseCase.imageData(from: product.image) { imageData in
-                guard let imageData = imageData else { return }
-                productCell.configureImage(data: imageData)
-            }
             productCell.configureTitle(text: product.title)
             productCell.configureSubtitle(text: product.description)
             productCell.configureEventBadges(badges: product.badges)
@@ -61,6 +57,9 @@ extension CategoryViewModels: UITableViewDataSource {
             productCell.configure(normalPriceText: normalPriceText,
                                   salePriceText: salePriceText,
                                   unitText: ProductViewModel.unitText)
+            
+            guard let imageData = productViewModel.imageData else { return }
+            productCell.configureImage(data: imageData)
         }
         return productCell
     }
