@@ -57,7 +57,7 @@ final class CategoryViewController: UIViewController {
     }
     
     private func configureUsecase() {
-        CategoryURLsUseCase.requestCategoryURLs(with: MockCategoryURLsSuccess()) { urlStrings in
+        CategoryURLsUseCase.requestCategoryURLs(with: NetworkManager()) { urlStrings in
             guard let urlStrings = urlStrings else { return }
             self.initCategoryViewModels(count: urlStrings.count)
             var index = 0
@@ -81,7 +81,9 @@ final class CategoryViewController: UIViewController {
     }
     
     private func configureCategoryTableViewDataSource() {
-        categoryTableView.dataSource = categoryViewModels
+        DispatchQueue.main.async {
+            self.categoryTableView.dataSource = self.categoryViewModels
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

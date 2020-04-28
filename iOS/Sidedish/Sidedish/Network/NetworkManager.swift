@@ -33,6 +33,6 @@ struct NetworkManager: NetworkManagable {
         URLSession.shared.dataTask(with: urlRequest) {
             data, urlResponse, error in
             completionHandler(data, urlResponse, error)
-        }
+        }.resume()
     }
 }
