@@ -10,6 +10,10 @@ import Foundation
 
 struct CategoryResponse: Codable {
     let status: Status
+    let data: CategoryData
+}
+
+struct CategoryData: Codable {
     let category_id: Int
     let category_name: String
     let category_description: String
@@ -19,13 +23,12 @@ struct CategoryResponse: Codable {
 struct Product: Codable {
     let banchan_id: Int
     let image: String
-    let alt: String
-    let delivery_type: [String]
+    let delivery_types: [String]
     let title: String
     let description: String
     let normal_price: Int
     var sale_price: Int?
-    let badge: [String]
+    let badges: [String]
 }
 
 struct CategoryHeader {

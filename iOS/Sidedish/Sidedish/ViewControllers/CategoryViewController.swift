@@ -63,7 +63,7 @@ final class CategoryViewController: UIViewController {
             var index = 0
             urlStrings.forEach {
                 CategoryUseCase.makeCategory(from: $0,
-                                             with: MockCategorySuccess())
+                                             with: NetworkManager())
                 { category in
                     guard let category = category else { return }
                     let categoryViewModel = CategoryViewModel(category: category)

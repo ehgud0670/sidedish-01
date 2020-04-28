@@ -54,7 +54,7 @@ extension CategoryViewModels: UITableViewDataSource {
             }
             productCell.configureTitle(text: product.title)
             productCell.configureSubtitle(text: product.description)
-            productCell.configureEventBadges(badges: product.badge)
+            productCell.configureEventBadges(badges: product.badges)
             
             guard let normalPriceText = ProductViewModel.text(price: product.normal_price) else { return }
             let salePriceText = ProductViewModel.text(price: product.sale_price)
