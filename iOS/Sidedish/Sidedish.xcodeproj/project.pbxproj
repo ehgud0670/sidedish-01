@@ -35,6 +35,7 @@
 		5A8211682450411E00308665 /* EventBadgeStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8211672450411E00308665 /* EventBadgeStackView.swift */; };
 		5A82116A2450421B00308665 /* EventBadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8211692450421B00308665 /* EventBadgeLabel.swift */; };
 		5ACD1A93245707DB001BDCF5 /* CategoryURLsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACD1A92245707DB001BDCF5 /* CategoryURLsUseCase.swift */; };
+		5ACD1A962457E770001BDCF5 /* ImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACD1A952457E770001BDCF5 /* ImageUseCase.swift */; };
 		5AFDE97D24515C24004A7BB8 /* SuccessCategoryURLsResponseStub.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AFDE97A24515C24004A7BB8 /* SuccessCategoryURLsResponseStub.json */; };
 		5AFDE97E24515C24004A7BB8 /* SuccessProductDetailResponseStub.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AFDE97B24515C24004A7BB8 /* SuccessProductDetailResponseStub.json */; };
 		5AFDE97F24515C24004A7BB8 /* SuccessCategoryResponseStub.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AFDE97C24515C24004A7BB8 /* SuccessCategoryResponseStub.json */; };
@@ -108,6 +109,7 @@
 		5A8211672450411E00308665 /* EventBadgeStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBadgeStackView.swift; sourceTree = "<group>"; };
 		5A8211692450421B00308665 /* EventBadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBadgeLabel.swift; sourceTree = "<group>"; };
 		5ACD1A92245707DB001BDCF5 /* CategoryURLsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryURLsUseCase.swift; sourceTree = "<group>"; };
+		5ACD1A952457E770001BDCF5 /* ImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUseCase.swift; sourceTree = "<group>"; };
 		5AFDE97A24515C24004A7BB8 /* SuccessCategoryURLsResponseStub.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SuccessCategoryURLsResponseStub.json; sourceTree = "<group>"; };
 		5AFDE97B24515C24004A7BB8 /* SuccessProductDetailResponseStub.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SuccessProductDetailResponseStub.json; sourceTree = "<group>"; };
 		5AFDE97C24515C24004A7BB8 /* SuccessCategoryResponseStub.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SuccessCategoryResponseStub.json; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			children = (
 				5A446B88245581880004A9BC /* CategoryUseCase.swift */,
 				5ACD1A92245707DB001BDCF5 /* CategoryURLsUseCase.swift */,
+				5ACD1A952457E770001BDCF5 /* ImageUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 		5A742732244E9D5F004144C1 /* Sidedish */ = {
 			isa = PBXGroup;
 			children = (
+				5ACD1A942457E57A001BDCF5 /* DataSource */,
 				5A446B87245581330004A9BC /* UseCases */,
 				5A742764244EA365004144C1 /* ViewControllers */,
 				5A742763244EA358004144C1 /* Views */,
@@ -302,6 +306,14 @@
 			path = "Login's";
 			sourceTree = "<group>";
 		};
+		5ACD1A942457E57A001BDCF5 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				5A789D76245410F80047DE7C /* CategoryViewModels.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
 		5AFDE97924515C14004A7BB8 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,7 +364,6 @@
 				5AFDE9AA2451907E004A7BB8 /* ViewModelBinding.swift */,
 				5AFDE9AE24519564004A7BB8 /* ProductViewModel.swift */,
 				5A789D742452F7A50047DE7C /* CategoryViewModel.swift */,
-				5A789D76245410F80047DE7C /* CategoryViewModels.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -525,6 +536,7 @@
 				5A82115B2450004A00308665 /* PriceLabel.swift in Sources */,
 				5A7427B2244F0055004144C1 /* ProductCell.swift in Sources */,
 				5A7427A7244EC5BE004144C1 /* LoginViewController.swift in Sources */,
+				5ACD1A962457E770001BDCF5 /* ImageUseCase.swift in Sources */,
 				5A742736244E9D5F004144C1 /* SceneDelegate.swift in Sources */,
 				5A821153244FF7E200308665 /* ProductImageView.swift in Sources */,
 			);

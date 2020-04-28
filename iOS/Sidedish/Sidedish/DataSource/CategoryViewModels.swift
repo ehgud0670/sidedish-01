@@ -48,6 +48,10 @@ extension CategoryViewModels: UITableViewDataSource {
         }
         
         productViewModel.performBind { product in
+            ImageUseCase.imageData(from: product.image) { imageData in
+                guard let imageData = imageData else { return }
+                self.configureImageIfExistCell(tableView, cellForRowAt: indexPath, imageData: imageData)
+            }
             productCell.configureTitle(text: product.title)
             productCell.configureSubtitle(text: product.description)
             productCell.configureEventBadges(badges: product.badge)
@@ -59,6 +63,13 @@ extension CategoryViewModels: UITableViewDataSource {
                                   unitText: ProductViewModel.unitText)
         }
         return productCell
+    }
+
+    func configureImageIfExistCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath, imageData: Data) {
+        DispatchQueue.main.async {
+            guard let productCell = tableView.cellForRow(at: indexPath) as? ProductCell else { return }
+            productCell.configureImage(data: imageData)
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
