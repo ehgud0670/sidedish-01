@@ -51,8 +51,8 @@ final class CategoryViewController: UIViewController {
     
     @objc private func updateTableView(notification: Notification) {
         guard let userInfo = notification.userInfo, let index = userInfo["index"] as? Int else { return }
-        DispatchQueue.main.async {
-            self.categoryTableView.reloadData()
+        DispatchQueue.main.sync {
+            self.categoryTableView.reloadSections(IndexSet(integer: index), with: .automatic)
         }
     }
     
@@ -66,8 +66,7 @@ final class CategoryViewController: UIViewController {
                 { category in
                     guard let category = category else { return }
                     let categoryViewModel = CategoryViewModel(category: category)
-                    self.categoryViewModels.insert(at: index,
-                                                   categoryViewModel: categoryViewModel)
+                    self.categoryViewModels.insert(at: index, categoryViewModel: categoryViewModel)
                 }
             }
         }
@@ -81,6 +80,7 @@ final class CategoryViewController: UIViewController {
     private func configureCategoryTableViewDataSource() {
         DispatchQueue.main.async {
             self.categoryTableView.dataSource = self.categoryViewModels
+            self.categoryTableView.reloadData()
         }
     }
     
