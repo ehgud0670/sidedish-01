@@ -118,6 +118,8 @@ final class ProductCell: UITableViewCell, ReusableView {
     func configureImage(data: Data) {
         guard let image = UIImage(data: data) else { return }
         productImageView.image = image
+        productImageView.layer.cornerRadius = productImageView.frame.size.width / 2
+        productImageView.clipsToBounds = true
     }
     
     func configureTitle(text: String) {
