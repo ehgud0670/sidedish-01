@@ -43,21 +43,22 @@ const List = styled.li`
 `;
 
 const ListButton = props => {
-  const [listVisible, setListVisible] = useState(false);
-  const {title, url, list} = props;
+  const {title, url, list, id} = props;
+  let listVisible = props.listVisible;
   const listTemplate = list.map((v, i) => 
   <List key={i}><MenuButton url={v.url} title={v.title}></MenuButton></List>
   );
 
   const test = (e) => {
     e.preventDefault();
-    setListVisible(!listVisible);
+    listVisible = !listVisible;
+    props.onArrowBtnClicked(id, listVisible);
   }
 
   return (
     <Div direction={props.direction}>
       <Anchor href={url} onClick={test.bind(this)}>{title} ▼</Anchor>
-      <UnorderedList inverted={listVisible}>
+      <UnorderedList inverted={props.listVisible}>
         {listTemplate}
       </UnorderedList>
     </Div>
