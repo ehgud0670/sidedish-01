@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components'
 
 const List = styled.li`
@@ -27,22 +27,10 @@ const Span = styled.span`
 `;
 
 const MenuButton = props => {
-  const [isMouseEntered, setIsMouseEntered] = useState(false);
-
-  const onMouseEntered = (e) => {
-    e.preventDefault();
-    setIsMouseEntered(true);
-  }
-
-  const onMouseLeaved = (e) => {
-    e.preventDefault();
-    setIsMouseEntered(false);
-  }
-
   return (
-    <List onMouseEnter={onMouseEntered.bind(this)} onMouseLeave={onMouseLeaved.bind(this)}>
-    <Anchor href={props.url} hover={isMouseEntered}>
-      <Span hover={isMouseEntered}>{props.title}</Span>
+    <List>
+    <Anchor href={props.url}>
+      <Span>{props.title}</Span>
     </Anchor>
     </List>
   );

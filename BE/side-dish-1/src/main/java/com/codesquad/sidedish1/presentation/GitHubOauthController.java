@@ -33,8 +33,8 @@ public class GitHubOauthController {
     }
 
     @GetMapping("/logined")
-    public ResponseUserDTO profile() {
-        return gitHubOauthService.profile();
+    public void profile(HttpServletResponse response) throws IOException {
+        gitHubOauthService.profile(response);
     }
 
 }

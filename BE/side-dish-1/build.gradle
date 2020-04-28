@@ -2,7 +2,10 @@ plugins {
     id 'org.springframework.boot' version '2.2.4.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
+    id 'war'
 }
+
+
 
 group = 'com.codesquad'
 version = '0.0.1-SNAPSHOT'
@@ -33,6 +36,8 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
     compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.2'
+    // war 사용을 위해 내장 톰캣 실행 안하게 하는 의존성 추가
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 
 }
 

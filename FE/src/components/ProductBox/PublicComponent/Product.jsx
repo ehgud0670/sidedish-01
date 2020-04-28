@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
+import badgeColor from '../constants/badgeColor'
 
 const Div = styled.div`
   position: relative;
@@ -110,6 +111,21 @@ const SellingPrice = styled.div`
   margin-right: 5px;
 `;
 
+const  BadgeWrap = styled.div`
+  margin-top: 10px;
+  margin-bottom: 10px;
+`;
+
+const Badge = styled.p`
+  display: inline;
+  background-color: ${props => props.color};
+  color: white;
+  text-align: center;
+  padding: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+`;
+
 const Product = props => {
   const banchanId = props.banchanData.banchan_id;
 
@@ -137,6 +153,9 @@ const Product = props => {
           <NormalPrice>{props.banchanData.normal_price.toLocaleString()}</NormalPrice>
           </>
           }
+          <BadgeWrap>
+          {props.banchanData.badges.map((data, index) => <><Badge key={index} color={badgeColor[data]}>{data}</Badge></>)}
+          </BadgeWrap>
         </DefinitionDescription>
       </Anchor>
     </Div>
