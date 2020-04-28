@@ -19,11 +19,11 @@ struct CategoryUseCase {
                                             let response = try? JSONDecoder().decode(CategoryResponse.self,
                                                                                      from: data),
                                             response.status == .success else { return }
-                                        let header = CategoryHeader(id: response.category_id,
-                                                                            name: response.category_name,
-                                                                            description: response.category_description)
+                                        let header = CategoryHeader(id: response.data.category_id,
+                                                                    name: response.data.category_name,
+                                                                    description: response.data.category_description)
                                         let category = Category(header: header,
-                                                                products: response.banchans)
+                                                                products: response.data.banchans)
                                         completionHandler(category)
         })
     }

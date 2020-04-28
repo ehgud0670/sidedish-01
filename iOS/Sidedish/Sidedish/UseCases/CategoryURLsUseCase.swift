@@ -9,16 +9,20 @@
 import Foundation
 
 struct CategoryURLsUseCase {
+    enum EndPoints {
+        static let banchanURLs = "http://15.165.210.164:8080/urls"
+    }
+    
     static func requestCategoryURLs(with manager: NetworkManagable,
                                      completionHandler: @escaping ([String]?) -> ()) {
-        try? manager.requestResource(from: "아직 없음",
+        try? manager.requestResource(from: EndPoints.banchanURLs,
                                      httpMethod: .get, httpBody: nil) {
                                         data, urlResponse, error in
                                         guard error == nil, let data = data,
                                             let response = try? JSONDecoder().decode(CategoryURLsResponse.self,
                                                                                      from: data),
                                             response.status == .success else { return }
-                                        completionHandler(response.api)
+                                        completionHandler(response.data)
         }
     }
 }

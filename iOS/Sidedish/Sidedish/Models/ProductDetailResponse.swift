@@ -10,18 +10,19 @@ import Foundation
 
 struct ProductDetailResponse: Codable {
     let status: Status
-    let banchan_id: Int
     let data: ProductDetailData
 }
 
 struct ProductDetailData: Codable {
+    let normal_price: Int
+    var sale_price: Int?
     let main_image: String
-    let thumb_images: [String]
     let description: String
     let point: String
     let delivery_info: String
     let delivery_fee: String
-    var sale_price: Int?
-    let normal_price: Int
-    let detail_images: [URL]
+    let title: String
+    let thumbs: [String]
+    let details: [URL]
+    let banchanDetail_Id: Int
 }

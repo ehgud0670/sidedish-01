@@ -18,6 +18,14 @@ final class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButtonTouched(_ sender: LoginButton) {
-        dismiss(animated: true)
+        let oAuth = "https://github.com/login/oauth/authorize?client_id=0a87fff246fe66925f8c&scope=user%20public_repo"
+        try? NetworkManager().requestResource(from: oAuth,
+                                              httpMethod: .get,
+                                              httpBody: nil)
+        { (data, urlResponse, error) in
+            DispatchQueue.main.async {
+                self.dismiss(animated: true)
+            }
+        }
     }
 }

@@ -52,25 +52,23 @@ final class CategoryViewController: UIViewController {
     @objc private func updateTableView(notification: Notification) {
         guard let userInfo = notification.userInfo, let index = userInfo["index"] as? Int else { return }
         DispatchQueue.main.async {
-            self.categoryTableView.reloadSections(IndexSet(integer: index), with: .automatic)
+            self.categoryTableView.reloadData()
         }
     }
     
     private func configureUsecase() {
-        CategoryURLsUseCase.requestCategoryURLs(with: MockCategoryURLsSuccess()) { urlStrings in
+        CategoryURLsUseCase.requestCategoryURLs(with: NetworkManager()) { urlStrings in
             guard let urlStrings = urlStrings else { return }
             self.initCategoryViewModels(count: urlStrings.count)
-            var index = 0
-            urlStrings.forEach {
-                CategoryUseCase.makeCategory(from: $0,
-                                             with: MockCategorySuccess())
+            for index in 0 ..< urlStrings.count {
+                CategoryUseCase.makeCategory(from: urlStrings[index],
+                                             with: NetworkManager())
                 { category in
                     guard let category = category else { return }
                     let categoryViewModel = CategoryViewModel(category: category)
                     self.categoryViewModels.insert(at: index,
                                                    categoryViewModel: categoryViewModel)
                 }
-                index += 1
             }
         }
     }
@@ -81,7 +79,9 @@ final class CategoryViewController: UIViewController {
     }
     
     private func configureCategoryTableViewDataSource() {
-        categoryTableView.dataSource = categoryViewModels
+        DispatchQueue.main.async {
+            self.categoryTableView.dataSource = self.categoryViewModels
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -106,5 +106,18 @@ extension CategoryViewController: UITableViewDelegate {
             let categoryViewModel = categoryViewModels.categoryViewModel(at: section) else { return nil }
         categoryHeaderView.configure(header: categoryViewModel.categoryHeader)
         return categoryHeaderView
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let categoryViewModels = categoryViewModels,
+            let categoryViewModel = categoryViewModels.categoryViewModel(at: indexPath.section),
+            let productViewModel = categoryViewModel.productViewModel(at: indexPath.row) else { return }
+        
+        ProductDetailUseCase.requestCategoryDetail(from: "\(ProductDetailUseCase.EndPoints.banchans)\(productViewModel.id)",
+        with: NetworkManager()) { productDetail in
+            guard let productDetail = productDetail else { return }
+            
+        }
+        
     }
 }
