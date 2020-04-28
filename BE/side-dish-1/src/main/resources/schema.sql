@@ -1,7 +1,7 @@
-drop table if exists category;
-drop table if exists banchan;
+drop table if exists CATEGORY;
+drop table if exists BANCHAN;
 drop table if exists token;
-drop table if exists image;
+drop table if exists IMAGE;
 drop table if exists user;
 
 
