@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class MenuTableView: UITableView {
+final class CategoryTableView: UITableView {
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         configure()
@@ -21,5 +21,6 @@ final class MenuTableView: UITableView {
     
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
+        rowHeight = UITableView.automaticDimension
     }
 }

@@ -1,0 +1,7 @@
+{
+	"status": "Success",
+	"api": [
+		"https://dev-angelo.dlinkddns.com:8090/categories/1",
+        "https://dev-angelo.dlinkddns.com:8090/categories/2"
+	]
+}

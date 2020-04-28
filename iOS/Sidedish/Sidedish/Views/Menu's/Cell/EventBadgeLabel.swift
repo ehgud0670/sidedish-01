@@ -28,6 +28,7 @@ final class EventBadgeLabel: UILabel {
     private func configureText() {
         font = UIFont.systemFont(ofSize: 13, weight: .regular)
         textColor = .white
+        text = "높이"
     }
     
     enum Padding {
@@ -43,5 +44,11 @@ final class EventBadgeLabel: UILabel {
                                  bottom: Padding.bottom,
                                  right: Padding.right)
         super.drawText(in: rect.inset(by: inset))
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        let `super` = super.intrinsicContentSize
+        return CGSize(width: `super`.width + Padding.left + Padding.right,
+                      height: `super`.height + Padding.top + Padding.bottom)
     }
 }
