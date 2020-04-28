@@ -10,7 +10,7 @@ import Foundation
 
 struct CategoryURLsUseCase {
     enum EndPoints {
-        static let banchanURLs = "http://15.164.229.13/api/urls"
+        static let banchanURLs = "http://15.165.210.164:8080/urls"
     }
     
     static func requestCategoryURLs(with manager: NetworkManagable,
