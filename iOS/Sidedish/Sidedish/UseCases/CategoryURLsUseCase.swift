@@ -22,7 +22,7 @@ struct CategoryURLsUseCase {
                                             let response = try? JSONDecoder().decode(CategoryURLsResponse.self,
                                                                                      from: data),
                                             response.status == .success else { return }
-                                        completionHandler(response.api)
+                                        completionHandler(response.data)
         }
     }
 }
