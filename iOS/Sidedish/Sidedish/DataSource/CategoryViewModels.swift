@@ -30,8 +30,8 @@ final class CategoryViewModels: NSObject {
     func insert(at index: Int, categoryViewModel: CategoryViewModel) {
         guard index < categoryViewModels.count else { return  }
         categoryViewModels[index] = categoryViewModel
-        NotificationCenter.default.post(name: Notification.categoryViewModelsDidChange,
-        object: self, userInfo: ["index": index])
+//        NotificationCenter.default.post(name: Notification.categoryViewModelsDidChange,
+//        object: self, userInfo: ["index": index])
     }
 }
 

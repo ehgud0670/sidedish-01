@@ -60,9 +60,8 @@ final class CategoryViewController: UIViewController {
         CategoryURLsUseCase.requestCategoryURLs(with: NetworkManager()) { urlStrings in
             guard let urlStrings = urlStrings else { return }
             self.initCategoryViewModels(count: urlStrings.count)
-            var index = 0
-            urlStrings.forEach {
-                CategoryUseCase.makeCategory(from: $0,
+            for index in 0 ..< urlStrings.count {
+                CategoryUseCase.makeCategory(from: urlStrings[index],
                                              with: NetworkManager())
                 { category in
                     guard let category = category else { return }
@@ -70,7 +69,6 @@ final class CategoryViewController: UIViewController {
                     self.categoryViewModels.insert(at: index,
                                                    categoryViewModel: categoryViewModel)
                 }
-                index += 1
             }
         }
     }
