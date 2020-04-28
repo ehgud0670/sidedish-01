@@ -50,6 +50,7 @@ final class ProductCell: UITableViewCell, ReusableView {
             eventBadgeStackView.removeArrangedSubview(arrangedSubview)
             arrangedSubview.removeFromSuperview()
         }
+        productImageView.image = nil
     }
     
     private func configureProductImageView() {
