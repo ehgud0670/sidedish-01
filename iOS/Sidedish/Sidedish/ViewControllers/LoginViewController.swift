@@ -27,6 +27,5 @@ final class LoginViewController: UIViewController {
                 self.dismiss(animated: true)
             }
         }
-        
     }
 }
