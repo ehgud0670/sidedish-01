@@ -21,7 +21,7 @@ final class ProductImageView: UIImageView {
     
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
-        heightAnchor.constraint(equalToConstant: 125).isActive = true
+        heightAnchor.constraint(equalToConstant: 110).isActive = true
         widthAnchor.constraint(equalTo: heightAnchor,
                                multiplier: 1).isActive = true
         contentMode = .scaleAspectFill
