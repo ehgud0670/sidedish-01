@@ -59,10 +59,7 @@ final class ProductCell: UITableViewCell, ReusableView {
                                                   constant: 10).isActive = true
         productImageView.topAnchor.constraint(equalTo: contentView.topAnchor,
                                               constant: 10).isActive = true
-        productImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor,
-                                                 multiplier: 1).isActive = true
-        productImageView.widthAnchor.constraint(equalTo: productImageView.heightAnchor,
-                                                multiplier: 1).isActive = true
+        productImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
     }
     
     private func configureTitleLabel() {
@@ -114,8 +111,7 @@ final class ProductCell: UITableViewCell, ReusableView {
                                                      constant: 10).isActive = true
         eventBadgeStackView.topAnchor.constraint(equalTo: normalPriceLabel.bottomAnchor,
                                                  constant: 8).isActive = true
-        eventBadgeStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
-                                                    constant: -10).isActive = true
+        eventBadgeStackView.bottomAnchor.constraint(equalTo: productImageView.bottomAnchor).isActive = true
     }
     
     func configureImage(data: Data) {

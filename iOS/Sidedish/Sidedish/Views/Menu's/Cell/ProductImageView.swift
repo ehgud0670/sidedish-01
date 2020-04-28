@@ -9,10 +9,6 @@
 import UIKit
 
 final class ProductImageView: UIImageView {
-    enum Images {
-        static let `default` = UIImage(systemName: "link.circle")
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -25,7 +21,8 @@ final class ProductImageView: UIImageView {
     
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
-        tintColor = .lightGray
+        widthAnchor.constraint(equalTo: heightAnchor,
+                               multiplier: 1).isActive = true
         contentMode = .scaleAspectFill
     }
 }
