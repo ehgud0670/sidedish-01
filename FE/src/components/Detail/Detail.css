@@ -108,7 +108,7 @@
 .contents-area > .banchan-title {
   width: 90%;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 24px;
   word-break:break-all;
   margin-left: 20px;
 }
@@ -123,7 +123,7 @@
   font-weight: bold;
 }
 
-.contents-area > .banchan-description > .information {
+.information {
   width: 90%;
   margin-left: 20px;
   word-break: break-all;
