@@ -107,4 +107,17 @@ extension CategoryViewController: UITableViewDelegate {
         categoryHeaderView.configure(header: categoryViewModel.categoryHeader)
         return categoryHeaderView
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let categoryViewModels = categoryViewModels,
+            let categoryViewModel = categoryViewModels.categoryViewModel(at: indexPath.section),
+            let productViewModel = categoryViewModel.productViewModel(at: indexPath.row) else { return }
+        
+        ProductDetailUseCase.requestCategoryDetail(from: "\(ProductDetailUseCase.EndPoints.banchans)\(productViewModel.id)",
+        with: NetworkManager()) { productDetail in
+            guard let productDetail = productDetail else { return }
+            
+        }
+        
+    }
 }

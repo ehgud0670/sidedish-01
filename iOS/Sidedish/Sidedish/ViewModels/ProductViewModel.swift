@@ -40,4 +40,8 @@ final class ProductViewModel: ViewModelBinding {
     static var unitText: String {
         return "원"
     }
+    
+    var id: Int {
+        product.banchan_id
+    }
 }
