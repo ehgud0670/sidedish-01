@@ -48,6 +48,13 @@ extension CategoryViewModels: UITableViewDataSource {
         }
         
         productViewModel.performBind { product in
+            ImageUseCase.imageData(from: product.image) { imageData in
+                guard let imageData = imageData else { return }
+                DispatchQueue.main.async {
+                    guard let productCell = tableView.cellForRow(at: indexPath) as? ProductCell else { return }
+                    productCell.configureImage(data: imageData)
+                }
+            }
             productCell.configureTitle(text: product.title)
             productCell.configureSubtitle(text: product.description)
             productCell.configureEventBadges(badges: product.badge)

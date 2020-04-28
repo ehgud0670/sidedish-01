@@ -56,8 +56,9 @@ final class ProductCell: UITableViewCell, ReusableView {
         contentView.addSubview(productImageView)
         
         productImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,
-                                                  constant: 0).isActive = true
-        productImageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+                                                  constant: 10).isActive = true
+        productImageView.topAnchor.constraint(equalTo: contentView.topAnchor,
+                                              constant: 10).isActive = true
         productImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor,
                                                  multiplier: 1).isActive = true
         productImageView.widthAnchor.constraint(equalTo: productImageView.heightAnchor,
@@ -69,7 +70,7 @@ final class ProductCell: UITableViewCell, ReusableView {
         
         titleLabel.heightAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.height).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor,
-                                            constant: 0).isActive = true
+                                            constant: 10).isActive = true
         titleLabel.topAnchor.constraint(equalTo: productImageView.topAnchor,
                                         constant: 15).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
@@ -80,7 +81,7 @@ final class ProductCell: UITableViewCell, ReusableView {
         
         subTitleLabel.heightAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.height).isActive = true
         subTitleLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor,
-                                               constant: 0).isActive = true
+                                               constant: 10).isActive = true
         subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
                                            constant: 2).isActive = true
         subTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,
@@ -92,7 +93,7 @@ final class ProductCell: UITableViewCell, ReusableView {
         
         normalPriceLabel.heightAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.height).isActive = true
         normalPriceLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor,
-                                                  constant: 0).isActive = true
+                                                  constant: 10).isActive = true
         normalPriceLabel.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor,
                                               constant: 8).isActive = true
     }
@@ -110,11 +111,16 @@ final class ProductCell: UITableViewCell, ReusableView {
         contentView.addSubview(eventBadgeStackView)
         
         eventBadgeStackView.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor,
-                                                     constant: 0).isActive = true
+                                                     constant: 10).isActive = true
         eventBadgeStackView.topAnchor.constraint(equalTo: normalPriceLabel.bottomAnchor,
                                                  constant: 8).isActive = true
         eventBadgeStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
-                                                    constant: -20).isActive = true
+                                                    constant: -10).isActive = true
+    }
+    
+    func configureImage(data: Data) {
+        guard let image = UIImage(data: data) else { return }
+        productImageView.image = image
     }
     
     func configureTitle(text: String) {

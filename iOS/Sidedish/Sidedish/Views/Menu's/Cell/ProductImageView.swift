@@ -26,6 +26,6 @@ final class ProductImageView: UIImageView {
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
         tintColor = .lightGray
-        image = Images.default
+        contentMode = .scaleAspectFill
     }
 }
