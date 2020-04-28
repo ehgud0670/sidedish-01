@@ -19,11 +19,7 @@ dependencies {
     compile group: 'com.github.dingey', name: 'jdbc-mapper', version: '1.0'
     implementation 'org.simpleflatmapper:sfm-jdbc:8.2.2'
     compile group: 'org.springframework', name: 'spring-jdbc', version: '5.2.5.RELEASE'
-
-
-//    runtimeOnly 'com.h2database:h2'
-
-
+    compileOnly 'org.projectlombok:lombok'
 
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-web'
