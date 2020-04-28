@@ -7,7 +7,7 @@
 //
 
 enum Status: String, Codable {
-    case success = "Success"
-    case fail = "Fail"
+    case success = "SUCCESS"
+    case fail = "FAIL"
 }
 

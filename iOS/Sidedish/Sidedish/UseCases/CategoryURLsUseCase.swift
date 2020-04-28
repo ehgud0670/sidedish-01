@@ -9,9 +9,13 @@
 import Foundation
 
 struct CategoryURLsUseCase {
+    enum EndPoints {
+        static let banchanURLs = "http://15.164.229.13/api/urls"
+    }
+    
     static func requestCategoryURLs(with manager: NetworkManagable,
                                      completionHandler: @escaping ([String]?) -> ()) {
-        try? manager.requestResource(from: "아직 없음",
+        try? manager.requestResource(from: EndPoints.banchanURLs,
                                      httpMethod: .get, httpBody: nil) {
                                         data, urlResponse, error in
                                         guard error == nil, let data = data,
