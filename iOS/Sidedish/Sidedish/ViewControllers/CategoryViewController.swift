@@ -109,6 +109,8 @@ extension CategoryViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigationController?.pushViewController(UIViewController(), animated: true)
+        
         guard let categoryViewModels = categoryViewModels,
             let categoryViewModel = categoryViewModels.categoryViewModel(at: indexPath.section),
             let productViewModel = categoryViewModel.productViewModel(at: indexPath.row) else { return }
@@ -118,6 +120,5 @@ extension CategoryViewController: UITableViewDelegate {
             guard let productDetail = productDetail else { return }
             
         }
-        
     }
 }
