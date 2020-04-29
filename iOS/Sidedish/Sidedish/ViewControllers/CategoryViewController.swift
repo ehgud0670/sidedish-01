@@ -109,7 +109,10 @@ extension CategoryViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationController?.pushViewController(UIViewController(), animated: true)
+        let controller = UIViewController()
+        controller.view.backgroundColor = .systemBackground
+        
+        navigationController?.pushViewController(controller, animated: true)
         
         guard let categoryViewModels = categoryViewModels,
             let categoryViewModel = categoryViewModels.categoryViewModel(at: indexPath.section),
