@@ -74,7 +74,7 @@ const LocalNavigation = props => {
         {appDownloadInfo !== undefined && <ListButton key={0} id={0} title={appDownloadInfo.title} url={appDownloadInfo.url} list={appDownloadInfo.list} 
                                                       onArrowBtnClicked={onArrowBtnClicked} listVisible={currentVisibleIndex !== undefined ? 0 === currentVisibleIndex : false} />}
         <MenuDiv>
-        {user ? <Button title={user}></Button> : 
+        {user ? <Button title={user + '님'}></Button> : 
                         <><Button title="로그인" url={process.env.REACT_APP_OAUTH}></Button><Button title="회원가입" url="#"></Button></>}
         {commonMenuInfo !== undefined && 
          commonMenuInfo.map((v, i) => (
