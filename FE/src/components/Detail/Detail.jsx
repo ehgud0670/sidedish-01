@@ -6,6 +6,7 @@ const Detail = props => {
   const banchanId = props.banchanId;
   const [banchanData, setBanchanData] = useState();
   const [amount, setAmount] = useState(1);
+  const [currentImage, setCurrentImage] = useState("");
 
   useEffect(() => {
     if (banchanData === undefined) {
@@ -13,6 +14,7 @@ const Detail = props => {
       .then((response) => response.json())
       .then((apiData) => {
         setBanchanData(apiData.data);
+        setCurrentImage(apiData.data.thumbs[0]);
       })
       .catch((error) => {
         alert("올바르지 못한 요청입니다.")
@@ -29,6 +31,10 @@ const Detail = props => {
     modalCloseCallback();
   }
 
+  const testFunc = url => {
+    setCurrentImage(url);
+  }
+
   return (
     <div className="detail-wrap">
       <div className="detail-contents">
@@ -38,10 +44,10 @@ const Detail = props => {
         <button className="closeBtn" onClick={props.onCloseButtonClick}>X</button>
         <div className="image-area">
           <div className="current-image-area">
-            <img className="current-image" src={banchanData.thumbs[0]} alt="현재 이미지"></img>
+            <img className="current-image" src={currentImage} alt="현재 이미지"></img>
           </div>
           <ul className="image-list">
-            {banchanData.thumbs.map((url, index) => <li key={index}><img className="ThumbImage" src={url} alt="썸네일 이미지"></img></li>)}
+            {banchanData.thumbs.map((url, index) => <li key={index}><img className="ThumbImage" src={url} alt="썸네일 이미지" onClick={() => testFunc(url)}></img></li>)}
           </ul>
         </div>
         <div className="contents-area">
