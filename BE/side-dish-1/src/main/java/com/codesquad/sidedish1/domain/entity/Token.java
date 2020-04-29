@@ -11,7 +11,8 @@ public class Token {
 
     private String token;
 
-    public Token(String tokenType, String token) {
+    public Token(Long id, String tokenType, String token) {
+        this.id = id;
         this.tokenType = tokenType;
         this.token = token;
     }

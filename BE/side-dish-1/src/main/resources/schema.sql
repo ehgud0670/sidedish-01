@@ -66,13 +66,13 @@ create table DetailImg (
 
 
 create table token (
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    id BIGINT PRIMARY KEY,
     token_type VARCHAR(64),
     token VARCHAR(64)
 );
 
 create table user (
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    id BIGINT PRIMARY KEY,
     github_id VARCHAR(64),
     login VARCHAR(64),
     name VARCHAR (64)

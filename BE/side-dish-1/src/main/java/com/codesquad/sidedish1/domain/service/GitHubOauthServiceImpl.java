@@ -75,7 +75,7 @@ public class GitHubOauthServiceImpl implements GitHubOauthService {
         response.setHeader("Authorization", gitHubTokenInfo.getAuthorization());
         response.sendRedirect("http://15.165.210.164:8080/callAPI");
 
-        Token token = new Token(gitHubTokenInfo.getTokenType(), gitHubTokenInfo.getAccessToken());
+        Token token = new Token(1L, gitHubTokenInfo.getTokenType(), gitHubTokenInfo.getAccessToken());
         tokenRepository.save(token);
 
     }
@@ -99,6 +99,7 @@ public class GitHubOauthServiceImpl implements GitHubOauthService {
             ResponseEntity<Map> resultMap = restTemplate.exchange(uri.toString(), HttpMethod.GET, entity, Map.class);
 
             User user = new User(
+                    1L,
                     resultMap.getBody().get("id").toString(),
                     resultMap.getBody().get("login").toString(),
                     resultMap.getBody().get("name").toString());

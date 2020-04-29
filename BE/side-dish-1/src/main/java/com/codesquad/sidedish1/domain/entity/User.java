@@ -10,7 +10,8 @@ public class User {
     private String login;
     private String name;
 
-    public User(String githubId, String login, String name) {
+    public User(Long id, String githubId, String login, String name) {
+        this.id = id;
         this.githubId = githubId;
         this.login = login;
         this.name = name;
