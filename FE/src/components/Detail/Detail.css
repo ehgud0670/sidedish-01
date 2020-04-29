@@ -12,6 +12,7 @@
 
   /* overscroll-behavior: contain; */
   overflow-y: scroll;
+  z-index: 10;
 }
 
 .detail-contents {
