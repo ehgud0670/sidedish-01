@@ -103,6 +103,7 @@ public class GitHubOauthServiceImpl implements GitHubOauthService {
                     resultMap.getBody().get("login").toString(),
                     resultMap.getBody().get("name").toString());
             userRepository.save(user);
+            tokenRepository.delete(token);
 
             response.sendRedirect("http://15.165.210.164:8080/logined");
 
@@ -118,7 +119,7 @@ public class GitHubOauthServiceImpl implements GitHubOauthService {
         User user = userRepository.findById(1L).orElseThrow(() -> new NoSuchElementException("회원정보가 존재하지 않습니다!"));
         Cookie cookie = new Cookie("user",user.getLogin());
         response.addCookie(cookie);
+        userRepository.delete(user);
         response.sendRedirect("http://15.165.210.164");
     }
-
 }
