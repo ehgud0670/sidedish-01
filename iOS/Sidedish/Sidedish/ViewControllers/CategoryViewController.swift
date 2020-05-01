@@ -12,12 +12,15 @@ final class CategoryViewController: UIViewController {
     private let categoryTableView = CategoryTableView()
     private var categoryViewModels: CategoryViewModels!
     private var hasBeenDisplayed = false
+    private let updateQueue = DispatchQueue(label: "serial.update.queue")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureMenuTableView()
         configureObserver()
-        configureUsecase()
+        DispatchQueue.init(label: "mock").asyncAfter(wallDeadline: .now() + 0.5) {
+            self.configureUsecase()
+        }
     }
     
     private func configureMenuTableView() {
@@ -51,7 +54,7 @@ final class CategoryViewController: UIViewController {
     
     @objc private func updateTableView(notification: Notification) {
         guard let userInfo = notification.userInfo, let index = userInfo["index"] as? Int else { return }
-        DispatchQueue.main.async {
+        DispatchQueue.main.sync {
             self.categoryTableView.reloadSections(IndexSet(integer: index), with: .automatic)
         }
     }
