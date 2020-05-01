@@ -107,14 +107,18 @@ extension CategoryViewController: UITableViewDelegate {
             let categoryViewModel = categoryViewModels.categoryViewModel(at: indexPath.section),
             let productViewModel = categoryViewModel.productViewModel(at: indexPath.row) else { return }
         DispatchQueue(label: "MockProductDetail").asyncAfter(wallDeadline: .now() + 0.5) {
-            self.configureDetailUseCase(productViewModel: productViewModel)
+            self.configureDetailUseCase(productViewModel: productViewModel) { productDetail in
+                
+            }
         }
     }
     
-    private func configureDetailUseCase(productViewModel: ProductViewModel) {
+    private func configureDetailUseCase(productViewModel: ProductViewModel,
+                                        completionHandler: @escaping (ProductDetailData?) -> ()) {
         ProductDetailUseCase.requestCategoryDetail(from: "\(ProductDetailUseCase.EndPoints.banchans)\(productViewModel.id)",
         with: MockProductDetailSuccess()) { productDetail in
             guard let productDetail = productDetail else { return }
+            completionHandler(productDetail)
         }
     }
 }
