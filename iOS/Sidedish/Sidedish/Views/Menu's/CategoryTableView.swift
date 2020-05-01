@@ -21,6 +21,6 @@ final class CategoryTableView: UITableView {
     
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
-        rowHeight = UITableView.automaticDimension
+        rowHeight = 140
     }
 }
