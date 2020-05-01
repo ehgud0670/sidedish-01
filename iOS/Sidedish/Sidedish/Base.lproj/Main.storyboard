@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FBh-uN-bnd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vx0-5G-SzG">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -12,7 +12,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Login View Controller-->
+        <!--My배민-->
         <scene sceneID="BpB-Nr-Im9">
             <objects>
                 <viewController storyboardIdentifier="LoginViewController" id="pfV-qY-4Wj" customClass="LoginViewController" customModule="Sidedish" customModuleProvider="target" sceneMemberID="viewController">
@@ -21,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baeminChan" translatesAutoresizingMaskIntoConstraints="NO" id="7id-QU-Qf1">
-                                <rect key="frame" x="87.5" y="107" width="239" height="239"/>
+                                <rect key="frame" x="95" y="102" width="224" height="224.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="7id-QU-Qf1" secondAttribute="height" multiplier="1:1" id="Vrk-kl-nhL"/>
                                     <constraint firstAttribute="width" secondItem="7id-QU-Qf1" secondAttribute="height" multiplier="1:1" id="qgc-6w-wa5"/>
@@ -39,7 +39,7 @@
                                 </variation>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0A8-nL-bhm" customClass="LoginButton" customModule="Sidedish" customModuleProvider="target">
-                                <rect key="frame" x="20" y="430.5" width="374" height="45"/>
+                                <rect key="frame" x="20" y="406" width="374" height="45"/>
                                 <color key="backgroundColor" red="0.37647058823529411" green="0.75294117647058822" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="C6d-gI-11X"/>
@@ -114,10 +114,11 @@
                             </mask>
                         </variation>
                     </view>
+                    <tabBarItem key="tabBarItem" title="My배민" id="TlP-7l-5LK"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h6F-IE-d0X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="-573.21428571428567"/>
+            <point key="canvasLocation" x="1554" y="599"/>
         </scene>
         <!--Category View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -133,12 +134,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="129.91071428571428"/>
+            <point key="canvasLocation" x="401" y="858"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--홈-->
         <scene sceneID="aBa-GY-ytC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FBh-uN-bnd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="홈" id="BP5-a3-dzi"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UiB-id-fmi">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -150,6 +152,24 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="79y-fH-shH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-533" y="858"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="ZIe-s0-3ym">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="vx0-5G-SzG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iMQ-FL-ahQ">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="FBh-uN-bnd" kind="relationship" relationship="viewControllers" id="NgV-oX-DGU"/>
+                        <segue destination="pfV-qY-4Wj" kind="relationship" relationship="viewControllers" id="Y2D-3H-nRh"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tSJ-37-fRa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="129.91071428571428"/>
         </scene>
