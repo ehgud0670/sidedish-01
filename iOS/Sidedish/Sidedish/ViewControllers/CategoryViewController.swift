@@ -18,7 +18,7 @@ final class CategoryViewController: UIViewController {
         super.viewDidLoad()
         configureMenuTableView()
         configureObserver()
-        DispatchQueue.init(label: "mock").asyncAfter(wallDeadline: .now() + 0.5) {
+        DispatchQueue.init(label: "mockCategory").asyncAfter(wallDeadline: .now() + 0.5) {
             self.configureUsecase()
         }
     }
@@ -106,7 +106,12 @@ extension CategoryViewController: UITableViewDelegate {
         guard let categoryViewModels = categoryViewModels,
             let categoryViewModel = categoryViewModels.categoryViewModel(at: indexPath.section),
             let productViewModel = categoryViewModel.productViewModel(at: indexPath.row) else { return }
-        
+        DispatchQueue(label: "MockProductDetail").asyncAfter(wallDeadline: .now() + 0.5) {
+            self.configureDetailUseCase(productViewModel: productViewModel)
+        }
+    }
+    
+    private func configureDetailUseCase(productViewModel: ProductViewModel) {
         ProductDetailUseCase.requestCategoryDetail(from: "\(ProductDetailUseCase.EndPoints.banchans)\(productViewModel.id)",
         with: MockProductDetailSuccess()) { productDetail in
             guard let productDetail = productDetail else { return }
