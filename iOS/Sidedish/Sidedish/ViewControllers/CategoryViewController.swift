@@ -100,11 +100,9 @@ extension CategoryViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let controller = UIViewController()
-        controller.view.backgroundColor = .systemBackground
-        
-        navigationController?.pushViewController(controller, animated: true)
-        
+        let productDetailViewController = ProductDetailViewController()
+        navigationController?.pushViewController(productDetailViewController, animated: true)
+
         guard let categoryViewModels = categoryViewModels,
             let categoryViewModel = categoryViewModels.categoryViewModel(at: indexPath.section),
             let productViewModel = categoryViewModel.productViewModel(at: indexPath.row) else { return }
@@ -112,7 +110,6 @@ extension CategoryViewController: UITableViewDelegate {
         ProductDetailUseCase.requestCategoryDetail(from: "\(ProductDetailUseCase.EndPoints.banchans)\(productViewModel.id)",
         with: MockProductDetailSuccess()) { productDetail in
             guard let productDetail = productDetail else { return }
-            print(productDetail)
         }
     }
 }

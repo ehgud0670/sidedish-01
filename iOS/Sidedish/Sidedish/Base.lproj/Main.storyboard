@@ -139,11 +139,10 @@
         <!--홈-->
         <scene sceneID="aBa-GY-ytC">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FBh-uN-bnd" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="FBh-uN-bnd" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="홈" id="BP5-a3-dzi"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UiB-id-fmi">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -161,6 +160,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="vx0-5G-SzG" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iMQ-FL-ahQ">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
