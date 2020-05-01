@@ -86,20 +86,6 @@ final class CategoryViewController: UIViewController {
             self.categoryTableView.reloadData()
         }
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        presentLoginViewController()
-    }
-    
-    private func presentLoginViewController() {
-        if !hasBeenDisplayed {
-            guard let loginViewController = storyboard?.instantiateViewController(withIdentifier: LoginViewController.Identifier.storyboardIdentifier) as? LoginViewController else { return }
-            loginViewController.modalPresentationStyle = .fullScreen
-            present(loginViewController, animated: true)
-            hasBeenDisplayed = true
-        }
-    }
 }
 
 extension CategoryViewController: UITableViewDelegate {
