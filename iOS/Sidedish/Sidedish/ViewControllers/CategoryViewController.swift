@@ -110,9 +110,9 @@ extension CategoryViewController: UITableViewDelegate {
             let productViewModel = categoryViewModel.productViewModel(at: indexPath.row) else { return }
         
         ProductDetailUseCase.requestCategoryDetail(from: "\(ProductDetailUseCase.EndPoints.banchans)\(productViewModel.id)",
-        with: NetworkManager()) { productDetail in
+        with: MockProductDetailSuccess()) { productDetail in
             guard let productDetail = productDetail else { return }
-            
+            print(productDetail)
         }
     }
 }
