@@ -100,7 +100,7 @@ extension CategoryViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let productDetailViewController = ProductDetailViewController()
+        let productDetailViewController = DetailViewController()
         navigationController?.pushViewController(productDetailViewController, animated: true)
 
         guard let categoryViewModels = categoryViewModels,
