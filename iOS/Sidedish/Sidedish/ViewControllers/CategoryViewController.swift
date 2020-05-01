@@ -51,18 +51,18 @@ final class CategoryViewController: UIViewController {
     
     @objc private func updateTableView(notification: Notification) {
         guard let userInfo = notification.userInfo, let index = userInfo["index"] as? Int else { return }
-        DispatchQueue.main.sync {
+        DispatchQueue.main.async {
             self.categoryTableView.reloadSections(IndexSet(integer: index), with: .automatic)
         }
     }
     
     private func configureUsecase() {
-        CategoryURLsUseCase.requestCategoryURLs(with: NetworkManager()) { urlStrings in
+        CategoryURLsUseCase.requestCategoryURLs(with: MockCategoryURLsSuccess()) { urlStrings in
             guard let urlStrings = urlStrings else { return }
             self.initCategoryViewModels(count: urlStrings.count)
             for index in 0 ..< urlStrings.count {
                 CategoryUseCase.makeCategory(from: urlStrings[index],
-                                             with: NetworkManager())
+                                             with: MockCategorySuccess())
                 { category in
                     guard let category = category else { return }
                     let categoryViewModel = CategoryViewModel(category: category)
