@@ -69,7 +69,9 @@ final class CategoryViewController: UIViewController {
                 { category in
                     guard let category = category else { return }
                     let categoryViewModel = CategoryViewModel(category: category)
-                    self.categoryViewModels.insert(at: index, categoryViewModel: categoryViewModel)
+                    self.updateQueue.sync {
+                        self.categoryViewModels.insert(at: index, categoryViewModel: categoryViewModel)
+                    }
                 }
             }
         }
