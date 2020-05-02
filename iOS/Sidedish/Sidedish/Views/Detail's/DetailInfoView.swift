@@ -9,8 +9,8 @@
 import UIKit
 
 final class DetailInfoView: UIView {
-    let titleLabel = ProductTitleLabel()
-    let subtitleLabel: ProductSubTitleLabel = {
+    private let titleLabel = ProductTitleLabel()
+    private let subtitleLabel: ProductSubTitleLabel = {
         let label = ProductSubTitleLabel()
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
@@ -113,7 +113,7 @@ final class DetailInfoView: UIView {
         addSubview(deliveryCostTitleLabel)
         
         deliveryCostTitleLabel.topAnchor.constraint(equalTo: savingTitleLabel.bottomAnchor,
-                                                   constant: 10).isActive = true
+                                                    constant: 10).isActive = true
         deliveryCostTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
     }
     
@@ -121,8 +121,15 @@ final class DetailInfoView: UIView {
         addSubview(deliveryInfoTitleLabel)
         
         deliveryInfoTitleLabel.topAnchor.constraint(equalTo: deliveryCostTitleLabel.bottomAnchor,
-                                                   constant: 10).isActive = true
+                                                    constant: 10).isActive = true
         deliveryInfoTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
         deliveryInfoTitleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
+    }
+    
+    func configure(detailData: ProductDetailData) {
+        DispatchQueue.main.async {
+            self.titleLabel.text = detailData.title
+            self.subtitleLabel.text = detailData.description
+        }
     }
 }

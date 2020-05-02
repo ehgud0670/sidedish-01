@@ -91,9 +91,6 @@ final class DetailVerticalScrollView: UIScrollView {
     }
     
     func configureDetailInfo(detailData: ProductDetailData) {
-        DispatchQueue.main.async {
-            self.detailInfoView.titleLabel.text = detailData.title
-            self.detailInfoView.subtitleLabel.text = detailData.description
-        }
+        detailInfoView.configure(detailData: detailData)
     }
 }
