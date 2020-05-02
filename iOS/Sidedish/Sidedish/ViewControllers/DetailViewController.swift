@@ -41,7 +41,7 @@ final class DetailViewController: UIViewController {
         detailVerticalScrollView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor).isActive = true
     }
     
-    var detailData: ProductDetailData? {
+    var detailViewModel: DetailViewModel? {
         didSet {
             configureThumbs()
             configureDetails()
@@ -49,11 +49,8 @@ final class DetailViewController: UIViewController {
     }
     
     private func configureThumbs() {
-        detailData?.thumbs.forEach {
-            ImageUseCase.imageData(from: $0) { imageData in
-                guard let imageData = imageData else { return }
-                self.addThumb(imageData)
-            }
+        detailViewModel?.thumbDatas?.forEach { imageData in
+            self.addThumb(imageData)
         }
     }
     
@@ -66,11 +63,8 @@ final class DetailViewController: UIViewController {
     }
     
     private func configureDetails() {
-        detailData?.details.forEach {
-            ImageUseCase.imageData(from: $0) { imageData in
-                guard let imageData = imageData else { return }
+        detailViewModel?.detailDatas?.forEach{ imageData in
                 self.addDetail(imageData)
-            }
         }
     }
     
