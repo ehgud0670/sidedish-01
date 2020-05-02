@@ -10,11 +10,21 @@ import UIKit
 
 final class DetailViewController: UIViewController {
     private let detailVerticalScrollView = DetailVerticalScrollView()
+    private let orderButton: UIButton = {
+       let button = UIButton()
+        button.tintColor = UIColor.systemBackground
+        button.setTitle("주문하기", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor.baeminColor
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.layer.borderWidth = 1
         configureView()
         configureDetailVerticalScrollView()
+        configureOrderButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +49,16 @@ final class DetailViewController: UIViewController {
         detailVerticalScrollView.heightAnchor.constraint(equalTo: safeArea.heightAnchor).isActive = true
         detailVerticalScrollView.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
         detailVerticalScrollView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor).isActive = true
+    }
+    
+    private func configureOrderButton() {
+        view.addSubview(orderButton)
+        
+        let safeArea = view.safeAreaLayoutGuide
+        orderButton.widthAnchor.constraint(equalTo: safeArea.widthAnchor).isActive = true
+        orderButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        orderButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor).isActive = true
+        orderButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor).isActive = true
     }
     
     var detailViewModel: DetailViewModel? {
