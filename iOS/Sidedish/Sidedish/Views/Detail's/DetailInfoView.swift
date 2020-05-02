@@ -28,21 +28,26 @@ final class DetailInfoView: UIView {
         label.text = DetailViewModel.priceTitleText
         return label
     }()
-    private let savingTitleLabel: InfoTitleLabel = {
+    private let pointTitleLabel: InfoTitleLabel = {
         let label = InfoTitleLabel()
-        label.text = DetailViewModel.savingTitleText
+        label.text = DetailViewModel.pointTitleText
         return label
     }()
+    private let pointDescriptionLabel = DescriptionLabel()
+    
     private let deliveryCostTitleLabel: InfoTitleLabel = {
         let label = InfoTitleLabel()
         label.text = DetailViewModel.deliveryCostTitleText
         return label
     }()
+    private let deliveryCostDescriptionLabel = DescriptionLabel()
+    
     private let deliveryInfoTitleLabel: InfoTitleLabel = {
         let label = InfoTitleLabel()
         label.text = DetailViewModel.deliveryInfoTitleText
         return label
     }()
+    private let deliveryInfoDescriptionLabel = DescriptionLabel()
     
     
     override init(frame: CGRect) {
@@ -52,9 +57,12 @@ final class DetailInfoView: UIView {
         configureSubTitleLabel()
         configureLineView()
         configurePriceTitleLabel()
-        configureSavingTitleLabel()
+        configurePointTitleLabel()
+        configurePointDescriptionLabel()
         configureDeliveryCostTitleLabel()
+        configureDeliveryCostDescriptionLabel()
         configureDeliveryInfoTitleLabel()
+        configureDeliveryInfoDescriptionLabel()
     }
     
     required init?(coder: NSCoder) {
@@ -64,9 +72,12 @@ final class DetailInfoView: UIView {
         configureSubTitleLabel()
         configureLineView()
         configurePriceTitleLabel()
-        configureSavingTitleLabel()
+        configurePointTitleLabel()
+        configurePointDescriptionLabel()
         configureDeliveryCostTitleLabel()
+        configureDeliveryCostDescriptionLabel()
         configureDeliveryInfoTitleLabel()
+        configureDeliveryInfoDescriptionLabel()
     }
     
     private func configureTitleLabel() {
@@ -101,20 +112,37 @@ final class DetailInfoView: UIView {
         priceTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
     }
     
-    private func configureSavingTitleLabel() {
-        addSubview(savingTitleLabel)
+    private func configurePointTitleLabel() {
+        addSubview(pointTitleLabel)
         
-        savingTitleLabel.topAnchor.constraint(equalTo: priceTitleLabel.bottomAnchor,
+        pointTitleLabel.topAnchor.constraint(equalTo: priceTitleLabel.bottomAnchor,
                                               constant: 10).isActive = true
-        savingTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+        pointTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+    }
+    
+    private func configurePointDescriptionLabel() {
+        addSubview(pointDescriptionLabel)
+        
+        pointDescriptionLabel.centerYAnchor.constraint(equalTo: pointTitleLabel.centerYAnchor).isActive = true
+        pointDescriptionLabel.leadingAnchor.constraint(equalTo: pointTitleLabel.trailingAnchor,
+                                                       constant: 20).isActive = true
+        pointDescriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
     }
     
     private func configureDeliveryCostTitleLabel() {
         addSubview(deliveryCostTitleLabel)
         
-        deliveryCostTitleLabel.topAnchor.constraint(equalTo: savingTitleLabel.bottomAnchor,
+        deliveryCostTitleLabel.topAnchor.constraint(equalTo: pointTitleLabel.bottomAnchor,
                                                     constant: 10).isActive = true
         deliveryCostTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+    }
+    
+    private func configureDeliveryCostDescriptionLabel() {
+        addSubview(deliveryCostDescriptionLabel)
+        
+        deliveryCostDescriptionLabel.topAnchor.constraint(equalTo: deliveryCostTitleLabel.topAnchor).isActive = true
+        deliveryCostDescriptionLabel.leadingAnchor.constraint(equalTo: pointDescriptionLabel.leadingAnchor).isActive = true
+        deliveryCostDescriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
     }
     
     private func configureDeliveryInfoTitleLabel() {
@@ -126,10 +154,22 @@ final class DetailInfoView: UIView {
         deliveryInfoTitleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
     }
     
+    private func configureDeliveryInfoDescriptionLabel() {
+        addSubview(deliveryInfoDescriptionLabel)
+        
+        deliveryInfoDescriptionLabel.topAnchor.constraint(equalTo: deliveryInfoTitleLabel.topAnchor).isActive = true
+        deliveryInfoDescriptionLabel.leadingAnchor.constraint(equalTo: pointDescriptionLabel.leadingAnchor).isActive = true
+        deliveryInfoDescriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
+        deliveryInfoDescriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
+    }
+    
     func configure(detailData: ProductDetailData) {
         DispatchQueue.main.async {
             self.titleLabel.text = detailData.title
             self.subtitleLabel.text = detailData.description
+            self.pointDescriptionLabel.text = detailData.point
+            self.deliveryCostDescriptionLabel.text = detailData.delivery_fee
+            self.deliveryInfoDescriptionLabel.text = detailData.delivery_info
         }
     }
 }

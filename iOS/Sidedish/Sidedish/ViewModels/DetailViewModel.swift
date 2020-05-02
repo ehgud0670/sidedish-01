@@ -44,7 +44,7 @@ final class DetailViewModel: ViewModelBinding {
         return "가격"
     }
     
-    static var savingTitleText: String {
+    static var pointTitleText: String {
         return "적립금"
     }
     

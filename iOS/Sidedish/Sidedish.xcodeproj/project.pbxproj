@@ -14,6 +14,7 @@
 		5A2FF0A3245D64A00021F366 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2FF0A2245D64A00021F366 /* DetailViewModel.swift */; };
 		5A2FF0A5245D78730021F366 /* DetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2FF0A4245D78730021F366 /* DetailInfoView.swift */; };
 		5A2FF0A7245D88640021F366 /* InfoTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2FF0A6245D88640021F366 /* InfoTitleLabel.swift */; };
+		5A2FF0A9245D97AB0021F366 /* DescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2FF0A8245D97AB0021F366 /* DescriptionLabel.swift */; };
 		5A446B89245581880004A9BC /* CategoryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A446B88245581880004A9BC /* CategoryUseCase.swift */; };
 		5A742734244E9D5F004144C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A742733244E9D5F004144C1 /* AppDelegate.swift */; };
 		5A742736244E9D5F004144C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A742735244E9D5F004144C1 /* SceneDelegate.swift */; };
@@ -91,6 +92,7 @@
 		5A2FF0A2245D64A00021F366 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		5A2FF0A4245D78730021F366 /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
 		5A2FF0A6245D88640021F366 /* InfoTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTitleLabel.swift; sourceTree = "<group>"; };
+		5A2FF0A8245D97AB0021F366 /* DescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionLabel.swift; sourceTree = "<group>"; };
 		5A446B88245581880004A9BC /* CategoryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryUseCase.swift; sourceTree = "<group>"; };
 		5A742730244E9D5F004144C1 /* Sidedish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sidedish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A742733244E9D5F004144C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				5A2FF0A0245D64040021F366 /* DetailStackView.swift */,
 				5A2FF0A4245D78730021F366 /* DetailInfoView.swift */,
 				5A2FF0A6245D88640021F366 /* InfoTitleLabel.swift */,
+				5A2FF0A8245D97AB0021F366 /* DescriptionLabel.swift */,
 			);
 			path = "Detail's";
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 				5A2FF0A7245D88640021F366 /* InfoTitleLabel.swift in Sources */,
 				5A742734244E9D5F004144C1 /* AppDelegate.swift in Sources */,
 				5A742767244EA38F004144C1 /* CategoryTableView.swift in Sources */,
+				5A2FF0A9245D97AB0021F366 /* DescriptionLabel.swift in Sources */,
 				5A789D752452F7A50047DE7C /* CategoryViewModel.swift in Sources */,
 				5AFDE9A62451808B004A7BB8 /* ProductDetailResponse.swift in Sources */,
 				5A2FF09B245D63380021F366 /* DetailVerticalScrollView.swift in Sources */,
