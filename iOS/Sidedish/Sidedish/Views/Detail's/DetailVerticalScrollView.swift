@@ -85,7 +85,6 @@ final class DetailVerticalScrollView: UIScrollView {
     
     private func addDetail(imageView: UIImageView) {
         let ratio =  imageView.frame.height / imageView.frame.width
-        
         detailStackView.addArrangedSubview(imageView)
         imageView.widthAnchor.constraint(equalTo: detailStackView.widthAnchor).isActive = true
         imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: ratio).isActive = true

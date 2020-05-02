@@ -37,6 +37,7 @@ final class ThumbScrollView: UIScrollView {
     func addToStack(view: UIView) {
         thumbStackView.addArrangedSubview(view)
         view.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
-        view.heightAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        view.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6).isActive = true
+        view.contentMode = .scaleAspectFill
     }
 }
