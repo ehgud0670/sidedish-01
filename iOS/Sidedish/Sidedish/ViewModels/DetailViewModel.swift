@@ -39,4 +39,20 @@ final class DetailViewModel: ViewModelBinding {
             }
         }
     }
+    
+    static var priceTitleText: String {
+        return "가격"
+    }
+    
+    static var savingTitleText: String {
+        return "적립금"
+    }
+    
+    static var deliveryCostTitleText: String {
+        return "배송비"
+    }
+    
+    static var deliveryInfoTitleText: String {
+        return "배송정보"
+    }
 }
