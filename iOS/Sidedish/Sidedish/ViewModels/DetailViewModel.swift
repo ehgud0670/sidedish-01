@@ -55,4 +55,15 @@ final class DetailViewModel: ViewModelBinding {
     static var deliveryInfoTitleText: String {
         return "배송정보"
     }
+    
+    static func text(price: Int?) -> String? {
+        guard let price = price else { return nil }
+        var text = String(price)
+        text.insert(",", at: text.index(text.endIndex, offsetBy: -3))
+        return text
+    }
+    
+    static var unitText: String {
+        return "원"
+    }
 }

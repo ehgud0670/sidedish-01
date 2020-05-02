@@ -28,6 +28,8 @@ final class DetailInfoView: UIView {
         label.text = DetailViewModel.priceTitleText
         return label
     }()
+    private let normalPriceLabel = PriceLabel()
+    private let salePriceLabel = PriceLabel()
     private let pointTitleLabel: InfoTitleLabel = {
         let label = InfoTitleLabel()
         label.text = DetailViewModel.pointTitleText
@@ -49,7 +51,6 @@ final class DetailInfoView: UIView {
     }()
     private let deliveryInfoDescriptionLabel = DescriptionLabel()
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
@@ -57,6 +58,8 @@ final class DetailInfoView: UIView {
         configureSubTitleLabel()
         configureLineView()
         configurePriceTitleLabel()
+        configureSalePriceLabel()
+        configureNormalPriceLabel()
         configurePointTitleLabel()
         configurePointDescriptionLabel()
         configureDeliveryCostTitleLabel()
@@ -72,6 +75,8 @@ final class DetailInfoView: UIView {
         configureSubTitleLabel()
         configureLineView()
         configurePriceTitleLabel()
+        configureSalePriceLabel()
+        configureNormalPriceLabel()
         configurePointTitleLabel()
         configurePointDescriptionLabel()
         configureDeliveryCostTitleLabel()
@@ -112,11 +117,25 @@ final class DetailInfoView: UIView {
         priceTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
     }
     
+    private func configureSalePriceLabel() {
+        addSubview(salePriceLabel)
+        
+        salePriceLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0).isActive = true
+        salePriceLabel.centerYAnchor.constraint(equalTo: priceTitleLabel.centerYAnchor).isActive = true
+    }
+    
+    private func configureNormalPriceLabel() {
+        addSubview(normalPriceLabel)
+        
+        normalPriceLabel.trailingAnchor.constraint(equalTo: salePriceLabel.leadingAnchor, constant: -10).isActive = true
+        normalPriceLabel.centerYAnchor.constraint(equalTo: priceTitleLabel.centerYAnchor).isActive = true
+    }
+    
     private func configurePointTitleLabel() {
         addSubview(pointTitleLabel)
         
         pointTitleLabel.topAnchor.constraint(equalTo: priceTitleLabel.bottomAnchor,
-                                              constant: 10).isActive = true
+                                             constant: 10).isActive = true
         pointTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
     }
     
@@ -170,6 +189,31 @@ final class DetailInfoView: UIView {
             self.pointDescriptionLabel.text = detailData.point
             self.deliveryCostDescriptionLabel.text = detailData.delivery_fee
             self.deliveryInfoDescriptionLabel.text = detailData.delivery_info
+            guard let normalPrictText = DetailViewModel.text(price: detailData.normal_price) else { return }
+            self.configure(normalPriceText: normalPrictText,
+                           salePriceText: DetailViewModel.text(price: detailData.sale_price),
+                           unitText: DetailViewModel.unitText)
         }
+    }
+    
+    private func configure(normalPriceText: String, salePriceText: String?, unitText: String) {
+        if salePriceText == nil {
+            configure(normalPriceText: normalPriceText, unitText: unitText)
+        } else {
+            configure(normalPriceText: normalPriceText,
+                      salePriceText: salePriceText!,
+                      unitText: unitText)
+        }
+    }
+    
+    private func configure(normalPriceText: String, unitText: String) {
+        normalPriceLabel.configureCyan(priceText: normalPriceText, unitText: unitText)
+        salePriceLabel.isHidden = true
+    }
+    
+    private func configure(normalPriceText: String, salePriceText: String, unitText: String) {
+        normalPriceLabel.configureUnderLineSingleGrey(priceText: normalPriceText)
+        salePriceLabel.configureCyan(priceText: salePriceText, unitText: unitText)
+        salePriceLabel.isHidden = false
     }
 }
