@@ -43,36 +43,10 @@ final class DetailViewController: UIViewController {
     
     var detailViewModel: DetailViewModel? {
         didSet {
-            configureThumbs()
-            configureDetails()
-        }
-    }
-    
-    private func configureThumbs() {
-        detailViewModel?.thumbDatas?.forEach { imageData in
-            self.addThumb(imageData)
-        }
-    }
-    
-    private func addThumb(_ data: Data) {
-        DispatchQueue.main.async {
-            let image = UIImage(data: data)
-            let thumbView = UIImageView(image: image)
-            self.detailVerticalScrollView.addThumb(imageView: thumbView)
-        }
-    }
-    
-    private func configureDetails() {
-        detailViewModel?.detailDatas?.forEach{ imageData in
-                self.addDetail(imageData)
-        }
-    }
-    
-    private func addDetail(_ data: Data) {
-        DispatchQueue.main.async {
-            let image = UIImage(data: data)
-            let detailView = UIImageView(image: image)
-            self.detailVerticalScrollView.addDetail(imageView: detailView)
+            guard let detailViewModel = detailViewModel else { return }
+            detailVerticalScrollView.configureThumbs(datas: detailViewModel.thumbDatas)
+            detailVerticalScrollView.configureDetails(datas: detailViewModel.detailDatas)
+            detailVerticalScrollView.configureDetailInfo(detailData: detailViewModel.productDetailData)
         }
     }
 }
