@@ -44,6 +44,7 @@ final class DetailViewController: UIViewController {
     var detailData: ProductDetailData? {
         didSet {
             configureThumbs()
+            configureDetails()
         }
     }
     
@@ -60,23 +61,44 @@ final class DetailViewController: UIViewController {
         DispatchQueue.main.async {
             let image = UIImage(data: data)
             let thumbView = UIImageView(image: image)
-            self.detailVerticalScrollView.thumbScrollView.addToStack(view: thumbView)
+            self.detailVerticalScrollView.addThumb(imageView: thumbView)
+        }
+    }
+    
+    private func configureDetails() {
+        detailData?.details.forEach {
+            ImageUseCase.imageData(from: $0) { imageData in
+                guard let imageData = imageData else { return }
+                self.addDetail(imageData)
+            }
+        }
+    }
+    
+    private func addDetail(_ data: Data) {
+        DispatchQueue.main.async {
+            let image = UIImage(data: data)
+            let detailView = UIImageView(image: image)
+            self.detailVerticalScrollView.addDetail(imageView: detailView)
         }
     }
 }
 
 final class DetailVerticalScrollView: UIScrollView {
-    let thumbScrollView = ThumbScrollView()
+    private let thumbScrollView = ThumbScrollView()
+    private let detailStackView = DetailStackView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
         configureThumbScrollView()
+        configureDetailStackView()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         translatesAutoresizingMaskIntoConstraints = false
+        configureThumbScrollView()
+        configureDetailStackView()
     }
     
     private func configureThumbScrollView() {
@@ -86,6 +108,27 @@ final class DetailVerticalScrollView: UIScrollView {
         thumbScrollView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         thumbScrollView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         contentLayoutGuide.topAnchor.constraint(equalTo: thumbScrollView.topAnchor).isActive = true
+    }
+    
+    private func configureDetailStackView() {
+        addSubview(detailStackView)
+        
+        detailStackView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
+        detailStackView.topAnchor.constraint(equalTo: thumbScrollView.bottomAnchor).isActive = true
+        detailStackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        contentLayoutGuide.bottomAnchor.constraint(equalTo: detailStackView.bottomAnchor).isActive = true
+    }
+    
+    func addThumb(imageView: UIImageView){
+        thumbScrollView.addToStack(view: imageView)
+    }
+    
+    func addDetail(imageView: UIImageView) {
+        let ratio =  imageView.frame.height / imageView.frame.width
+        
+        detailStackView.addArrangedSubview(imageView)
+        imageView.widthAnchor.constraint(equalTo: detailStackView.widthAnchor).isActive = true
+        imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: ratio).isActive = true
     }
 }
 
@@ -136,6 +179,24 @@ final class ThumbStackView: UIStackView {
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
         axis = .horizontal
+        distribution = .fill
+    }
+}
+
+final class DetailStackView: UIStackView {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configureView()
+    }
+    
+    required init(coder: NSCoder) {
+        super.init(coder: coder)
+        configureView()
+    }
+    
+    private func configureView() {
+        translatesAutoresizingMaskIntoConstraints = false
+        axis = .vertical
         distribution = .fill
     }
 }

@@ -23,6 +23,6 @@ struct ProductDetailData: Codable {
     let delivery_fee: String
     let title: String
     let thumbs: [String]
-    let details: [URL]
+    let details: [String]
     let banchanDetail_Id: Int
 }
