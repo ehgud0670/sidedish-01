@@ -27,6 +27,5 @@ final class ProductSubTitleLabel: UILabel {
     private func configureText() {
         font = UIFont.preferredFont(forTextStyle: .subheadline)
         textColor = .lightGray
-        text = "Product Subtitle Label"
     }
 }
