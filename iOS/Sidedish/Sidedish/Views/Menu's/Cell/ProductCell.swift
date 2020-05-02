@@ -80,7 +80,7 @@ final class ProductCell: UITableViewCell, ReusableView {
         subTitleLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor,
                                                constant: 10).isActive = true
         subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
-                                           constant: 2).isActive = true
+                                           constant: -12).isActive = true
         subTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,
                                                 constant: -10).isActive = true
     }
