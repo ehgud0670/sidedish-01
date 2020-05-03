@@ -10,14 +10,7 @@ import UIKit
 
 final class DetailViewController: UIViewController {
     private let detailVerticalScrollView = DetailVerticalScrollView()
-    private let orderButton: UIButton = {
-       let button = UIButton()
-        button.tintColor = UIColor.systemBackground
-        button.setTitle("주문하기", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor.baeminColor
-        return button
-    }()
+    private let orderButton = OrderButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,5 +61,27 @@ final class DetailViewController: UIViewController {
             detailVerticalScrollView.configureDetails(datas: detailViewModel.detailDatas)
             detailVerticalScrollView.configureDetailInfo(detailData: detailViewModel.productDetailData)
         }
+    }
+}
+
+final class OrderButton: UIButton {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configure()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        configure()
+    }
+    
+    private func configure() {
+        translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = .baeminColor
+        
+        setTitle("주문하기", for: .normal)
+        setTitleColor(.systemBackground, for: .normal)
+        let transparent = currentTitleColor.withAlphaComponent(0.5)
+        setTitleColor(transparent, for: .highlighted)
     }
 }

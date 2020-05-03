@@ -1,7 +1,7 @@
 {
     "status":"SUCCESS",
     "data":{
-        "sale_price":6500,
+        "sale_price":null,
         "normal_price":7000,    "main_image":"http://public.codesquad.kr/jk/storeapp/data/detail/HBDEF/4cce011a4a352c22cd399a60271b4921.jpg",
         "description":"일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥",
         "point":"52원",
