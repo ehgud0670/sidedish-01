@@ -198,22 +198,20 @@ final class DetailInfoView: UIView {
     
     private func configure(normalPriceText: String, salePriceText: String?, unitText: String) {
         if salePriceText == nil {
-            configure(normalPriceText: normalPriceText, unitText: unitText)
+            configure(cyanText: normalPriceText, unitText: unitText)
         } else {
-            configure(normalPriceText: normalPriceText,
-                      salePriceText: salePriceText!,
+            configure(underlineText: normalPriceText,
+                      cyanText: salePriceText!,
                       unitText: unitText)
         }
     }
     
-    private func configure(normalPriceText: String, unitText: String) {
-        underLinePriceLabel.configureCyan(priceText: normalPriceText, unitText: unitText)
-        cyanPriceLabel.isHidden = true
+    private func configure(cyanText: String, unitText: String) {
+        cyanPriceLabel.configureCyan(priceText: cyanText, unitText: unitText)
     }
     
-    private func configure(normalPriceText: String, salePriceText: String, unitText: String) {
-        underLinePriceLabel.configureUnderLineSingleGrey(priceText: normalPriceText)
-        cyanPriceLabel.configureCyan(priceText: salePriceText, unitText: unitText)
-        cyanPriceLabel.isHidden = false
+    private func configure(underlineText: String, cyanText: String, unitText: String) {
+        underLinePriceLabel.configureUnderLineSingleGrey(priceText: underlineText)
+        cyanPriceLabel.configureCyan(priceText: cyanText, unitText: unitText)
     }
 }
