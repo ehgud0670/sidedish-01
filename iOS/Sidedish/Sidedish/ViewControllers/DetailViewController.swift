@@ -14,7 +14,6 @@ final class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.layer.borderWidth = 1
         configureView()
         configureDetailVerticalScrollView()
         configureOrderButton()

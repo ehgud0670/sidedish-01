@@ -28,8 +28,8 @@ final class DetailInfoView: UIView {
         label.text = DetailViewModel.priceTitleText
         return label
     }()
-    private let normalPriceLabel = PriceLabel()
-    private let salePriceLabel = PriceLabel()
+    private let underLinePriceLabel = PriceLabel()
+    private let cyanPriceLabel = PriceLabel()
     private let pointTitleLabel: InfoTitleLabel = {
         let label = InfoTitleLabel()
         label.text = DetailViewModel.pointTitleText
@@ -118,17 +118,17 @@ final class DetailInfoView: UIView {
     }
     
     private func configureSalePriceLabel() {
-        addSubview(salePriceLabel)
+        addSubview(cyanPriceLabel)
         
-        salePriceLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0).isActive = true
-        salePriceLabel.centerYAnchor.constraint(equalTo: priceTitleLabel.centerYAnchor).isActive = true
+        cyanPriceLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0).isActive = true
+        cyanPriceLabel.centerYAnchor.constraint(equalTo: priceTitleLabel.centerYAnchor).isActive = true
     }
     
     private func configureNormalPriceLabel() {
-        addSubview(normalPriceLabel)
+        addSubview(underLinePriceLabel)
         
-        normalPriceLabel.trailingAnchor.constraint(equalTo: salePriceLabel.leadingAnchor, constant: -10).isActive = true
-        normalPriceLabel.centerYAnchor.constraint(equalTo: priceTitleLabel.centerYAnchor).isActive = true
+        underLinePriceLabel.trailingAnchor.constraint(equalTo: cyanPriceLabel.leadingAnchor, constant: -10).isActive = true
+        underLinePriceLabel.centerYAnchor.constraint(equalTo: priceTitleLabel.centerYAnchor).isActive = true
     }
     
     private func configurePointTitleLabel() {
@@ -207,13 +207,13 @@ final class DetailInfoView: UIView {
     }
     
     private func configure(normalPriceText: String, unitText: String) {
-        normalPriceLabel.configureCyan(priceText: normalPriceText, unitText: unitText)
-        salePriceLabel.isHidden = true
+        underLinePriceLabel.configureCyan(priceText: normalPriceText, unitText: unitText)
+        cyanPriceLabel.isHidden = true
     }
     
     private func configure(normalPriceText: String, salePriceText: String, unitText: String) {
-        normalPriceLabel.configureUnderLineSingleGrey(priceText: normalPriceText)
-        salePriceLabel.configureCyan(priceText: salePriceText, unitText: unitText)
-        salePriceLabel.isHidden = false
+        underLinePriceLabel.configureUnderLineSingleGrey(priceText: normalPriceText)
+        cyanPriceLabel.configureCyan(priceText: salePriceText, unitText: unitText)
+        cyanPriceLabel.isHidden = false
     }
 }
