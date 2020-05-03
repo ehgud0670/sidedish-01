@@ -34,7 +34,9 @@ final class ProductViewModel: ViewModelBinding {
     
     static func text(price: Int?) -> String? {
         guard let price = price else { return nil }
-        return String(price)
+        var text = String(price)
+        text.insert(",", at: text.index(text.endIndex, offsetBy: -3))
+        return text
     }
     
     static var unitText: String {

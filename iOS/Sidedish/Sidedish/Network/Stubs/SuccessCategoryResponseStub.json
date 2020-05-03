@@ -1,39 +1,74 @@
 {
-	"status": "Success",
-	"category_id": 1,
-	"category_name": "든든한 반찬",
-	"category_description": "푸짐하게 먹을 수 있는 든든한 반찬 ",
-	"banchans": [{
-			"banchan_id": 1,
-			"image": "http://public.codesquad.kr/jk/storeapp/data/2d3f99a9a35601f4e98837bc4d39b2c8.jpg",
-			"alt": "[미노리키친] 규동 250g",
-			"delivery_type": [
-				"새벽배송",
-				"전국택배"
-			],
-			"title": "[미노리키친] 규동 250g",
-			"description": "일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥",
-			"normal_price": 6500,
-			"sale_price": 7000,
-			"badge": [
-				"이벤트특가"
-			]
-		},
-		{
-			"banchan_id": 2,
-			"image": "http://public.codesquad.kr/jk/storeapp/data/2d3f99a9a35601f4e98837bc4d39b2c8.jpg",
-			"alt": "[미노리키친] 규동2 250g",
-			"delivery_type": [
-				"새벽배송",
-				"전국택배"
-			],
-			"title": "[미노리키친] 규동2 250g",
-			"description": "일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥2",
-			"normal_price": 6500,
-			"sale_price": null,
-			"badge": [
-				"이벤트특가"
-			]
-		}
-	]
+    "status":"SUCCESS",
+    "data":{
+        "category_id":1,
+        "category_name":"든든한 반찬",
+        "category_description":"젤로의 든든한 반찬",
+        "banchans":[
+            {
+                "banchan_id":1,
+                "image":"http://public.codesquad.kr/jk/storeapp/data/2d3f99a9a35601f4e98837bc4d39b2c8.jpg",
+                "delivery_types":[
+                    "새벽배송",
+                    "전국택배"
+                ],
+                "title":"[미노리키친] 규동 250g",
+                "description":"일본인의 소울푸드! 한국인도 좋아하는 소고기덮밥",
+                "normal_price":6500,
+                "sale_price":6000,
+                "badges":[
+                    "이벤트특가",
+                    "론칭특가"
+                ]
+            },
+            {
+                "banchan_id":2,
+                "image":"http://public.codesquad.kr/jk/storeapp/data/7674311a02ba7c88675f3186ddaeef9e.jpg",
+                "delivery_types":[
+                    "새벽배송",
+                    "전국택배"
+                ],
+                "title":"[빅마마의밥친구] 아삭 고소한 연근고기조림 250g",
+                "description":"편식하는 아이도 좋아하는 건강한 연근조림",
+                "normal_price":5500,
+                "sale_price":4000,
+                "badges":[
+                    "이벤트특가",
+                    "론칭특가"
+                ]
+            },
+            {
+                "banchan_id":3,
+                "image":"http://public.codesquad.kr/jk/storeapp/data/cad8eee316cf7151e07638aa57b32a9d.jpg",
+                "delivery_types":[
+                    "새벽배송",
+                    "전국택배"
+                ],
+                "title":"[소중한식사] 골뱅이무침 195g",
+                "description":"매콤새콤달콤, 반찬으로도 안주로도 좋은",
+                "normal_price":7000,
+                "sale_price":6400,
+                "badges":[
+                    "이벤트특가",
+                    "론칭특가"
+                ]
+            },
+            {
+                "banchan_id":8,
+                "image":"http://public.codesquad.kr/jk/storeapp/data/bc3b777115e8377a48c7bd762fe5fdc9.jpg",
+                "delivery_types":[
+                    "새벽배송",
+                    "전국택배"
+                ],
+                "title":"[빅마마의밥친구] 비빔오징어 150g",
+                "description":"달콤한 신야초발효액이 포인트!",
+                "normal_price":5500,
+                "sale_price":5000,
+                "badges":[
+                    "이벤트특가",
+                    "론칭특가"
+                ]
+            }
+        ]
+    }
 }

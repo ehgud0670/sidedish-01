@@ -26,6 +26,5 @@ final class ProductTitleLabel: UILabel {
     
     private func configureText() {
         font = UIFont.boldSystemFont(ofSize: 20)
-        text = "Product Title Label"
     }
 }

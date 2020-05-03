@@ -60,28 +60,27 @@ final class ProductCell: UITableViewCell, ReusableView {
                                                   constant: 10).isActive = true
         productImageView.topAnchor.constraint(equalTo: contentView.topAnchor,
                                               constant: 10).isActive = true
-        productImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
+        productImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,
+                                                 constant: -10).isActive = true
     }
     
     private func configureTitleLabel() {
         contentView.addSubview(titleLabel)
         
-        titleLabel.heightAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.height).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor,
                                             constant: 10).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: productImageView.topAnchor,
-                                        constant: 15).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor,
+                                        constant: 10).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
     }
     
     private func configureSubTitleLabel() {
         contentView.addSubview(subTitleLabel)
         
-        subTitleLabel.heightAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.height).isActive = true
         subTitleLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor,
                                                constant: 10).isActive = true
         subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
-                                           constant: 2).isActive = true
+                                           constant: -12).isActive = true
         subTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,
                                                 constant: -10).isActive = true
     }
@@ -89,7 +88,6 @@ final class ProductCell: UITableViewCell, ReusableView {
     private func configureNormalPriceLabel() {
         contentView.addSubview(normalPriceLabel)
         
-        normalPriceLabel.heightAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.height).isActive = true
         normalPriceLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor,
                                                   constant: 10).isActive = true
         normalPriceLabel.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor,
@@ -99,10 +97,9 @@ final class ProductCell: UITableViewCell, ReusableView {
     private func configureSalePriceLabel() {
         contentView.addSubview(salePriceLabel)
         
-        salePriceLabel.heightAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.height).isActive = true
         salePriceLabel.leadingAnchor.constraint(equalTo: normalPriceLabel.trailingAnchor,
                                                 constant: 7).isActive = true
-        salePriceLabel.topAnchor.constraint(equalTo: normalPriceLabel.topAnchor).isActive = true
+        salePriceLabel.centerYAnchor.constraint(equalTo: normalPriceLabel.centerYAnchor).isActive = true
     }
     
     private func configureEventBadgeStackView() {
@@ -112,7 +109,7 @@ final class ProductCell: UITableViewCell, ReusableView {
                                                      constant: 10).isActive = true
         eventBadgeStackView.topAnchor.constraint(equalTo: normalPriceLabel.bottomAnchor,
                                                  constant: 8).isActive = true
-        eventBadgeStackView.bottomAnchor.constraint(equalTo: productImageView.bottomAnchor).isActive = true
+        eventBadgeStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
     }
     
     func configureImage(data: Data) {

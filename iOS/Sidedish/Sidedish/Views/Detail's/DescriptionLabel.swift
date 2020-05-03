@@ -1,14 +1,14 @@
 //
-//  ProductSubTitleLabel.swift
+//  DescriptionLabel.swift
 //  Sidedish
 //
-//  Created by kimdo2297 on 2020/04/22.
+//  Created by kimdo2297 on 2020/05/02.
 //  Copyright © 2020 Jason. All rights reserved.
 //
 
 import UIKit
 
-final class ProductSubTitleLabel: UILabel {
+final class DescriptionLabel: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -25,7 +25,7 @@ final class ProductSubTitleLabel: UILabel {
     }
     
     private func configureText() {
-        font = UIFont.preferredFont(forTextStyle: .subheadline)
-        textColor = .lightGray
+        font = UIFont.systemFont(ofSize: 15, weight: .light)
+        textColor = .systemGray2
     }
 }
