@@ -9,10 +9,15 @@
 import Foundation
 
 struct MockCategoryURLsSuccess: NetworkManagable {
+    private let queue = DispatchQueue(label: "mockCategory")
+    
     func requestResource(from urlString: String,
                          httpMethod: HTTPMethod, httpBody: Data?,
                          completionHandler: @escaping (Data?, URLResponse?, Error?) -> ()) throws {
         guard let data = Data.jsonData(forResource: "SuccessCategoryURLsResponseStub") else { return }
-        completionHandler(data, nil, nil)
+        
+        queue.async {
+            completionHandler(data, nil, nil)
+        }
     }
 }
