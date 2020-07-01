@@ -18,9 +18,7 @@ final class CategoryViewController: UIViewController {
         super.viewDidLoad()
         configureMenuTableView()
         configureObserver()
-        DispatchQueue.init(label: "mockCategory").asyncAfter(wallDeadline: .now() + 0.5) {
-            self.configureUsecase()
-        }
+        configureUsecase()
     }
     
     private func configureMenuTableView() {
