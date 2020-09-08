@@ -112,9 +112,8 @@ final class ProductCell: UITableViewCell, ReusableView {
         eventBadgeStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
     }
     
-    func configureImage(data: Data) {
+    func configure(image: UIImage) {
         DispatchQueue.main.async {
-            guard let image = UIImage(data: data) else { return }
             self.productImageView.image = image
             self.productImageView.layer.cornerRadius = self.productImageView.frame.size.width / 2
             self.productImageView.clipsToBounds = true

@@ -61,25 +61,17 @@ final class DetailVerticalScrollView: UIScrollView {
         contentLayoutGuide.bottomAnchor.constraint(equalTo: detailStackView.bottomAnchor).isActive = true
     }
     
-    func configureThumbs(datas: [Data]?){
-        guard let datas = datas else { return }
+    func configure(thumb: UIImage){
         DispatchQueue.main.async {
-            datas.forEach {
-                let image = UIImage(data: $0)
-                let thumbView = UIImageView(image: image)
-                self.thumbScrollView.addToStack(view: thumbView)
-            }
+            let thumbView = UIImageView(image: thumb)
+            self.thumbScrollView.addToStack(view: thumbView)
         }
     }
     
-    func configureDetails(datas: [Data]?) {
-        guard let datas = datas else { return }
+    func configure(detail: UIImage) {
         DispatchQueue.main.async {
-            datas.forEach {
-                let image = UIImage(data: $0)
-                let detailView = UIImageView(image: image)
-                self.addDetail(imageView: detailView)
-            }
+            let detailView = UIImageView(image: detail)
+            self.addDetail(imageView: detailView)
         }
     }
     

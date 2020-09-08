@@ -25,4 +25,20 @@ struct ProductDetailData: Codable {
     let thumbs: [String]
     let details: [String]
     let banchanDetail_Id: Int
+    
+    func iterateThumbs(handler: (String, Int) -> Void) {
+        var index = 0
+        thumbs.forEach {
+            handler($0, index)
+            index += 1
+        }
+    }
+    
+    func iterateDetails(handler: (String, Int) -> Void) {
+        var index = 0
+        details.forEach {
+            handler($0, index)
+            index += 1
+        }
+    }
 }

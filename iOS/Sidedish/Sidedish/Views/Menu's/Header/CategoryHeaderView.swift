@@ -14,6 +14,7 @@ final class CategoryHeaderView: UITableViewHeaderFooterView, ReusableView {
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
+        
         configureContentView()
         configureCategoryLabel()
         configureTitleLabel()
@@ -21,6 +22,7 @@ final class CategoryHeaderView: UITableViewHeaderFooterView, ReusableView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        
         configureContentView()
         configureCategoryLabel()
         configureTitleLabel()

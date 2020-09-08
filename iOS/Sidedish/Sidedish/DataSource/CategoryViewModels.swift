@@ -32,7 +32,7 @@ final class CategoryViewModels: NSObject {
     func insert(at index: Int, categoryViewModel: CategoryViewModel) {
         categoryViewModels[index] = categoryViewModel
         NotificationCenter.default.post(name: Notification.categoryViewModelsDidChange,
-        object: self, userInfo: ["index": index])
+                                        object: self, userInfo: ["index": index])
     }
 }
 
@@ -45,7 +45,7 @@ extension CategoryViewModels: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let productCell = tableView.dequeueReusableCell(withIdentifier: ProductCell.reuseIdentifier,
-        for: indexPath) as? ProductCell else { return ProductCell() }
+                                                              for: indexPath) as? ProductCell else { return ProductCell() }
         guard let productViewModel = categoryViewModels[indexPath.section]?.productViewModel(at: indexPath.row) else {
             return ProductCell()
         }
@@ -56,13 +56,17 @@ extension CategoryViewModels: UITableViewDataSource {
             productCell.configureEventBadges(badges: product.badges)
             
             guard let normalPriceText = ProductViewModel.text(price: product.normal_price) else { return }
-            let salePriceText = ProductViewModel.text(price: product.sale_price)
-            productCell.configure(normalPriceText: normalPriceText,
-                                  salePriceText: salePriceText,
-                                  unitText: ProductViewModel.unitText)
             
-            guard let imageData = productViewModel.imageData else { return }
-            productCell.configureImage(data: imageData)
+            let salePriceText = ProductViewModel.text(price: product.sale_price)
+            productCell.configure(
+                normalPriceText: normalPriceText,
+                salePriceText: salePriceText,
+                unitText: ProductViewModel.unitText
+            )
+            
+            productViewModel.bindImage { image in
+                productCell.configure(image: image)
+            }
         }
         return productCell
     }

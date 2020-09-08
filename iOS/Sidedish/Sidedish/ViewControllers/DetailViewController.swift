@@ -56,8 +56,14 @@ final class DetailViewController: UIViewController {
     var detailViewModel: DetailViewModel? {
         didSet {
             guard let detailViewModel = detailViewModel else { return }
-            detailVerticalScrollView.configureThumbs(datas: detailViewModel.thumbDatas)
-            detailVerticalScrollView.configureDetails(datas: detailViewModel.detailDatas)
+            detailViewModel.bindThumbImages { [weak self] image, _ in
+                self?.detailVerticalScrollView.configure(thumb: image)
+            }
+            
+            detailViewModel.bindDetailImages { [weak self] image, _ in
+                self?.detailVerticalScrollView.configure(detail: image)
+            }
+            
             detailVerticalScrollView.configureDetailInfo(detailData: detailViewModel.productDetailData)
         }
     }
