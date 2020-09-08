@@ -8,6 +8,9 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 final class ProductCell: UITableViewCell, ReusableView {
     private let productImageView = ProductImageView(frame: .zero)
     private let titleLabel = ProductTitleLabel()
@@ -15,23 +18,39 @@ final class ProductCell: UITableViewCell, ReusableView {
     private let normalPriceLabel = PriceLabel()
     private let salePriceLabel = PriceLabel()
     private let eventBadgeStackView = EventBadgeStackView()
+    private var disposeBag = DisposeBag()
+    let onData: AnyObserver<Product>
+    let data = PublishSubject<Product>()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        onData = data.asObserver()
+        
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         configureProductImageView()
         configureTitleLabel()
         configureSubTitleLabel()
         configureNormalPriceLabel()
         configureSalePriceLabel()
         configureEventBadgeStackView()
+        
+        bindUI()
     }
     
     required init?(coder: NSCoder) {
+        let data = PublishSubject<Product>()
+        onData = data.asObserver()
+        
         super.init(coder: coder)
+        
         configureProductImageView()
         configureTitleLabel()
+        configureSubTitleLabel()
         configureNormalPriceLabel()
+        configureSalePriceLabel()
         configureEventBadgeStackView()
+        
+        bindUI()
     }
     
     override func awakeFromNib() {
@@ -44,6 +63,12 @@ final class ProductCell: UITableViewCell, ReusableView {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        clear()
+        disposeBag = DisposeBag()
+        bindUI()
+    }
+    
+    private func clear() {
         normalPriceLabel.attributedText = nil
         salePriceLabel.attributedText = nil
         eventBadgeStackView.arrangedSubviews.forEach { arrangedSubview in
@@ -51,6 +76,23 @@ final class ProductCell: UITableViewCell, ReusableView {
             arrangedSubview.removeFromSuperview()
         }
         productImageView.image = nil
+    }
+    
+    private func bindUI() {
+        data.subscribe(onNext: {
+            self.configureTitle(text: $0.title)
+            self.configureSubtitle(text: $0.description)
+            self.configureEventBadges(badges: $0.badges)
+            
+            guard let normalPriceText = ProductViewModel.text(price: $0.normal_price) else { return }
+            
+            let salePriceText = ProductViewModel.text(price: $0.sale_price)
+            self.configure(
+                normalPriceText: normalPriceText,
+                salePriceText: salePriceText,
+                unitText: ProductViewModel.unitText
+            )
+        }).disposed(by: disposeBag)
     }
     
     private func configureProductImageView() {
@@ -120,15 +162,15 @@ final class ProductCell: UITableViewCell, ReusableView {
         }
     }
     
-    func configureTitle(text: String) {
+    private func configureTitle(text: String) {
         titleLabel.text = text
     }
     
-    func configureSubtitle(text: String) {
+    private func configureSubtitle(text: String) {
         subTitleLabel.text = text
     }
     
-    func configure(normalPriceText: String, salePriceText: String?, unitText: String) {
+    private func configure(normalPriceText: String, salePriceText: String?, unitText: String) {
         if salePriceText == nil {
             configure(normalPriceText: normalPriceText, unitText: unitText)
         } else {
@@ -138,16 +180,16 @@ final class ProductCell: UITableViewCell, ReusableView {
         }
     }
     
-    func configure(normalPriceText: String, unitText: String) {
+    private func configure(normalPriceText: String, unitText: String) {
         normalPriceLabel.configureCyan(priceText: normalPriceText, unitText: unitText)
     }
     
-    func configure(normalPriceText: String, salePriceText: String, unitText: String) {
+    private func configure(normalPriceText: String, salePriceText: String, unitText: String) {
         normalPriceLabel.configureUnderLineSingleGrey(priceText: normalPriceText)
         salePriceLabel.configureCyan(priceText: salePriceText, unitText: unitText)
     }
     
-    func configureEventBadges(badges: [String]) {
+    private func configureEventBadges(badges: [String]) {
         let eventBadgeLabels = badges.map { badge -> EventBadgeLabel in
             let label = EventBadgeLabel()
             label.text = badge

@@ -1,0 +1,6 @@
+framework module Pods_Sidedish_SidedishUITests {
+  umbrella header "Pods-Sidedish-SidedishUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
