@@ -8,28 +8,17 @@
 
 import UIKit
 
+import RxSwift
+
 final class ProductViewModel: ViewModelBinding {
-    typealias Key = Product
-    private let product: Key
-    private var changedHandler: (Key) -> ()
+    typealias Key = BehaviorSubject<Product>
+    private var disposeBag = DisposeBag()
+    let productSubject: Key
+    let id: Int
     
-    init(product: Key, handler: @escaping (Key) -> () = { _ in }) {
-        self.product = product
-        self.changedHandler = handler
-        changedHandler(product)
-    }
-    
-    func bindImage(resultHandler: @escaping (UIImage) -> Void) {
-        ImageUseCase.requestImage(from: product.image) { image in
-            guard let image = image else { return }
-            
-            resultHandler(image)
-        }
-    }
-    
-    func performBind(changed handler: @escaping (Key) -> ()) {
-        self.changedHandler = handler
-        changedHandler(product)
+    init(product: Product) {
+        self.productSubject = BehaviorSubject<Product>(value: product)
+        self.id = product.banchan_id
     }
     
     static func text(price: Int?) -> String? {
@@ -42,9 +31,5 @@ final class ProductViewModel: ViewModelBinding {
     
     static var unitText: String {
         return "원"
-    }
-    
-    var id: Int {
-        product.banchan_id
     }
 }

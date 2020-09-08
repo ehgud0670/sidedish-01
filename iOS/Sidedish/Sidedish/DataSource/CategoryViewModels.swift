@@ -8,6 +8,9 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 final class CategoryViewModels: NSObject {
     enum Notification {
         static let categoryViewModelsDidChange = Foundation.Notification.Name("categoryViewModelsDidChange")
@@ -15,6 +18,7 @@ final class CategoryViewModels: NSObject {
     
     private var count: Int?
     private var categoryViewModels: [Int: CategoryViewModel]
+    private var disposeBag = DisposeBag()
     
     override init() {
         categoryViewModels = [Int: CategoryViewModel]()
@@ -43,31 +47,25 @@ extension CategoryViewModels: UITableViewDataSource {
         return count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let productCell = tableView.dequeueReusableCell(withIdentifier: ProductCell.reuseIdentifier,
-                                                              for: indexPath) as? ProductCell else { return ProductCell() }
-        guard let productViewModel = categoryViewModels[indexPath.section]?.productViewModel(at: indexPath.row) else {
-            return ProductCell()
-        }
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        guard let productCell = tableView.dequeueReusableCell(
+            withIdentifier: ProductCell.reuseIdentifier,
+            for: indexPath) as? ProductCell else { return ProductCell() }
+        guard let productViewModel = categoryViewModels[indexPath.section]?.productViewModel(
+            at: indexPath.row) else { return ProductCell() }
         
-        productViewModel.performBind { product in
-            productCell.configureTitle(text: product.title)
-            productCell.configureSubtitle(text: product.description)
-            productCell.configureEventBadges(badges: product.badges)
+        productViewModel.productSubject.subscribe(onNext: {
+            productCell.onData.onNext($0)
             
-            guard let normalPriceText = ProductViewModel.text(price: product.normal_price) else { return }
-            
-            let salePriceText = ProductViewModel.text(price: product.sale_price)
-            productCell.configure(
-                normalPriceText: normalPriceText,
-                salePriceText: salePriceText,
-                unitText: ProductViewModel.unitText
-            )
-            
-            productViewModel.bindImage { image in
+            ImageUseCase.requestImage(from: $0.image) { image in
+                guard let image = image else { return }
                 productCell.configure(image: image)
             }
-        }
+        }).disposed(by: disposeBag)
+        
         return productCell
     }
     
