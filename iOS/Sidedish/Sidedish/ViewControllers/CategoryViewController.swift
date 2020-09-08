@@ -16,6 +16,7 @@ final class CategoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureMenuTableView()
         configureObserver()
         configureURLUsecase()
@@ -24,10 +25,14 @@ final class CategoryViewController: UIViewController {
     private func configureMenuTableView() {
         categoryTableView.delegate = self
         categoryTableView.dataSource = categoryViewModels
-        categoryTableView.register(ProductCell.self,
-                                   forCellReuseIdentifier: ProductCell.reuseIdentifier)
-        categoryTableView.register(CategoryHeaderView.self,
-                                   forHeaderFooterViewReuseIdentifier: CategoryHeaderView.reuseIdentifier)
+        categoryTableView.register(
+            ProductCell.self,
+            forCellReuseIdentifier: ProductCell.reuseIdentifier
+        )
+        categoryTableView.register(
+            CategoryHeaderView.self,
+            forHeaderFooterViewReuseIdentifier: CategoryHeaderView.reuseIdentifier
+        )
         configureMenuTableViewConstraints()
     }
     
@@ -35,26 +40,36 @@ final class CategoryViewController: UIViewController {
         view.addSubview(categoryTableView)
         
         let safeArea = view.safeAreaLayoutGuide
-        categoryTableView.leadingAnchor.constraint(equalTo:
-            safeArea.leadingAnchor).isActive = true
-        categoryTableView.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
-        categoryTableView.widthAnchor.constraint(equalTo: safeArea.widthAnchor,
-                                                 multiplier: 1).isActive = true
-        categoryTableView.heightAnchor.constraint(equalTo: safeArea.heightAnchor,
-                                                  multiplier: 1).isActive = true
+        categoryTableView.leadingAnchor.constraint(
+            equalTo: safeArea.leadingAnchor).isActive = true
+        categoryTableView.topAnchor.constraint(
+            equalTo: safeArea.topAnchor).isActive = true
+        categoryTableView.widthAnchor.constraint(
+            equalTo: safeArea.widthAnchor,
+            multiplier: 1).isActive = true
+        categoryTableView.heightAnchor.constraint(
+            equalTo: safeArea.heightAnchor,
+            multiplier: 1).isActive = true
     }
     
     private func configureObserver() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(updateTableView),
-                                               name: CategoryViewModels.Notification.categoryViewModelsDidChange,
-                                               object: categoryViewModels)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateTableView),
+            name: CategoryViewModels.Notification.categoryViewModelsDidChange,
+            object: categoryViewModels
+        )
     }
     
     @objc private func updateTableView(notification: Notification) {
-        guard let userInfo = notification.userInfo, let index = userInfo["index"] as? Int else { return }
+        guard let userInfo = notification.userInfo,
+            let index = userInfo["index"] as? Int else { return }
+        
         DispatchQueue.main.sync {
-            self.categoryTableView.reloadSections(IndexSet(integer: index), with: .automatic)
+            self.categoryTableView.reloadSections(
+                IndexSet(integer: index),
+                with: .automatic
+            )
         }
     }
     
@@ -69,16 +84,15 @@ final class CategoryViewController: UIViewController {
     
     private func configureCategoryUseCase(with urlStrings: [String]) {
         (0 ..< urlStrings.count).forEach { index in
-            CategoryUseCase.makeCategory(from: urlStrings[index],
-                                         with: MockCategorySuccess()) { category in
+            CategoryUseCase.makeCategory(
+                from: urlStrings[index],
+                with: MockCategorySuccess()
+            ) { category in
                 guard let category = category else { return }
                 
                 let categoryViewModel = CategoryViewModel(category: category)
                 self.updateQueue.sync {
-                    self.categoryViewModels.insert(
-                        at: index,
-                        categoryViewModel: categoryViewModel
-                    )
+                    self.categoryViewModels.insert(at: index, categoryViewModel: categoryViewModel)
                 }
             }
         }
@@ -101,22 +115,25 @@ extension CategoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let productDetailViewController = DetailViewController()
         navigationController?.pushViewController(productDetailViewController, animated: true)
-
+        
         guard let categoryViewModel = categoryViewModels.categoryViewModel(at: indexPath.section),
             let productViewModel = categoryViewModel.productViewModel(at: indexPath.row) else { return }
-        DispatchQueue(label: "MockProductDetail").asyncAfter(wallDeadline: .now() + 0.5) {
-            self.configureDetailUseCase(productViewModel: productViewModel) { productDetailData in
-                guard let productDetailData = productDetailData else { return }
-                productDetailViewController.detailViewModel = DetailViewModel(productDetailData: productDetailData)
-            }
+        
+        self.configureDetailUseCase(productViewModel: productViewModel) { productDetailData in
+            guard let productDetailData = productDetailData else { return }
+            
+            productDetailViewController.detailViewModel = DetailViewModel(productDetailData: productDetailData)
         }
     }
     
-    private func configureDetailUseCase(productViewModel: ProductViewModel,
-                                        completionHandler: @escaping (ProductDetailData?) -> ()) {
+    private func configureDetailUseCase(
+        productViewModel: ProductViewModel,
+        completionHandler: @escaping (ProductDetailData?) -> Void
+    ) {
         ProductDetailUseCase.requestCategoryDetail(from: "\(ProductDetailUseCase.EndPoints.banchans)\(productViewModel.id)",
         with: MockProductDetailSuccess()) { productDetail in
             guard let productDetail = productDetail else { return }
+            
             completionHandler(productDetail)
         }
     }
