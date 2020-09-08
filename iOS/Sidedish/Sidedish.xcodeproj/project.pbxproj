@@ -84,6 +84,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5A9038DE24CC36A3001D68F7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		5A2FF09A245D63380021F366 /* DetailVerticalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVerticalScrollView.swift; sourceTree = "<group>"; };
 		5A2FF09C245D63A50021F366 /* ThumbScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbScrollView.swift; sourceTree = "<group>"; };
@@ -416,6 +429,7 @@
 				5A74272C244E9D5F004144C1 /* Sources */,
 				5A74272D244E9D5F004144C1 /* Frameworks */,
 				5A74272E244E9D5F004144C1 /* Resources */,
+				5A9038DE24CC36A3001D68F7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -468,7 +482,7 @@
 		5A742728244E9D5F004144C1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1150;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = Jason;
 				TargetAttributes = {

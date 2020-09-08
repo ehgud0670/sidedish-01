@@ -10,20 +10,28 @@ import Foundation
 
 struct CategoryUseCase {
     static func makeCategory(from urlString: String,
-                                   with manager: NetworkManagable,
-                                   completionHandler: @escaping (Category?) -> ()) {
+                             with manager: NetworkManagable,
+                             completionHandler: @escaping (Category?) -> ()) {
         try? manager.requestResource(from: urlString, httpMethod: .get, httpBody: nil,
                                      completionHandler: {
                                         data, urlResponse, error in
                                         guard error == nil, let data = data,
-                                            let response = try? JSONDecoder().decode(CategoryResponse.self,
-                                                                                     from: data),
+                                            let response = try? JSONDecoder().decode(
+                                                CategoryResponse.self,
+                                                from: data),
                                             response.status == .success else { return }
-                                        let header = CategoryHeader(id: response.data.category_id,
-                                                                    name: response.data.category_name,
-                                                                    description: response.data.category_description)
-                                        let category = Category(header: header,
-                                                                products: response.data.banchans)
+                                        
+                                        let header = CategoryHeader(
+                                            id: response.data.category_id,
+                                            name: response.data.category_name,
+                                            description: response.data.category_description
+                                        )
+                                        
+                                        let category = Category(
+                                            header: header,
+                                            products: response.data.banchans
+                                        )
+                                        
                                         completionHandler(category)
         })
     }

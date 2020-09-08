@@ -6,24 +6,34 @@
 //  Copyright © 2020 Jason. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct ImageUseCase {
-    static func imageData(from urlString: String,  completionHandler: @escaping (Data?) -> ()) {
+    static func requestImage(from urlString: String,  completionHandler: @escaping (UIImage?) -> ()) {
         guard let imageURL = URL(string: urlString),
-            let destinaionURL = try? FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(imageURL.lastPathComponent) else { return }
+            let destinaionURL = try? FileManager.default.url(
+                for: .cachesDirectory,
+                in: .userDomainMask,
+                appropriateFor: nil,
+                create: false
+            ).appendingPathComponent(imageURL.lastPathComponent) else { return }
         
         if let imageData = try? Data(contentsOf: destinaionURL) {
-            completionHandler(imageData)
+            completionHandler(UIImage(data: imageData))
+            
         } else {
-            Self.downloadImageData(requestURL: imageURL, destinationURL: destinaionURL) { imageData in
+            Self.downloadImageData(
+            requestURL: imageURL,
+            destinationURL: destinaionURL
+            ) { imageData in
                 guard let imageData = imageData else { return }
-                completionHandler(imageData)
+                
+                completionHandler(UIImage(data: imageData))
             }
         }
     }
     
-    private static func downloadImageData(requestURL: URL, destinationURL: URL,
+    private static func downloadImageData(requestURL: URL,destinationURL: URL,
                                           completionHandler: @escaping (Data?) -> ()) {
         URLSession.shared.downloadTask(with: requestURL) { (tempURL, urlResponse, error) in
             guard let tempURL = tempURL else { return }
@@ -32,6 +42,4 @@ struct ImageUseCase {
             completionHandler(imageData)
         }.resume()
     }
-    
 }
-

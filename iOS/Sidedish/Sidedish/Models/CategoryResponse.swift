@@ -20,6 +20,17 @@ struct CategoryData: Codable {
     let banchans: [Product]
 }
 
+struct Category {
+    let header: CategoryHeader
+    let products: [Product]
+}
+
+struct CategoryHeader {
+    let id: Int
+    let name: String
+    let description: String
+}
+
 struct Product: Codable {
     let banchan_id: Int
     let image: String
@@ -29,15 +40,4 @@ struct Product: Codable {
     let normal_price: Int
     var sale_price: Int?
     let badges: [String]
-}
-
-struct CategoryHeader {
-    let id: Int
-    let name: String
-    let description: String
-}
-
-struct Category {
-    let header: CategoryHeader
-    let products: [Product]
 }

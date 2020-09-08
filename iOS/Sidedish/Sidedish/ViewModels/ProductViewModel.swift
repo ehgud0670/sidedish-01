@@ -12,18 +12,18 @@ final class ProductViewModel: ViewModelBinding {
     typealias Key = Product
     private let product: Key
     private var changedHandler: (Key) -> ()
-    var imageData: Data?
     
     init(product: Key, handler: @escaping (Key) -> () = { _ in }) {
         self.product = product
         self.changedHandler = handler
-        configureImageData()
         changedHandler(product)
     }
     
-    private func configureImageData() {
-        ImageUseCase.imageData(from: product.image) { imageData in
-            self.imageData = imageData
+    func bindImage(resultHandler: @escaping (UIImage) -> Void) {
+        ImageUseCase.requestImage(from: product.image) { image in
+            guard let image = image else { return }
+            
+            resultHandler(image)
         }
     }
     
@@ -34,6 +34,7 @@ final class ProductViewModel: ViewModelBinding {
     
     static func text(price: Int?) -> String? {
         guard let price = price else { return nil }
+        
         var text = String(price)
         text.insert(",", at: text.index(text.endIndex, offsetBy: -3))
         return text

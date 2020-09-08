@@ -29,9 +29,4 @@ final class CategoryViewModel: ViewModelBinding {
     var productViewModelsCount: Int {
         return productViewModels.count
     }
-    
-    func performBind(changed handler: @escaping (Key) -> ()) {
-        self.changedHandler = handler
-        changedHandler(categoryHeader)
-    }
 }
