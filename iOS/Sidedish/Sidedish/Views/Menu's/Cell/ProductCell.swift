@@ -20,7 +20,7 @@ final class ProductCell: UITableViewCell, ReusableView {
     private let eventBadgeStackView = EventBadgeStackView()
     private var disposeBag = DisposeBag()
     let onData: AnyObserver<Product>
-    let data = PublishSubject<Product>()
+    private let data = PublishSubject<Product>()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         onData = data.asObserver()
@@ -65,7 +65,7 @@ final class ProductCell: UITableViewCell, ReusableView {
         super.prepareForReuse()
         clear()
         disposeBag = DisposeBag()
-        bindUI()
+        bindUI() // resubscirbe on data
     }
     
     private func clear() {

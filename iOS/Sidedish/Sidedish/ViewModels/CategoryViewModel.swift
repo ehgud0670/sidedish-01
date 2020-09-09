@@ -8,14 +8,16 @@
 
 import Foundation
 
+import RxSwift
+
 final class CategoryViewModel: ViewModelBinding {
-    typealias Key = CategoryHeader
+    typealias Key = BehaviorSubject<CategoryHeader>
     let categoryHeader: Key
     private let productViewModels: [ProductViewModel]
     private var changedHandler: (Key) -> ()
     
     init(category: Category, handler: @escaping (Key) -> () = { _ in }) {
-        self.categoryHeader = category.header
+        self.categoryHeader = BehaviorSubject<CategoryHeader>(value: category.header)
         self.productViewModels = category.products.map { ProductViewModel(product: $0) }
         self.changedHandler = handler
         changedHandler(categoryHeader)
