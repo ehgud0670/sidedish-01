@@ -8,24 +8,50 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 final class CategoryHeaderView: UITableViewHeaderFooterView, ReusableView {
     private let categoryLabel = CategoryLabel()
     private let titleLabel = CategoryTitleLabel()
+    let onData: AnyObserver<CategoryHeader>
+    private let data = PublishSubject<CategoryHeader>()
+    private var disposeBag = DisposeBag()
     
     override init(reuseIdentifier: String?) {
+        onData = data.asObserver()
+        
         super.init(reuseIdentifier: reuseIdentifier)
         
         configureContentView()
         configureCategoryLabel()
         configureTitleLabel()
+        
+        bindUI()
     }
     
     required init?(coder: NSCoder) {
+        onData = data.asObserver()
+        
         super.init(coder: coder)
         
         configureContentView()
         configureCategoryLabel()
         configureTitleLabel()
+        
+        bindUI()
+    }
+    
+    override func prepareForReuse() {
+        //clear
+        categoryLabel.text = nil
+        titleLabel.text = nil
+        
+        //reset disposeBag
+        disposeBag = DisposeBag()
+        
+        //resubscribe on data
+        bindUI()
     }
     
     private func configureContentView() {
@@ -47,7 +73,13 @@ final class CategoryHeaderView: UITableViewHeaderFooterView, ReusableView {
         titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
     }
     
-    func configure(header: CategoryHeader) {
+    func bindUI() {
+        data.subscribe(onNext: { [weak self] in
+            self?.configure(header: $0)
+        }).disposed(by: disposeBag)
+    }
+    
+    private func configure(header: CategoryHeader) {
         categoryLabel.text = header.name
         titleLabel.text = header.description
     }

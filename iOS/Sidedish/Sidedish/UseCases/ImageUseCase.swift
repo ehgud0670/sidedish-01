@@ -8,7 +8,19 @@
 
 import UIKit
 
+import RxSwift
+
 struct ImageUseCase {
+    static func requestImageRx(from urlString: String) -> Observable<UIImage> {
+        return Observable.create { emitter in
+            requestImage(from: urlString) { image in
+                guard let image = image else { return }
+                emitter.onNext(image)
+            }
+            return Disposables.create()
+        }
+    }
+    
     static func requestImage(from urlString: String,  completionHandler: @escaping (UIImage?) -> ()) {
         guard let imageURL = URL(string: urlString),
             let destinaionURL = try? FileManager.default.url(

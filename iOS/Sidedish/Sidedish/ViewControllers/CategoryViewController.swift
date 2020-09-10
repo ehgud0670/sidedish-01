@@ -8,11 +8,14 @@
 
 import UIKit
 
+import RxSwift
+
 final class CategoryViewController: UIViewController {
     private let categoryTableView = CategoryTableView()
     private var categoryViewModels = CategoryViewModels()
     private var hasBeenDisplayed = false
     private let updateQueue = DispatchQueue(label: "serial.update.queue")
+    private var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +102,7 @@ final class CategoryViewController: UIViewController {
     }
 }
 
+//MARK:- UITableView Delegate
 extension CategoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let categoryHeaderView = tableView.dequeueReusableHeaderFooterView(
@@ -108,7 +112,10 @@ extension CategoryViewController: UITableViewDelegate {
             at: section
             ) else { return nil }
         
-        categoryHeaderView.configure(header: categoryViewModel.categoryHeader)
+        categoryViewModel.categoryHeader
+            .bind(to: categoryHeaderView.onData)
+            .disposed(by: disposeBag)
+        
         return categoryHeaderView
     }
     
@@ -130,6 +137,7 @@ extension CategoryViewController: UITableViewDelegate {
         productViewModel: ProductViewModel,
         completionHandler: @escaping (ProductDetailData?) -> Void
     ) {
+        
         ProductDetailUseCase.requestCategoryDetail(from: "\(ProductDetailUseCase.EndPoints.banchans)\(productViewModel.id)",
         with: MockProductDetailSuccess()) { productDetail in
             guard let productDetail = productDetail else { return }
