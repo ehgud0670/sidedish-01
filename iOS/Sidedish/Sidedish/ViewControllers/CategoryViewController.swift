@@ -112,9 +112,9 @@ extension CategoryViewController: UITableViewDelegate {
             at: section
             ) else { return nil }
         
-        categoryViewModel.categoryHeader.subscribe(onNext: {
-            categoryHeaderView.onData.onNext($0)
-            }).disposed(by: disposeBag)
+        categoryViewModel.categoryHeader
+            .bind(to: categoryHeaderView.onData)
+            .disposed(by: disposeBag)
         
         return categoryHeaderView
     }
@@ -137,6 +137,7 @@ extension CategoryViewController: UITableViewDelegate {
         productViewModel: ProductViewModel,
         completionHandler: @escaping (ProductDetailData?) -> Void
     ) {
+        
         ProductDetailUseCase.requestCategoryDetail(from: "\(ProductDetailUseCase.EndPoints.banchans)\(productViewModel.id)",
         with: MockProductDetailSuccess()) { productDetail in
             guard let productDetail = productDetail else { return }

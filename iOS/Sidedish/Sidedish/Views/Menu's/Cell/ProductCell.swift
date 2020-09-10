@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 
 final class ProductCell: UITableViewCell, ReusableView {
-    private let productImageView = ProductImageView(frame: .zero)
+    let productImageView = ProductImageView(frame: .zero)
     private let titleLabel = ProductTitleLabel()
     private let subTitleLabel = ProductSubTitleLabel()
     private let normalPriceLabel = PriceLabel()

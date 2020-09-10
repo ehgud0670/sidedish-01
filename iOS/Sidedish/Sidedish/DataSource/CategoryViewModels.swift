@@ -40,6 +40,7 @@ final class CategoryViewModels: NSObject {
     }
 }
 
+//MARK:- UITableView DataSource
 extension CategoryViewModels: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let count = categoryViewModels[section]?.productViewModelsCount else { return 0 }
@@ -57,14 +58,14 @@ extension CategoryViewModels: UITableViewDataSource {
         guard let productViewModel = categoryViewModels[indexPath.section]?.productViewModel(
             at: indexPath.row) else { return ProductCell() }
         
-        productViewModel.productSubject.subscribe(onNext: {
-            productCell.onData.onNext($0)
-            
-            ImageUseCase.requestImage(from: $0.image) { image in
-                guard let image = image else { return }
-                productCell.configure(image: image)
-            }
-        }).disposed(by: disposeBag)
+        productViewModel.product
+            .bind(to: productCell.onData)
+            .disposed(by: disposeBag)
+        
+        productViewModel.imageURLStr
+            .flatMap(ImageUseCase.requestImageRx(from:))
+            .bind(to: productCell.productImageView.rx.image)
+            .disposed(by: disposeBag)
         
         return productCell
     }

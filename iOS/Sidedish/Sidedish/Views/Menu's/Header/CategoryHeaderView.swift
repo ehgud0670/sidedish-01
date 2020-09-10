@@ -74,8 +74,8 @@ final class CategoryHeaderView: UITableViewHeaderFooterView, ReusableView {
     }
     
     func bindUI() {
-        data.subscribe(onNext: {
-            self.configure(header: $0)
+        data.subscribe(onNext: { [weak self] in
+            self?.configure(header: $0)
         }).disposed(by: disposeBag)
     }
     

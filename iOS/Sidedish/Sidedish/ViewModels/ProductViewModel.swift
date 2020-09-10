@@ -9,15 +9,21 @@
 import UIKit
 
 import RxSwift
+import RxCocoa
 
 final class ProductViewModel: ViewModelBinding {
-    typealias Key = BehaviorSubject<Product>
+    typealias Key = Observable<Product>
     private var disposeBag = DisposeBag()
-    let productSubject: Key
+    let product: Key
+    let imageURLStr: Observable<String>
     let id: Int
     
     init(product: Product) {
-        self.productSubject = BehaviorSubject<Product>(value: product)
+        let productSubject = BehaviorSubject<Product>(value: product)
+        let imageSubject = BehaviorSubject(value: product.image)
+        
+        self.product = productSubject.asObserver()
+        self.imageURLStr = imageSubject.asObserver()
         self.id = product.banchan_id
     }
     
