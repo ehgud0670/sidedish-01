@@ -13,10 +13,12 @@ import RxCocoa
 
 final class CategoryViewModels: NSObject {
     enum Notification {
+        static let categorysCountDidChange =
+            Foundation.Notification.Name("categorysCountDidChange")
         static let categoryViewModelsDidChange = Foundation.Notification.Name("categoryViewModelsDidChange")
     }
     
-    private var count: Int?
+    private var count = 0
     private var categoryViewModels: [Int: CategoryViewModel]
     private var disposeBag = DisposeBag()
     
@@ -26,6 +28,10 @@ final class CategoryViewModels: NSObject {
     
     func set(count: Int) {
         self.count = count
+        NotificationCenter.default.post(
+            name: Notification.categorysCountDidChange,
+            object: self
+        )
     }
     
     func categoryViewModel(at index: Int) -> CategoryViewModel? {
@@ -35,8 +41,11 @@ final class CategoryViewModels: NSObject {
     
     func insert(at index: Int, categoryViewModel: CategoryViewModel) {
         categoryViewModels[index] = categoryViewModel
-        NotificationCenter.default.post(name: Notification.categoryViewModelsDidChange,
-                                        object: self, userInfo: ["index": index])
+        NotificationCenter.default.post(
+            name: Notification.categoryViewModelsDidChange,
+            object: self,
+            userInfo: ["index": index]
+        )
     }
 }
 
@@ -71,6 +80,6 @@ extension CategoryViewModels: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return count ?? 0
+        return count
     }
 }
