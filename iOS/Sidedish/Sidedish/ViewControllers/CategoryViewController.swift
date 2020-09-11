@@ -18,7 +18,7 @@ final class CategoryViewController: UIViewController {
         super.viewDidLoad()
         
         configureMenuTableView()
-        configureObserver()
+        configureObservers()
         configureURLUsecase()
     }
     
@@ -52,16 +52,28 @@ final class CategoryViewController: UIViewController {
             multiplier: 1).isActive = true
     }
     
-    private func configureObserver() {
+    private func configureObservers() {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(updateTableView),
+            name: CategoryViewModels.Notification.categorysCountDidChange,
+            object: categoryViewModels)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateTableViewSection),
             name: CategoryViewModels.Notification.categoryViewModelsDidChange,
             object: categoryViewModels
         )
     }
     
-    @objc private func updateTableView(notification: Notification) {
+    @objc private func updateTableView() {
+        DispatchQueue.main.async {
+            self.categoryTableView.reloadData()
+        }
+    }
+    
+    @objc private func updateTableViewSection(notification: Notification) {
         guard let userInfo = notification.userInfo,
             let index = userInfo["index"] as? Int else { return }
         
